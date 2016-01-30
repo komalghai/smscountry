@@ -1,6 +1,6 @@
 {
   "name": "smscountry",
-  "description": "A Shopify app which sendm sms on new order,user register etc",
+  "description": "A Shopify app which sendm sms on new order and user register etc",
   "authors": [
     {
       "name": "Komal Ghai",
