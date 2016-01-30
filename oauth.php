@@ -3,7 +3,7 @@ echo '<script>alert(41);</script>';
 	session_start();
 
 	require __DIR__.'/vendor/autoload.php';
-	use phpish\shopify;
+	//use phpish\shopify;
 
 	require __DIR__.'/conf.php';
 
@@ -14,6 +14,8 @@ echo '<script>alert(41);</script>';
 	# Step 2: http://docs.shopify.com/api/authentication/oauth#asking-for-permission
 	if (!isset($_GET['code']))
 	{
+		echo 'hello';
+		die('error');
 	   echo $permission_url = shopify\authorization_url($_GET['shop'], SHOPIFY_APP_API_KEY, array('read_content', 'write_content', 'read_themes', 'write_themes', 'read_products', 'write_products', 'read_customers', 'write_customers', 'read_orders', 'write_orders', 'read_script_tags', 'write_script_tags', 'read_fulfillments', 'write_fulfillments', 'read_shipping', 'write_shipping'),'https://smscountry.herokuapp.com');
 	//$permission_url =$_GET['shop']."/admin/oauth/authorize?client_id=2f32ee6aa7b785c18281b4cf8fc26346&scope=read_content&redirect_uri=https://smscountry.herokuapp.com/";
 		//echo "<script>alert(".$permission_url.");</script>";
