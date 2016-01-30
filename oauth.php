@@ -6,7 +6,7 @@ echo '<script>alert(61);</script>';
 	use phpish\shopify;
 
 	require __DIR__.'/conf.php';
-
+            echo SHOPIFY_APP_SHARED_SECRET;
 	# Guard: http://docs.shopify.com/api/authentication/oauth#verification
        shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET) or die('Invalid Request! Request or redirect did not come from Shopify');
         echo '<script>alert(51);</script>';
