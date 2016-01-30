@@ -3,7 +3,7 @@ echo '<script>alert(61);</script>';
 	session_start();
 
 	require __DIR__.'/vendor/autoload.php';
-	//use phpish\shopify;
+		use phpish\shopify;
 
 	require __DIR__.'/conf.php';
 	echo "<pre>"; print_r($_GET); echo "</pre>"; 
