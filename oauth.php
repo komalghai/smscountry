@@ -6,7 +6,7 @@ echo '<script>alert(61);</script>';
 	//use phpish\shopify;
 
 	require __DIR__.'/conf.php';
-	echo "<pre>"; print($_GET); echo "</pre>"; 
+	echo "<pre>"; print_r($_GET); echo "</pre>"; 
             echo SHOPIFY_APP_SHARED_SECRET;
 	# Guard: http://docs.shopify.com/api/authentication/oauth#verification
 	 //print_r(shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET)) ;
