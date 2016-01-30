@@ -15,3 +15,4 @@
 	echo "<script> top.location.href='$install_url'</script>";
 
 ?>
+
