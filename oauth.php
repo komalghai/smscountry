@@ -1,5 +1,5 @@
 <?php
-echo '<script>alert(1);</script>';
+echo '<script>alert(2);</script>';
 	session_start();
 
 	require __DIR__.'/vendor/autoload.php';
