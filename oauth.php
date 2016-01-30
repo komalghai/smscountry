@@ -15,8 +15,8 @@ echo '<script>alert(21);</script>';
 	if (!isset($_GET['code']))
 	{
 	//echo '<script>alert(61);</script>';
-	 	echo $permission_url = shopify\authorization_url($_GET['shop'], SHOPIFY_APP_API_KEY, array('read_content', 'write_content', 'read_themes', 'write_themes', 'read_products', 'write_products', 'read_customers', 'write_customers', 'read_orders', 'write_orders', 'read_script_tags', 'write_script_tags', 'read_fulfillments', 'write_fulfillments', 'read_shipping', 'write_shipping'),'https://smscountry.herokuapp.com/');
-		die("<script> top.location.href='$permission_url'</script>");
+	 	//echo $permission_url = shopify\authorization_url($_GET['shop'], SHOPIFY_APP_API_KEY, array('read_content', 'write_content', 'read_themes', 'write_themes', 'read_products', 'write_products', 'read_customers', 'write_customers', 'read_orders', 'write_orders', 'read_script_tags', 'write_script_tags', 'read_fulfillments', 'write_fulfillments', 'read_shipping', 'write_shipping'),'https://smscountry.herokuapp.com/');
+		die("<script> top.location.href='https://smsappstore.myshopify.com/admin/oauth/authorize?client_id=2f32ee6aa7b785c18281b4cf8fc26346&scope=read_content&redirect_uri=https://smscountry.herokuapp.com/'</script>");
 	}
 
 
