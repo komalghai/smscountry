@@ -3,7 +3,7 @@
   
 $.ajax({
 	type: 'POST',
-	url: 'https://smsappstore.myshopify.com/admin/webhooks.json??access_token=<?php echo $_SESSION['oauth_token'] ?>',  
+	url: "https://smsappstore.myshopify.com/admin/webhooks.json??access_token=<?php echo $_SESSION['oauth_token'] ?>",  
 	dataType:'json',
      data: {
   "webhook": {
