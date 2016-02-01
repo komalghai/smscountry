@@ -4,7 +4,7 @@ $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_
 		$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop'];
 ?>
-<script>alert("<?php echo $_GET['code'];?>");</script>
+<script>alert("<?php echo $_GET['oauth_token'];?>");</script>
 <?php echo "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=".$_SESSION['oauth_token'];?>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
