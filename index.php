@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+
+<?php session_start(); 
+
+?>
 <script>alert(1);</script>
 <?php echo "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=".$_SESSION['oauth_token'];?>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -6,7 +9,7 @@
   
 $.ajax({
 	type: 'POST',
-	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=" + <?php echo $_SESSION['oauth_token']; ?>,  
+	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=2f32ee6aa7b785c18281b4cf8fc26346",  
 	dataType:'json',
      data: {
   "webhook": {
