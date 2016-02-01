@@ -1,7 +1,9 @@
 <?php session_start(); 
 require __DIR__.'/conf.php';
-echo  $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_GET['code']);
-	/*	$_SESSION['oauth_token'] = $oauth_token;
+echo SHOPIFY_APP_API_KEY;
+echo SHOPIFY_APP_SHARED_SECRET;
+	/*echo  $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_GET['code']);
+	$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop']; */
 ?>
 <?php print_r($_GET); ?>
