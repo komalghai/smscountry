@@ -30,7 +30,7 @@
 
 		$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop'];
-                echo "<script>alert(".$_SESSION['oauth_token'].");</script>";
+                echo "<script>alert(1);</script>";
 		echo 'App Successfully Installed!';
 	}
 	catch (shopify\ApiException $e)
