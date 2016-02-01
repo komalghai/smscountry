@@ -3,7 +3,7 @@
   
 $.ajax({
 	type: 'POST',
-	url: '/admin/webhooks.json',  
+	url: 'https://smsappstore.myshopify.com/admin/webhooks.json',  
      data: {
   "webhook": {
     "topic": "orders\/create",
