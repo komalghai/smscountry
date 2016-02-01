@@ -6,15 +6,12 @@ require __DIR__.'/conf.php';
 	$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop']; 
 ?>
-<?php print_r($_GET); ?>
-<?php print_r($_SESSION); ?>
-<?php /* echo "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=".$_SESSION['oauth_token']; */?>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
   
 $.ajax({
 	type: 'POST',
-	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=2f32ee6aa7b785c18281b4cf8fc26346",  
+	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=<?php echo $_SESSION['oauth_token'] ?>",  
 	dataType:'json',
      data: {
   "webhook": {
