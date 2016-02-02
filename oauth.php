@@ -3,8 +3,8 @@
 	require __DIR__.'/vendor/autoload.php';
 	use phpish\shopify;
 	require __DIR__.'/conf.php';
-	echo "<pre>"; print_r($_REQUEST); die();
-     /*	echo SHOPIFY_APP_SHARED_SECRET;
+	/* echo "<pre>"; print_r($_REQUEST); die();
+        echo SHOPIFY_APP_SHARED_SECRET;
 	# Guard: http://docs.shopify.com/api/authentication/oauth#verification
 	 //print_r(shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET)) ;*/
        shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET) or die('Invalid Request! Request or redirect did not come from Shopify');
