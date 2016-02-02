@@ -12,13 +12,13 @@
 	$data = array(
 			'access_token' => $oauth_token,
 			'webhook' => array(
-				'address' => 'https://smscountry.herokuapp.com/',
+				'address' => 'https://smscountry.herokuapp.com/notify.php',
 				'format' => 'json',
-				'topic' => 'customers/create',
+				'topic' => 'orders/create',
 			)
 		);
 	$data_string = json_encode($data);																		 
-	$ch = curl_init("https://smsappstore.myshopify.com/admin/webhooks.json?access_token={$oauth_token}");
+	$ch = curl_init("https://smsappstore.myshopify.com/admin/webhooks.json");
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
