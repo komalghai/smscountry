@@ -10,14 +10,11 @@
 	$_SESSION['shop'] = $_REQUEST['shop']; 
 	
 	$data = array(
-			'_method' => 'post',
 			'access_token' => $oauth_token,
-			'authenticity_token' => $oauth_token,
-			'utf8' => '✓',
 			'webhook' => array(
 				'address' => 'https://smscountry.herokuapp.com/',
 				'format' => 'json',
-				'topic' => 'orders/create',
+				'topic' => 'customers/create',
 			)
 		);
 	$data_string = json_encode($data);																		 
