@@ -10,15 +10,18 @@
 	$_SESSION['shop'] = $_REQUEST['shop']; 
 	
 	$data = array(
+			'_method' => 'post',
 			'access_token' => $oauth_token,
+			'authenticity_token' => $oauth_token,
+			'utf8' => '✓',
 			'webhook' => array(
-				'topic' => 'orders/create',
 				'address' => 'https://smscountry.herokuapp.com/',
 				'format' => 'json',
+				'topic' => 'orders/create',
 			)
 		);
 	$data_string = json_encode($data);																		 
-	$ch = curl_init("https://smsappstore.myshopify.com/admin/webhooks");
+	$ch = curl_init("https://smsappstore.myshopify.com/admin/webhooks.json");
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
