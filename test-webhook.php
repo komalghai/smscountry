@@ -12,6 +12,7 @@ function verify_webhook($data, $hmac_header)
 $hmac_header = $_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'];
 $data = file_get_contents('php://input');
 $verified = verify_webhook($data, $hmac_header);
-error_log('Webhook verified: '.var_export($verified, true)); //check error.log to see the result
-
+echo "<pre>";
+print_r(var_export($verified, true));
+exit();
 ?>
