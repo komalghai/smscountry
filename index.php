@@ -26,7 +26,10 @@
 		'Content-Type: application/json',                                                                                
 		'Content-Length: ' . strlen($data_string))                                                                       
 	);
-	$result = curl_exec($ch);
-	echo "<script>windw.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
+	$response = curl_exec($ch);
+	echo "<pre>";
+	print_r($response);
+	die;
+	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
 	exit();
 ?>
