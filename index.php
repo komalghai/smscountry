@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php /* session_start(); 
 require __DIR__.'/vendor/autoload.php';
 	use phpish\shopify;
 require __DIR__.'/conf.php';
@@ -26,3 +26,7 @@ success: function(response){
 });
   
 </script>
+
+<?php */ 
+// working.
+?>
