@@ -28,7 +28,7 @@
 	);
 	$response = curl_exec($ch);
 	echo "<pre>";
-	print_r($response);
+	print_r(json_decode($response));
 	die;
 	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
 	exit();
