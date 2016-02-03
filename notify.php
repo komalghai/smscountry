@@ -1,4 +1,5 @@
-<?php
+<?php 
+die('199');
 $to = "prashant.3ginfo@gmail.com";
 $subject = "HTML email";
 $msg = "An order has been placed!";
