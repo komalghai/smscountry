@@ -1,5 +1,5 @@
 <?php 
-require_once('php-mailer/class.phpmailer.php');
+echo require_once('php-mailer/class.phpmailer.php'); die();
 $address = "prashant.3ginfo@gmail.com";
 $mail = new PHPMailer();
 $body = file_get_contents('https://lh3.googleusercontent.com/-6TFgPgFH3lI/AAAAAAAAAAI/AAAAAAAAAAA/3KU8k8aPhKg/mo/photo.jpg?sz=46');
