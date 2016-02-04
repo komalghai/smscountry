@@ -4,7 +4,7 @@ $address = "prashant.3ginfo@gmail.com";
 $mail = new PHPMailer();
 $mail->IsSMTP();
 $mail->SMTPAuth = true;
-$mail->Host = "smtp.google.com";
+$mail->Host = "ssl://smtp.gmail.com";
 $mail->Username = "prashant.3ginfo@gmail.com";
 $mail->Password = "53*63@83%32#weed";
 $mail->SMTPSecure = 'tls';
