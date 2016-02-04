@@ -8,7 +8,7 @@ preg_match('/^[a-zA-Z0-9\-]+.myshopify.com$/', $_REQUEST['shop']) or die('Invali
 $oauth_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 $_SESSION['oauth_token'] = $oauth_token;
 $_SESSION['shop'] = $_REQUEST['shop']; 
-
+	
 $shop_domain = 'smsappstore.myshopify.com';
 $method = "POST";
 $path = "/admin/webhooks.json";
@@ -21,14 +21,14 @@ $params = array(
 	);
 
 $password = md5(SHOPIFY_SHARED_SECRET.$oauth_token);
-$baseurl = "https://".SHOPIFY_API_KEY.":".$password."@".$shop_domain."/";;
+$baseurl = "https://".SHOPIFY_API_KEY.":".$password."@".$shop_domain."/";
 
 $url = $baseurl.ltrim($path, '/');
 $query = in_array($method, array('GET','DELETE')) ? $params : array();
 $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
 $request_headers = in_array($method, array('POST','PUT')) ? array("Content-Type: application/json; charset=utf-8", 'Expect:') : array();
 $request_headers[] = 'X-Shopify-Access-Token: ' . $oauth_token;
-			list($response_body, $response_headers) = $this->Curl->HttpRequest($method, $url, $query, $payload, $request_headers);
+list($response_body, $response_headers) = $this->Curl->HttpRequest($method, $url, $query, $payload, $request_headers);
 $this->last_response_headers = $response_headers;
 $response = json_decode($response_body, true);
 
