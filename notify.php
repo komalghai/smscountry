@@ -1,9 +1,9 @@
 <?php 
-echo require_once('php-mailer/class.phpmailer.php'); die();
+require_once('php-mailer/class.phpmailer.php');
 $address = "prashant.3ginfo@gmail.com";
 $mail = new PHPMailer();
-$body = file_get_contents('https://lh3.googleusercontent.com/-6TFgPgFH3lI/AAAAAAAAAAI/AAAAAAAAAAA/3KU8k8aPhKg/mo/photo.jpg?sz=46');
-$body = eregi_replace("[\]",'',$body);
+/* $body = file_get_contents('https://lh3.googleusercontent.com/-6TFgPgFH3lI/AAAAAAAAAAI/AAAAAAAAAAA/3KU8k8aPhKg/mo/photo.jpg?sz=46'); */
+$body = 'testing shopify';
 $mail->SetFrom('webmaster@webandweb.in', 'First Last');
 $mail->AddAddress($address, "Developer");
 $mail->Subject = "PHPMailer test on heroku server!!";
