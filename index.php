@@ -8,11 +8,7 @@ preg_match('/^[a-zA-Z0-9\-]+.myshopify.com$/', $_REQUEST['shop']) or die('Invali
 $oauth_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 $_SESSION['oauth_token'] = $oauth_token;
 $_SESSION['shop'] = $_REQUEST['shop']; 
-return registerShopifyAppUninstallWebhook('smsappstore.myshopify.com', $oauth_token);
-die;
-echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
-exit();
-	
+
 $shop_domain = 'smsappstore.myshopify.com';
 $method = "POST";
 $path = "/admin/webhooks.json";
@@ -51,4 +47,6 @@ fclose($fh); */
 echo "<pre>";
 print_r($body);
 die;
+echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
+exit();
 ?>
