@@ -24,28 +24,19 @@ $password = md5(SHOPIFY_SHARED_SECRET.$oauth_token);
 $baseurl = "https://".SHOPIFY_API_KEY.":".$password."@".$shop_domain."/";
 
 $url = $baseurl.ltrim($path, '/');
-$query = in_array($method, array('GET','DELETE')) ? $params : array();
-$payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
-$request_headers = in_array($method, array('POST','PUT')) ? array("Content-Type: application/json; charset=utf-8", 'Expect:') : array();
-$request_headers[] = 'X-Shopify-Access-Token: ' . $oauth_token;
-list($response_body, $response_headers) = $this->Curl->HttpRequest($method, $url, $query, $payload, $request_headers);
-$this->last_response_headers = $response_headers;
-$response = json_decode($response_body, true);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));                                                                  
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+	'Content-Type: application/json',                                                                                
+	'Content-Length: ' . strlen(json_encode($params)),
+	'X-Shopify-Access-Token: '.$oauth_token,
+);
+$response = curl_exec($ch)
 
-if (isset($response['errors']) or ($this->last_response_headers['http_status_code'] >= 400)){
-	$body = $response['errors'];
-} else {
-	$body = $response_body;
-}
-/*Debug the output in a text_file*/
-/* $destination = realpath('../../app/webroot/execution_log') . '/';
-$fh = fopen($destination."shopify_app.txt",'a') or die("can't open file");
-date_default_timezone_set('GMT');
-fwrite($fh, "\n\nDATE: ".date("Y-m-d H:i:s")."\n".$body);
-fclose($fh); */
-/*Debug Code Ends*/
 echo "<pre>";
-print_r($body);
+print_r($response);
 die;
 echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
 exit();
