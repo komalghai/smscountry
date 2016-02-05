@@ -11,6 +11,7 @@
   
 $.ajax({
 	type: 'GET',
+	 crossOrigin: true,
 	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=<?php echo $oauth_token; ?>",  
 	dataType:'json',
 	success: function(response){
