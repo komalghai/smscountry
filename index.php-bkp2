@@ -12,7 +12,7 @@
 	$data = array(
 			'access_token' => $oauth_token,
 			'webhook' => array(
-				'address' => 'https://smscountry.herokuapp.com/notify.php',
+				'address' => 'https://smscountry.herokuapp.com/index.php',
 				'format' => 'json',
 				'topic' => 'orders/create',
 			)
