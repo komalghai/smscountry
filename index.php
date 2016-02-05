@@ -12,16 +12,16 @@
 		$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";?>
 		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-		<script>
+<script>
   
 $.ajax({
 	type: 'GET',
-	url: "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=<?php echo $oauth_token; ?>",  
+	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json?access_token=<?php echo $_SESSION['oauth_token'] ?>",  
 	dataType:'json',
      data: {
   "webhook": {
-    "topic": "orders/create",
-    "address": "https://smscountry.herokuapp.com/",
+    "topic": "orders\/create",
+    "address": "https:\/\/smscountry.herokuapp.com\/",
     "format": "json"
   }
 },
@@ -31,7 +31,6 @@ success: function(response){
 });
   
 </script>
-
 <?php 
   /*   $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
 
