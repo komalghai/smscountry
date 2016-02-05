@@ -1,7 +1,7 @@
 <?php
 $user="shopifyplugin";
 $password="Shopify4plug"; 
-$mobilenumbers="919464549437"; 
+$mobilenumbers="918146105676"; 
 $message = "test messgae";
 $senderid="SMSCNTRY";
 $messagetype="N";
