@@ -1,4 +1,4 @@
-<?
+<?php
 
     session_start();
 
@@ -32,7 +32,7 @@ $response = curl_exec($ch) */
     curl_close ($ch);
 
     echo $return;
-<?php 
+
   /* 
 echo "<pre>";
 print_r($response);
