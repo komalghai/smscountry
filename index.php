@@ -11,8 +11,9 @@
 	$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";
-  /*   $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
-
+  $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
+  print_r($shopify);
+  /* 
     try
     {
         # Making an API request can throw an exception
