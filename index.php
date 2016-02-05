@@ -11,6 +11,7 @@
 	$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";?>
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 		<script>
   
 $.ajax({
