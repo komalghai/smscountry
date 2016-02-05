@@ -11,7 +11,7 @@ $_SESSION['shop'] = $_REQUEST['shop'];
 ?>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
-$.ajax({
+/* $.ajax({
 	url: "https://smsappstore.myshopify.com/admin/webhooks.json",  
 	dataType:'json',
 	headers: {"Access-Control-Allow-Origin": "*"},
@@ -21,5 +21,13 @@ $.ajax({
 	success: function(response){
 		alert(response);
 	}
-});
+}); */
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=<?php echo $oauth_token; ?>", true);
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhr.onload = function () {
+    console.log(xhr.responseText);
+};
+xhr.send();
 </script>
