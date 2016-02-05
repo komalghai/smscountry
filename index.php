@@ -1,4 +1,4 @@
-<?php
+<?
 
     session_start();
 
@@ -11,29 +11,62 @@
 	$_SESSION['oauth_token'] = $oauth_token;
 		$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";
-		$path = "/admin/webhooks.json";
 $url = "https://smsappstore.myshopify.com/admin/webhooks.json";
-$ch = curl_init($url);
+$query="access_token=$_SESSION['oauth_token']";
+/* $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");                                                     
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
 	'Content-Type: application/json',                                                                                
 	'X-Shopify-Access-Token: '.$oauth_token,
 );
-$response = curl_exec($ch)
+$response = curl_exec($ch) */
+ $ch = curl_init();
 
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 0);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,$query);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $return = curl_exec ($ch);
+    curl_close ($ch);
+
+    echo $return;
+<?php 
+  /* 
 echo "<pre>";
 print_r($response);
-	/*	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>
-  
-$.ajax({
-	type: 'GET',
-	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json",  
-	dataType:'json',
-success: function(response){
-  console.log(response);
-} 
-});
-  
-</script> */?>
+  $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
+
+    try
+    {
+        # Making an API request can throw an exception
+        $customers = $shopify('POST /admin/webhooks.json?access_token='.<?php echo $_SESSION['oauth_token'] ?>, array(), array
+        (
+            'webook' => array 
+            (
+                "topic": "customers/create",
+                "address": "https://smscountry.herokuapp.com/",
+                "format": "json"
+            )
+
+        ));
+
+        print_r($customers);
+    }
+    catch (shopify\ApiException $e)
+    {
+        # HTTP status code was >= 400 or response contained the key 'errors'
+        echo $e;
+        print_R($e->getRequest());
+        print_R($e->getResponse());
+    }
+    catch (shopify\CurlException $e)
+    {
+        # cURL error
+        echo $e;
+        print_R($e->getRequest());
+        print_R($e->getResponse());
+    }
+ */
+?>
