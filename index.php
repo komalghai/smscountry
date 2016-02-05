@@ -1,4 +1,4 @@
-<?php
+<?
 
     session_start();
 
@@ -24,7 +24,7 @@ $response = curl_exec($ch) */
  $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 0);
+	curl_setopt($ch, CURLOPT_HTTPGET, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,$query);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
