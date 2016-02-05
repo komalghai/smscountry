@@ -8,23 +8,24 @@
     require __DIR__.'/conf.php';
 
   $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_GET['code']);
-echo	$_SESSION['oauth_token'] = $oauth_token;
-	echo	$_SESSION['shop'] = $_GET['shop']; 
+	$_SESSION['oauth_token'] = $oauth_token;
+		$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";?>
-	<?php 
-  /* 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
   
 $.ajax({
-	type: 'GET',
-	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json?access_token=<?php echo $_SESSION['oauth_token'] ?>",  
+	type: 'POST',
+	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json",  
 	dataType:'json',
-     data: {
+     data: 
+ {
   "webhook": {
     "topic": "orders\/create",
-    "address": "https:\/\/smscountry.herokuapp.com\/",
+    "address": "https:\/\/smsappstore.myshopify.com\/",
     "format": "json"
   }
+
 },
 success: function(response){
   alert('yes');
@@ -32,37 +33,3 @@ success: function(response){
 });
   
 </script>
-  $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
-
-    try
-    {
-        # Making an API request can throw an exception
-        $customers = $shopify('POST /admin/webhooks.json?access_token='.<?php echo $_SESSION['oauth_token'] ?>, array(), array
-        (
-            'webook' => array 
-            (
-                "topic": "customers/create",
-                "address": "https://smscountry.herokuapp.com/",
-                "format": "json"
-            )
-
-        ));
-
-        print_r($customers);
-    }
-    catch (shopify\ApiException $e)
-    {
-        # HTTP status code was >= 400 or response contained the key 'errors'
-        echo $e;
-        print_R($e->getRequest());
-        print_R($e->getResponse());
-    }
-    catch (shopify\CurlException $e)
-    {
-        # cURL error
-        echo $e;
-        print_R($e->getRequest());
-        print_R($e->getResponse());
-    }
- */
-?>
