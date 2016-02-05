@@ -17,7 +17,7 @@ $.ajax({
 	dataType:'json',
 	data:{
 		access_token: '<?php echo $oauth_token; ?>',
-	}
+	},
 	success: function(response){
 		alert(response);
 	}
