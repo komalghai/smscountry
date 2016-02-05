@@ -24,10 +24,10 @@ $.ajax({
     "address": "https:\/\/smsappstore.myshopify.com",
     "format": "json"
   }
-}/* ,
+},
 success: function(response){
-  alert('yes');
-} */
+  alert(response);
+} 
 });
   
 </script>
