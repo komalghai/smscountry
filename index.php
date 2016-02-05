@@ -1,33 +1,26 @@
 <?php 
-if(!session_id()) session_start(); 
-require __DIR__.'/vendor/autoload.php';
-use phpish\shopify;
-require __DIR__.'/conf.php';
-isset($_REQUEST['shop']) or die ('Query parameter "shop" missing.');
-preg_match('/^[a-zA-Z0-9\-]+.myshopify.com$/', $_REQUEST['shop']) or die('Invalid myshopify.com store URL.');
-$oauth_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
-$_SESSION['oauth_token'] = $oauth_token;
-$_SESSION['shop'] = $_REQUEST['shop'];	 
+require_once('php-mailer/class.phpmailer.php');
+$address = "prashant.3ginfo@gmail.com";
+$mail = new PHPMailer();
+$mail->IsSMTP();
+$mail->SMTPDebug = 1;
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'tls';
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 587;
+$mail->Username = "developer.php16@gmail.com";
+$mail->Password = "53*63@83%32#weed";
+/* $body = file_get_contents('https://lh3.googleusercontent.com/-6TFgPgFH3lI/AAAAAAAAAAI/AAAAAAAAAAA/3KU8k8aPhKg/mo/photo.jpg?sz=46'); */
+$body = 'testing shopify';
+$mail->SetFrom('noreply@gmail.com', 'Noreply');
+$mail->AddAddress($address, "Developer");
+$mail->Subject = "PHPMailer test on heroku server!!";
+$mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
+$mail->MsgHTML($body);
+if(!$mail->Send()) {
+	echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+	echo "Message sent!";
+}
+die;
 ?>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>
-/* $.ajax({
-	url: "https://smsappstore.myshopify.com/admin/webhooks.json",  
-	dataType:'json',
-	headers: {"Access-Control-Allow-Origin": "*"},
-	data:{
-		access_token: '<?php echo $oauth_token; ?>',
-	},
-	success: function(response){
-		alert(response);
-	}
-}); */
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://smsappstore.myshopify.com/admin/webhooks.json?access_token=<?php echo $oauth_token; ?>", true);
-xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-xhr.onload = function () {
-    console.log(xhr.responseText);
-};
-xhr.send();
-</script>
