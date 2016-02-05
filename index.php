@@ -1,4 +1,4 @@
-<?
+<?php
 
     session_start();
 
@@ -15,21 +15,19 @@
 <script>
   
 $.ajax({
-	type: 'POST',
-	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json",  
+	type: 'GET',
+	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json?access_token=<?php echo $oauth_token; ?>",  
 	dataType:'json',
-     data: 
- {
+     data: {
   "webhook": {
     "topic": "orders\/create",
-    "address": "https:\/\/smsappstore.myshopify.com\/",
+    "address": "https:\/\/smsappstore.myshopify.com\/index.php",
     "format": "json"
   }
-
-},
+}/* ,
 success: function(response){
   alert('yes');
-}
+} */
 });
   
 </script>
