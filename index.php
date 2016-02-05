@@ -18,15 +18,8 @@ $.ajax({
 	type: 'GET',
 	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json?access_token=<?php echo $oauth_token; ?>",  
 	dataType:'json',
-     data: {
-  "webhook": {
-    "topic": "orders\/create",
-    "address": "https:\/\/smsappstore.myshopify.com",
-    "format": "json"
-  }
-},
 success: function(response){
-  alert(response);
+  console.log(response);
 } 
 });
   
