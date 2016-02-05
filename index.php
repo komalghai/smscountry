@@ -16,7 +16,7 @@
   
 $.ajax({
 	type: 'GET',
-	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json?access_token=<?php echo $oauth_token; ?>",  
+	url: "https:\/\/smsappstore.myshopify.com\/admin\/webhooks.json",  
 	dataType:'json',
 success: function(response){
   console.log(response);
