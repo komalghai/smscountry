@@ -1,7 +1,15 @@
+<?php 
+$content = "<pre>";
+$content .= print_r($_REQUEST, true);
+$content .= print_r($_SESSION, true);
+$content .= "</pre>";
+file_put_contents('file.txt', $content);
+?>
+
 <?php
-$user="shopifyplugin";
+/* $user="shopifyplugin";
 $password="Shopify4plug"; 
-$mobilenumbers="918146105676"; 
+$mobilenumbers="91814610567"; 
 $message = "test messgae";
 $senderid="SMSCNTRY";
 $messagetype="N";
@@ -31,5 +39,5 @@ if (empty($ret)) {
 	echo $curlresponse;
 	echo "Message Sent Succesfully" ;
 }
-exit('199');
+exit('199'); */
 ?>
