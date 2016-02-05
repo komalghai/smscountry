@@ -21,7 +21,7 @@ $.ajax({
      data: {
   "webhook": {
     "topic": "orders\/create",
-    "address": "https:\/\/smsappstore.myshopify.com\/index.php",
+    "address": "https:\/\/smsappstore.myshopify.com",
     "format": "json"
   }
 }/* ,
