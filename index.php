@@ -14,6 +14,7 @@ $_SESSION['shop'] = $_REQUEST['shop'];
 $.ajax({
 	url: "https://smsappstore.myshopify.com/admin/webhooks.json",  
 	dataType:'json',
+	headers: {"Access-Control-Allow-Origin": "*"},
 	data:{
 		access_token: '<?php echo $oauth_token; ?>',
 	},
