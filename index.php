@@ -8,10 +8,11 @@
     require __DIR__.'/conf.php';
 
   $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_GET['code']);
-	$_SESSION['oauth_token'] = $oauth_token;
-		$_SESSION['shop'] = $_GET['shop']; 
+echo	$_SESSION['oauth_token'] = $oauth_token;
+	echo	$_SESSION['shop'] = $_GET['shop']; 
 		echo "hello";?>
-		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<?php 
+  /* 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
   
 $.ajax({
@@ -31,8 +32,7 @@ success: function(response){
 });
   
 </script>
-<?php 
-  /*   $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
+  $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
 
     try
     {
