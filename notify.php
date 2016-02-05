@@ -1,6 +1,6 @@
 <?php 
 require_once('php-mailer/class.phpmailer.php');
-$address = "prashant.3ginfo@gmail.com";
+$address = "komal.3ginfo@gmail.com";
 $mail = new PHPMailer();
 $mail->IsSMTP();
 $mail->SMTPAuth = true;
