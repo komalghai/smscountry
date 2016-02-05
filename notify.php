@@ -1,25 +1,35 @@
-<?php 
-require_once('php-mailer/class.phpmailer.php');
-$address = "komal.3ginfo@gmail.com";
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->SMTPAuth = true;
-$mail->Host = "ssl://smtp.gmail.com";
-$mail->Username = "test@gmail.com";
-$mail->Password = "test@gmail.com";
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
-/* $body = file_get_contents('https://lh3.googleusercontent.com/-6TFgPgFH3lI/AAAAAAAAAAI/AAAAAAAAAAA/3KU8k8aPhKg/mo/photo.jpg?sz=46'); */
-$body = 'testing shopify';
-$mail->SetFrom('webmaster@webandweb.in', 'First Last');
-$mail->AddAddress($address, "Developer");
-$mail->Subject = "PHPMailer test on heroku server!!";
-$mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
-$mail->MsgHTML($body);
-if(!$mail->Send()) {
-	echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-	echo "Message sent!";
+<?php
+$user="shopifyplugin";
+$password="Shopify4plug"; 
+$mobilenumbers="918146105676"; 
+$message = "test messgae";
+$senderid="SMSCNTRY";
+$messagetype="N";
+$DReports="Y";
+$url="http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
+$message = urlencode($message);
+$ch = curl_init();
+if (!$ch){
+	die("Couldn't initialize a cURL handle");
 }
-die;
+$ret = curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt ($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+curl_setopt ($ch, CURLOPT_POSTFIELDS,
+"User=$user&passwd=$password&mobilenumber=$mobilenumbers&message=$message&sid=$senderid&mtype=$messagetype&DR=$DReports");
+$ret = curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$curlresponse = curl_exec($ch);
+if(curl_errno($ch))
+	echo 'curl error : '. curl_error($ch);
+if (empty($ret)) {
+	die(curl_error($ch));
+	curl_close($ch);
+} else {
+	$info = curl_getinfo($ch);
+	curl_close($ch);
+	echo $curlresponse;
+	echo "Message Sent Succesfully" ;
+}
+exit('199');
 ?>
