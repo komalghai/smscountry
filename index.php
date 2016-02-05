@@ -7,7 +7,10 @@
 
     require __DIR__.'/conf.php';
 
-    $shopify = shopify\client(SHOPIFY_SHOP, SHOPIFY_APP_API_KEY, SHOPIFY_APP_PASSWORD, true);
+  $oauth_token = shopify\access_token($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_GET['code']);
+	$_SESSION['oauth_token'] = $oauth_token;
+		$_SESSION['shop'] = $_GET['shop']; 
+    $shopify = shopify\client($_GET['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, true);
 
     try
     {
