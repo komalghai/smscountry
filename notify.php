@@ -3,7 +3,7 @@ $content = "<pre>";
 $content .= print_r($_REQUEST, true);
 $content .= print_r($_SESSION, true);
 $content .= "</pre>";
-file_put_contents('file.txt', $content);
+file_put_contents('debug.txt', $content);
 ?>
 
 <?php
