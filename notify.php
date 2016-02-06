@@ -1,4 +1,7 @@
 <?php 
+echo "<pre>";
+print_r($_REQUEST);
+print_r($_SESSION);
 $content = "<pre>";
 $content .= print_r($_REQUEST, true);
 $content .= print_r($_SESSION, true);
