@@ -2,8 +2,9 @@
 require('conf.php');
 global $db;
 $time = date('Y-m-d H:i:s');
-$sql = "INSERT INTO debug (key, value) VALUES('data', '{$time}')";
+echo $sql = "INSERT INTO debug (key, value) VALUES('data', '{$time}')";
 pg_query($db, $sql);
+exit('Query executed!');
 ?>
 
 <?php
