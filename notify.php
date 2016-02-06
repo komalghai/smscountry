@@ -2,11 +2,8 @@
 require('conf.php');
 global $db;
 $time = date('Y-m-d H:i:s');
-echo $sql = "INSERT INTO debug (key, value) VALUES('data', '{$time}')";
+echo $sql = "UPDATE debug SET value = '{$time}' WHERE id = '1'";
 $dbo = pg_query($db, $sql);
-echo "<pre>";
-print_r($dbo);
-die;
 exit('Query executed!');
 ?>
 
