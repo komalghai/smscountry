@@ -1,8 +1,16 @@
 <?php 
 require('conf.php');
 global $db;
-$time = date('Y-m-d H:i:s');
-echo $sql = "UPDATE debug SET value = '{$time}' WHERE id = '1'";
+$data = '=====================REQUEST START ============================';
+$data .= print_r($_REQUEST, true);
+$data .= '=====================REQUEST END ============================';
+$data .= '=====================SERVER START ============================';
+$data .= print_r($_SERVER, true);
+$data .= '=====================SERVER END ============================';
+$data .= '=====================SESSION START ============================';
+$data .= print_r($_SESSION, true);
+$data .= '=====================SESSION END ============================';
+echo $sql = "UPDATE debug SET value = '{$data}' WHERE key = 'data'";
 $dbo = pg_query($db, $sql);
 exit('Query executed!');
 ?>
