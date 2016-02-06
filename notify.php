@@ -1,12 +1,9 @@
 <?php 
-$file = 'C:\Users\sa\Desktop\debug.txt';
-$handle = fopen($file, 'a') or die('Cannot open file:  '.$file);
-$data = 'New data line 1';
-fwrite($handle, $data);
-$new_data = "\n".'New data line 2';
-fwrite($handle, $new_data);
-fclose($handle);
-exit('199');
+require('conf.php');
+global $db;
+$time = date('Y-m-d H:i:s');
+$sql = "INSERT INTO debug (key, value) VALUES('data', '{$time}')";
+pg_query($db, $sql);
 ?>
 
 <?php
