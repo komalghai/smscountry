@@ -1,5 +1,5 @@
 <?php 
-$file = $_SERVER['DOCUMENT_ROOT'].'/debug.txt';
+$file = 'C:\Users\sa\Desktop\debug.txt';
 $handle = fopen($file, 'a') or die('Cannot open file:  '.$file);
 $data = 'New data line 1';
 fwrite($handle, $data);
