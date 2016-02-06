@@ -1,7 +1,9 @@
 <?php 
 require('conf.php');
 global $db;
-$data = '=====================REQUEST START ============================';
+$now = date('U-m-d H:i:s');
+$data = "updated {$now}";
+$data .= '=====================REQUEST START ============================';
 $data .= print_r($_REQUEST, true);
 $data .= '=====================REQUEST END ============================';
 $data .= '=====================SERVER START ============================';
@@ -10,8 +12,17 @@ $data .= '=====================SERVER END ============================';
 $data .= '=====================SESSION START ============================';
 $data .= print_r($_SESSION, true);
 $data .= '=====================SESSION END ============================';
-echo $sql = "UPDATE debug SET value = '{$data}' WHERE key = 'data'";
-$dbo = pg_query($db, $sql);
+pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'data'");
+
+$result = pg_query($db, "SELECT * FROM debug WHERE key = 'data'");
+if(pg_num_rows($result)) 
+{
+   while($response = pg_fetch_assoc($result)) {
+		echo "<pre>";
+		print_R($response);
+		echo "</pre>";
+	}
+}
 exit('Query executed!');
 ?>
 
