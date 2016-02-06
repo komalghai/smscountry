@@ -1,14 +1,12 @@
 <?php 
-echo "<pre>";
-print_r($_REQUEST);
-print_r($_SESSION);
-print_r($_SERVER);
-$content = "<pre>";
-//$content .= print_r($_REQUEST, true);
-//$content .= print_r($_SESSION, true);
-$content .= 'test ';
-$content .= "</pre>";
-file_put_contents($_SERVER['DOCUMENT_ROOT'].'/debug.txt', $content);
+$file = $_SERVER['DOCUMENT_ROOT'].'/debug.txt';
+$handle = fopen($file, 'a') or die('Cannot open file:  '.$file);
+$data = 'New data line 1';
+fwrite($handle, $data);
+$new_data = "\n".'New data line 2';
+fwrite($handle, $new_data);
+fclose($handle);
+exit('199');
 ?>
 
 <?php
