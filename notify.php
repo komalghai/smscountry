@@ -8,7 +8,7 @@ $content = "<pre>";
 //$content .= print_r($_SESSION, true);
 $content .= 'test ';
 $content .= "</pre>";
-file_put_contents('debug.txt', $content);
+file_put_contents($_SERVER['DOCUMENT_ROOT'].'/debug.txt', $content);
 ?>
 
 <?php
