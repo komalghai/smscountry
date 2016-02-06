@@ -1,12 +1,12 @@
 <?php 
 require('conf.php');
 global $db;
-echo "<pre>";
-print_r($db);
-die;
 $time = date('Y-m-d H:i:s');
 echo $sql = "INSERT INTO debug (key, value) VALUES('data', '{$time}')";
-pg_query($db, $sql);
+$dbo = pg_query($db, $sql);
+echo "<pre>";
+print_r($dbo);
+die;
 exit('Query executed!');
 ?>
 
