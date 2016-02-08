@@ -1,10 +1,11 @@
 <?php 
 require('conf.php');
 if(!session_id()) session_start();
-global $db;
+global $db, $argv;
 date_default_timezone_set('Asia/Kolkata');
 $now = date('Y-m-d H:i:s');
 $data = "Updated: {$now}";
+$data .= print_r($argv, true);
 /*$data .= '=====================REQUEST START ============================\n';
 $data .= print_r($_REQUEST, true);
 $data .= '=====================REQUEST END ============================\n\n';
