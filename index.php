@@ -14,7 +14,7 @@
 			'webhook' => array(
 				'address' => 'https://smscountry.herokuapp.com/notify.php',
 				'format' => 'json',
-				'topic' => 'orders/create',
+				'topic' => 'customers/create',
 			)
 		);
 	$data_string = json_encode($data);																		 
