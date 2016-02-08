@@ -2,7 +2,7 @@
 require('conf.php');
 if(!session_id()) session_start();
 global $db;
-date_set_timezone_default('Asia/Kolkata');
+date_default_timezone_set('Asia/Kolkata');
 $now = date('Y-m-d H:i:s');
 $data = "Updated: {$now}";
 /*$data .= '=====================REQUEST START ============================\n';
