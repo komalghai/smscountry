@@ -5,7 +5,12 @@ global $db, $argv;
 date_default_timezone_set('Asia/Kolkata');
 $now = date('Y-m-d H:i:s');
 $data = "Updated: {$now}";
-$data .= print_r($argv, true);
+
+$webhook = fopen('php://input' , 'rb'); 
+while (!feof($webhook)){ 
+	$data .= fread($webhook, 4096); 
+} 
+fclose($webhook); 
 /*$data .= '=====================REQUEST START ============================\n';
 $data .= print_r($_REQUEST, true);
 $data .= '=====================REQUEST END ============================\n\n';
