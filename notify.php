@@ -29,6 +29,7 @@ $result = pg_query($db, "SELECT * FROM debug WHERE key = 'data'");
 if(pg_num_rows($result)) 
 {
 	while($response = pg_fetch_assoc($result)) {
+		$response = $response['value'];
 		$response = str_replace('Updated: 2016-02-08 19:00:34', '', $response);
 		echo "<pre>";
 		print_R(json_decode($response));
