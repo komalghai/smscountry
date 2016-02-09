@@ -23,7 +23,7 @@ $data .= '=====================SESSION END ============================\n';
 $data .= '=====================COOKIE START ============================\n';
 $data .= print_r($_COOKIE, true);
 $data .= '=====================COOKIE END ============================\n'; */
-pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'data'");
+/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'data'"); */
 
 $result = pg_query($db, "SELECT * FROM debug WHERE key = 'data'");
 if(pg_num_rows($result)) 
