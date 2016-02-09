@@ -29,9 +29,11 @@ if(!empty($action)){
 			if(pg_num_rows($result)){
 				while($response = pg_fetch_assoc($result)){
 					$json = $response['value'];
-					echo "{$response['key']}:: <pre>";
-					print_R(json_decode($json));
-					echo "</pre>";
+					if(!empty($json)){
+						echo "{$response['key']}:: <pre>";
+						print_R(json_decode($json));
+						echo "</pre>";
+					}
 				}
 			}
 			break;
