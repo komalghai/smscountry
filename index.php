@@ -24,6 +24,9 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 					'topic' => $topic,
 				)
 			);
+		echo "<pre>";
+		print_R($data);
+		die;
 		$data = json_encode($data);	
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');                                                                     
@@ -38,4 +41,5 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
 	exit();
 }
+
 ?>
