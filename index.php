@@ -11,9 +11,6 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 			'orders/updated' => 'https://smscountry.herokuapp.com/notify.php?action=order_updated',
 		);
 	foreach($topics as $topic => $address){
-		echo "<pre>";
-		print_r($topics);
-		die;
 		$data = array(
 				'access_token' => $access_token,
 				'webhook' => array(
