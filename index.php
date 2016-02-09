@@ -2,7 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['code'])){
-	die('1');
 	require __DIR__.'/conf.php';
 	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
 	$topics = array(
@@ -19,7 +18,7 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 				)
 			);
 		echo "<pre>";
-		print_R($data);
+		print_r($data);
 		die;
 		$data = json_encode($data);	
 		$ch = curl_init($url);
@@ -34,8 +33,5 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 	}
 	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps';</script>";
 	exit();
-} else {
-	die('2');
 }
-
 ?>
