@@ -24,7 +24,7 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 			);
 		$data = json_encode($data);	
 		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);                                                                     
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');                                                                     
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);                                                                  
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
