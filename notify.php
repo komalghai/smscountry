@@ -24,21 +24,20 @@ if(!empty($action)){
 		case 'order_updated':
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_status_changed'");
 			break;
+		case 'debug':
+			$result = pg_query($db, "SELECT * FROM debug WHERE id NOT IN(1) ORDER BY id ASC");
+			if(pg_num_rows($result)){
+				while($response = pg_fetch_assoc($result)){
+					$json = $response['value'];
+					echo "{$response['key']}:: <pre>";
+					print_R(json_decode($json));
+					echo "</pre>";
+				}
+			}
+			break;
 		default:
 			break;
 	}
 }
-
-/* $result = pg_query($db, "SELECT * FROM debug WHERE key = 'data'");
-if(pg_num_rows($result)) 
-{
-	while($response = pg_fetch_assoc($result)) {
-		$response = $response['value'];
-		$response = str_replace('Updated: 2016-02-08 19:00:34', '', $response);
-		echo "{$response['key']}:: <pre>";
-		print_R(json_decode($response));
-		echo "</pre>";
-	}
-} */
 exit('Query executed!');
 ?>
