@@ -34,11 +34,12 @@ if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['cod
 	exit();
 }
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Settings - SMS Country</title>
-		<!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="container well">
