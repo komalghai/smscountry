@@ -7,6 +7,12 @@
 	shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET) or die('Invalid Request! Request or redirect did not come from Shopify');
 	if (!isset($_GET['code']))
 	{
+		echo "<pre>";
+		print_r($_REQUEST);
+		print_r($_SESSION);
+		print_r($_COOKIE);
+		print_r($_SERVER);
+		exit('199');
 		$permission_url = shopify\authorization_url($_GET['shop'], SHOPIFY_APP_API_KEY, array('read_content', 'write_content', 'read_themes', 'write_themes', 'read_products', 'write_products', 'read_customers', 'write_customers', 'read_orders', 'write_orders', 'read_script_tags', 'write_script_tags', 'read_fulfillments', 'write_fulfillments', 'read_shipping', 'write_shipping'),'https://smscountry.herokuapp.com/');
 		die("<script>window.top.location='{$permission_url}';</script>");
 	}
