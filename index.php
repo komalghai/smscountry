@@ -4,6 +4,12 @@ require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 if(!session_id()) session_start();
 global $db;
+echo "<pre>";
+print_r($_REQUEST);
+print_r($_SESSION);
+print_r($_COOKIE);
+print_r($_SERVER);
+exit('199');
 if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
 	$_SESSION['installing'] = 'false';
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
