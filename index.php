@@ -4,20 +4,22 @@ require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 if(!session_id()) session_start();
 global $db;
-echo "<pre>";
-print_r($_REQUEST);
-print_r($_SESSION);
-print_r($_COOKIE);
-print_r($_SERVER);
-exit('199');
-if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
-	$_SESSION['installing'] = 'false';
+$shop = $_REQUEST['shop'];
+$shop_exists = pg_query($db, "SELECT * FROM configuration WHERE store = '{$shop}'");
+if(pg_num_rows($shop_exists) < 1){
+	$lastRow = pg_query($db, "SELECT id FROM configuration ORDER by id DESC limit 1");
+	$lastID = pg_fetch_assoc($lastRow);
+	echo "<pre>";
+	print_R($lastID);
+	die;
+	pg_query($db, "INSERT INTO configuration (id, store, data) VALUES ('{}', '', ' ')");
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
 	$topics = array(
 			'customers/create' => 'https://smscountry.herokuapp.com/notify.php?action=customer_signup',
 			'orders/create' => 'https://smscountry.herokuapp.com/notify.php?action=order_created',
 			'orders/updated' => 'https://smscountry.herokuapp.com/notify.php?action=order_updated',
+			'app/uninstalled' => 'https://smscountry.herokuapp.com/notify.php?action=app_uninstalled',
 		);
 	foreach($topics as $topic => $address){
 		$data = array(
