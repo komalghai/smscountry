@@ -24,6 +24,9 @@ if(!empty($action)){
 		case 'order_updated':
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_status_changed'");
 			break;
+		case 'app_uninstalled':
+			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'app_uninstalled'");
+			break;
 		case 'debug':
 			$result = pg_query($db, "SELECT * FROM debug WHERE id NOT IN(1) ORDER BY id ASC");
 			if(pg_num_rows($result)){
