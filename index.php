@@ -16,7 +16,7 @@ if(pg_num_rows($shop_exists) < 1){
 	$data = serialize($data);
 	pg_query($db, "INSERT INTO configuration (id, store, data) VALUES ('{$lastID}', '{$shop}', '{$data}')");
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
-	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
+	$url = "https://{$shop}/admin/webhooks.json";
 	$topics = array(
 			'customers/create' => 'https://smscountry.herokuapp.com/notify.php?action=customer_signup',
 			'orders/create' => 'https://smscountry.herokuapp.com/notify.php?action=order_created',
@@ -43,7 +43,7 @@ if(pg_num_rows($shop_exists) < 1){
 		);
 		curl_exec($ch);
 	}
-	echo "<script>window.top.location = 'https://smsappstore.myshopify.com/admin/apps/smscountry?conf=200';</script>";
+	echo "<script>window.location = 'https://{$shop}/admin/apps/smscountry/?conf=200';</script>";
 	exit();
 }
 ?>
