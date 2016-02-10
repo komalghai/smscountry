@@ -1,5 +1,7 @@
 <?php 
-require __DIR__.'/conf.php'; 
+require __DIR__.'/conf.php';
+require __DIR__.'/vendor/autoload.php';
+use phpish\shopify;
 if(!session_id()) session_start();
 global $db;
 if(isset($_SESSION['installing']) && $_SESSION['installing'] == true){
