@@ -1,6 +1,9 @@
 <?php 
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
+echo "<pre>";
+print_r($_REQUEST);
+die;
 if(isset($_GET['code']) && isset($_GET['shop']) && !empty($_GET['code'])){
 	require __DIR__.'/conf.php';
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
