@@ -4,7 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 if(!session_id()) session_start();
 global $db;
-if(isset($_SESSION['installing']) && $_SESSION['installing'] == true){
+if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
 	$topics = array(
