@@ -9,7 +9,7 @@ $shop_exists = pg_query($db, "SELECT * FROM configuration WHERE store = '{$shop}
 if(pg_num_rows($shop_exists) < 1){
 	$lastRow = pg_query($db, "SELECT id FROM configuration ORDER by id DESC limit 1");
 	$lastID = pg_fetch_assoc($lastRow);
-	echo "<pre>";
+	echo "<pre>last ID:: ";
 	print_R($lastID);
 	die;
 	pg_query($db, "INSERT INTO configuration (id, store, data) VALUES ('{}', '', ' ')");
