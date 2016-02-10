@@ -2,6 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 echo "<pre>";
+print_r($_GET);
 print_r($_REQUEST);
 die;
 if(isset($_GET['code']) && isset($_GET['shop']) && !empty($_GET['code'])){
