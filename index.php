@@ -1,7 +1,7 @@
 <?php 
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
-if(isset($_REQUEST['code']) && isset($_REQUEST['shop']) && !empty($_REQUEST['code'])){
+if(isset($_GET['code']) && isset($_GET['shop']) && !empty($_GET['code'])){
 	require __DIR__.'/conf.php';
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
