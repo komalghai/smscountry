@@ -4,7 +4,11 @@ require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 if(!session_id()) session_start();
 global $db;
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
+	$_SESSION['installing'] = 'false';
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$url = "https://smsappstore.myshopify.com/admin/webhooks.json";
 	$topics = array(
@@ -32,7 +36,6 @@ if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
 		);
 		curl_exec($ch);
 	}
-	$_SESSION['installing'] = 'false';
 	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps/smscountry?conf=200';</script>";
 	exit();
 }
