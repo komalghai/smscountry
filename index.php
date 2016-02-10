@@ -53,6 +53,11 @@ if(pg_num_rows($shop_exists) < 1){
 		<title>Configuration - SMS Country</title>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			div.nav-content{
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="col-xs-12 padding-top sms-config">
