@@ -35,7 +35,7 @@ if(isset($_SESSION['installing']) && $_SESSION['installing'] == 'true'){
 		);
 		curl_exec($ch);
 	}
-	unset($_SESSION['installing']);
+	$_SESSION['installing'] = 'false';
 	echo "<script>window.location = 'https://smsappstore.myshopify.com/admin/apps/smscountry?conf=200';</script>";
 	exit();
 }
