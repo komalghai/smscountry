@@ -8,7 +8,7 @@
 	if (!isset($_GET['code']))
 	{
 		$permission_url = shopify\authorization_url($_GET['shop'], SHOPIFY_APP_API_KEY, array('read_content', 'write_content', 'read_themes', 'write_themes', 'read_products', 'write_products', 'read_customers', 'write_customers', 'read_orders', 'write_orders', 'read_script_tags', 'write_script_tags', 'read_fulfillments', 'write_fulfillments', 'read_shipping', 'write_shipping'),'https://smscountry.herokuapp.com/');
-		die("<script>window.top.location='{$permission_url}';</script>");
+		die("<script>window.location='{$permission_url}';</script>");
 	}
 	# Step 3: http://docs.shopify.com/api/authentication/oauth#confirming-installation
 	try
