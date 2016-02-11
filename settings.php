@@ -101,7 +101,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 										<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea"></textarea>
+									 <textarea class="sms-textarea" name="CustomerCustomerSignup"></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -121,13 +121,13 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									<textarea class="sms-textarea"></textarea>
+									<textarea class="sms-textarea" name="CustomerCustomerSignupVerification"></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignupVerification');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignupVerification');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
@@ -141,13 +141,13 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea"></textarea>
+									 <textarea class="sms-textarea" name="CustomerOrderPlaced"></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderPlaced');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderPlaced');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
@@ -161,68 +161,127 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									 <p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea"></textarea>
+									 <textarea class="sms-textarea" name="CustomerOrderStatusChanged"></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderStatusChanged');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
 						<div class="customer-signup customer-alerts">
-							<div class="col-xs-4">
-								<h4>New Customer Signup:</h4>
-								<code>
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
-								</code>
-							</div>
-							<div class="col-xs-6">
-								<div class="form-group"> 
-									<p style="margin-top: 30px;"></p>
-									<textarea class="sms-textarea"></textarea>
+							<h4>New Customer Signup:</h4>
+							<div class="col-xs-12">
+								<div class="col-xs-4">
+									<h5>Single Customer Signup:</h5>
+									<code class="code">
+										You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+									</code>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group">
+										<p style="margin-top: 30px;"></p>
+										<textarea class="sms-textarea" name="AdminCustomerSignup"></textarea>
+									</div>
+								</div>
+								<div class="col-xs-11 text-right">
+									<p></p>
+									<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminCustomerSignup');">Send Test SMS</a>
+									<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminCustomerSignup');">Save</a>
+									&nbsp;&nbsp;
 								</div>
 							</div>
-							<div class="col-xs-2">
-								<button class="btn btn-info">Send Test SMS</button>
-							</div>
-							<div class="clear">&nbsp;</div>
-							<div class="col-xs-4">
-								<h4>Possible Custom variables-(If it's for Single Customer):</h4>
-								<code>
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
-								</code>
-							</div>
-							<div class="col-xs-6">
-								<div class="form-group"> 
-									<p style="margin-top: 30px;"></p>
-									<textarea class="sms-textarea"></textarea>
+							<div class="col-xs-12">
+								<div class="col-xs-4">
+									<h5>Daily, weekly or Monthly signups:</h5>
+									<code class="code">
+										You can use following variables: <br>[shop_name], [shop_domain], [customer_count].
+									</code>
+									<select class="form-control" name="alert_duration">
+										<option value="">--alert duration--</option>
+										<option value="daily">Daily</option>
+										<option value="weekly">Weekly</option>
+										<option value="monthly">Monthly</option>
+									</select>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group">
+											<p style="margin-top: 30px;"></p>
+										 <textarea class="sms-textarea" name="AdminCustomerSignupScheduled"></textarea>
+									</div>
+								</div>
+								<div class="col-xs-11 text-right">
+									<p></p>
+									<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminCustomerSignupScheduled');">Send Test SMS</a>
+									<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminCustomerSignupScheduled');">Save</a>
+									&nbsp;&nbsp;
 								</div>
 							</div>
-							<div class="col-xs-2">
-								<button class="btn btn-info">Send Test SMS</button>
-							</div>
-							<div class="clear">&nbsp;</div>
-							<div class="col-xs-4">
-								<h4>Possible Custom variables-(If it's based on daily,weekly or monthly):</h4>
-								<code>
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_count].  
-								</code>
-							</div>
-							<div class="col-xs-6">
-								<div class="form-group"> 
-									<p style="margin-top: 30px;"></p>
-									<textarea class="sms-textarea"></textarea>
-								</div>
-							</div>
-							<div class="col-xs-2">
-								<button class="btn btn-info">Send Test SMS</button>
-							</div>
-							<div class="clear"></div>
 						</div>	
+						<div class="order-placed customer-alerts">
+							<div class="col-xs-4">
+								<h4>New Order Placed:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
+								</code>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p style="margin-top: 30px;"></p>
+									 <textarea class="sms-textarea" name="AdminOrderPlaced"></textarea>
+								</div>
+							</div>
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminOrderPlaced');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminOrderPlaced');">Save</a>
+								&nbsp;&nbsp;
+							</div>
+						</div>
+						<div class="order-return-request customer-alerts">
+							<div class="col-xs-4">
+								<h4>Order Return Request:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_status],[return_product_name],[return_reason].
+								</code>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p style="margin-top: 30px;"></p>
+									 <textarea class="sms-textarea" name="AdminOrderReturnRequest"></textarea>
+								</div>
+							</div>
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminOrderReturnRequest');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminOrderReturnRequest');">Save</a>
+								&nbsp;&nbsp;
+							</div>
+						</div>
+						<div class="order-retrun-request customer-alerts">
+							<div class="col-xs-4">
+								<h4>Contact Inquiry:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_email],[customer_message].
+								</code>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p style="margin-top: 30px;"></p>
+									 <textarea class="sms-textarea" name="AdminContactInquiry"></textarea>
+								</div>
+							</div>
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminContactInquiry');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminContactInquiry');">Save</a>
+								&nbsp;&nbsp;
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
 						<a href="javascript: void(0);" class="btn btn-success" onClick="return saveAll();">Save all configuration</a>
