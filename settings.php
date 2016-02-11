@@ -34,6 +34,15 @@
   padding: 20px 0;
   width: 100%;
 }
+.col-xs-6 {
+  float: right;
+  margin-right: 59px;
+  width: 50%;
+}
+.col-xs-4 {
+  margin-left: 80px;
+  width: 33.3333%;
+}
 		</style>
 	</head>
 	<body>
