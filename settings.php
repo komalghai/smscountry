@@ -34,7 +34,7 @@
   padding: 20px 0;
   width: 100%;
 }
-.col-xs-6 {
+.right {
   float: right;
   margin-right: 59px;
   width: 50%;
@@ -62,7 +62,7 @@
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
 								</code>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-6 right">
 								<div class="form-group">
 									<p></p>
 									 <textarea class="Text_area"></textarea>
