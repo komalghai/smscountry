@@ -91,23 +91,22 @@
 						<li class="col-xs-6"><a href="#admin-sms-alerts">Admin SMS Alerts</a></li>
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
-						<div class="new-customer-signup customer-alerts">
+						<div class="customer-signup customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Customer Signup:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
 								</code>
 							</div>
-							<div class="col-xs-6 right">
+							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
 									 <textarea class="sms-textarea"></textarea>
 								</div> 
 								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
 							</div>
-							
 						</div>
-						<div class="new-customer-signup-verification customer-alerts">
+						<div class="customer-signup-verification customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
@@ -123,7 +122,7 @@
 							</div>
 							
 						</div>
-						<div class="new-order-placed-by-the-customer customer-alerts">
+						<div class="order-placed customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Order Placed:</h4>
 								<code class="code">
@@ -139,7 +138,7 @@
 							</div>
 							
 						</div>
-						<div class="Admin-Has-Changed-The-Status-Of-The-Customer-Order customer-alerts">
+						<div class="order-status-changed customer-alerts">
 							<div class="col-xs-4">
 								<h4>Order status changed:</h4>
 								<code class="code">
@@ -157,7 +156,7 @@
 						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
-						<div class="new-customer-signup customer-alerts">
+						<div class="customer-signup customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Customer Signup:</h4>
 								<code>
@@ -173,11 +172,12 @@
 							<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
 							</div>
+							<div class="clear"></div>
 							<div class="col-xs-4">
-									<h4>Possible Custom variables-(If it's for Single Customer):</h4>
-									<code>
-										You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
-									</code>
+								<h4>Possible Custom variables-(If it's for Single Customer):</h4>
+								<code>
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+								</code>
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group"> 
@@ -188,6 +188,7 @@
 							<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
 							</div>
+							<div class="clear"></div>
 							<div class="col-xs-4">
 								<h4>Possible Custom variables-(If it's based on daily,weekly or monthly):</h4>
 								<code>
@@ -203,6 +204,7 @@
 							<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
 							</div>
+							<div class="clear"></div>
 						</div>	
 					</div>					
 				</div>
