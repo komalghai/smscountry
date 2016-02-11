@@ -41,7 +41,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p></p>
-									<input type="email" class="form-control" id="email">
+									 <textarea class="Text_area">
 								</div>
 								<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
