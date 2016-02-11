@@ -56,6 +56,22 @@
 							</div>
 							
 						</div>
+						<div class="new-customer-signup-verification">
+							<div class="col-xs-4">
+								<h4>New Customer Signup verification:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+								</code>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p></p>
+									 <textarea class="Text_area"></textarea>
+								</div> 
+								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+							</div>
+							
+						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
 						<div class="col-xs-4">
