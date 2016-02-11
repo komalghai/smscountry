@@ -27,9 +27,11 @@
 .send-test-sms {
   float: right;
   margin: 20px 0;
-}
+} 
 .customer-alerts {
+  border-bottom: 2px solid #31b0d5;
   float: left;
+  padding: 20px 0;
   width: 100%;
 }
 		</style>
