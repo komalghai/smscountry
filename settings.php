@@ -28,6 +28,10 @@
   float: right;
   margin: 20px 0;
 }
+.customer-alerts {
+  float: left;
+  width: 100%;
+}
 		</style>
 	</head>
 	<body>
@@ -40,7 +44,7 @@
 						<li class="col-xs-6"><a href="#admin-sms-alerts">Admin SMS Alerts</a></li>
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
-						<div class="new-customer-signup">
+						<div class="new-customer-signup customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Customer Signup:</h4>
 								<code class="code">
@@ -56,7 +60,7 @@
 							</div>
 							
 						</div>
-						<div class="new-customer-signup-verification">
+						<div class="new-customer-signup-verification customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
