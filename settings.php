@@ -75,7 +75,7 @@
 							<div class="col-xs-4">
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+									You can use following variables: <br>[shop_name], [shop_domain], [verification_code].
 								</code>
 							</div>
 							<div class="col-xs-6">
@@ -89,9 +89,25 @@
 						</div>
 						<div class="new-order-placed-by-the-customer customer-alerts">
 							<div class="col-xs-4">
-								<h4>new order placed by the customer:</h4>
+								<h4>New Order Placed By The Customer:</h4>
 								<code class="code">
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
+								</code>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p></p>
+									 <textarea class="Text_area"></textarea>
+								</div> 
+								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+							</div>
+							
+						</div>
+						<div class="Admin-Has-Changed-The-Status-Of-The-Customer-Order customer-alerts">
+							<div class="col-xs-4">
+								<h4>Admin Has Changed The Status Of The Customer Order:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
 								</code>
 							</div>
 							<div class="col-xs-6">
