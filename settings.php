@@ -41,7 +41,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p></p>
-									 <textarea class="Text_area">
+									 <textarea class="Text_area"></textarea>
 								</div>
 								<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
