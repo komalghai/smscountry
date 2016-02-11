@@ -8,6 +8,17 @@
 			div.nav-content{
 				display: none;
 			}
+			.text-info{
+				background: #479ccf none repeat scroll 0 0 !important;
+				color: #479ccf;
+			}
+			.code{
+				background: rgb(221, 221, 221) none repeat scroll 0 0;
+				color: rgb(85, 85, 85);
+				float: left;
+				padding: 10px;
+				width: 100%;
+			}
 		</style>
 	</head>
 	<body>
@@ -20,20 +31,23 @@
 						<li class="col-xs-6"><a href="#admin-sms-alerts">Admin SMS Alerts</a></li>
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
-						<div class="col-xs-4">
-							<h4>New Customer Signup:</h4>
-							<code>
-								You can use following variables: [shop_name], [shop_domain], [customer_firstname], [customer_lastname].
-							</code>
-						</div>
-						<div class="col-xs-6">
-							<div class="form-group">
-								<label for="email"></label>
-								<input type="email" class="form-control" id="email">
+						<div class="new-customer-signup">
+							<div class="col-xs-4">
+								<h4>New Customer Signup:</h4>
+								<code class="code">
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+								</code>
 							</div>
-						</div>
-						<div class="col-xs-2">
-							<button class="btn btn-info">Send Test SMS</button>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<p></p>
+									<input type="email" class="form-control" id="email">
+								</div>
+								<div class="col-xs-2">
+								<button class="btn btn-info">Send Test SMS</button>
+							</div>
+							</div>
+							
 						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
