@@ -89,7 +89,7 @@
 						</div>
 						<div class="new-order-placed-by-the-customer customer-alerts">
 							<div class="col-xs-4">
-								<h4>New Customer Signup verification:</h4>
+								<h4>new order placed by the customer:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
 								</code>
