@@ -19,6 +19,16 @@
 				padding: 10px;
 				width: 100%;
 			}
+			.Text_area {
+  width: 100%;
+  float: left;
+  height: 139px;
+}
+.btn.btn-info {
+  width: 26%;
+  float: right;
+  margin: 20px 0;
+}
 		</style>
 	</head>
 	<body>
@@ -54,7 +64,7 @@
 						<div class="col-xs-4">
 							<h4>New Customer Signup:</h4>
 							<code>
-								You can use following variables: [shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+								You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
 							</code>
 						</div>
 						<div class="col-xs-6">
@@ -66,8 +76,7 @@
 						<div class="col-xs-2">
 							<button class="btn btn-info">Send Test SMS</button>
 						</div>
-					</div>   
-					<button type="submit" class="btn btn-success">Submit</button>				
+					</div>			
 				</div>
 			</form>
 		</div>
