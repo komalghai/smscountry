@@ -89,7 +89,7 @@
 						</div>
 						<div class="new-order-placed-by-the-customer customer-alerts">
 							<div class="col-xs-4">
-								<h4>New Order Placed By The Customer:</h4>
+								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
 								</code>
@@ -105,7 +105,7 @@
 						</div>
 						<div class="Admin-Has-Changed-The-Status-Of-The-Customer-Order customer-alerts">
 							<div class="col-xs-4">
-								<h4>Admin Has Changed The Status Of The Customer Order:</h4>
+								<h4>Order status changed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
 								</code>
@@ -120,7 +120,8 @@
 							
 						</div>
 					</div>
-					<div id="admin-sms-alerts" class="nav-content">
+			<div id="admin-sms-alerts" class="nav-content">
+					<div class="new-customer-signup customer-alerts">
 						<div class="col-xs-4">
 							<h4>New Customer Signup:</h4>
 							<code>
@@ -128,15 +129,43 @@
 							</code>
 						</div>
 						<div class="col-xs-6">
-							<div class="form-group">
-								<label for="email"></label>
-								<input type="email" class="form-control" id="email">
+							<div class="form-group"> 
+								<textarea class="Text_area"></textarea>
 							</div>
 						</div>
 						<div class="col-xs-2">
 							<button class="btn btn-info">Send Test SMS</button>
 						</div>
-					</div>			
+					<div class="col-xs-4">
+							<h4>Possible Custom variables-(If it's for Single Customer):</h4>
+							<code>
+								You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
+							</code>
+					</div>
+					<div class="col-xs-6">
+							<div class="form-group"> 
+								<textarea class="Text_area"></textarea>
+							</div>
+						</div>
+						<div class="col-xs-2">
+							<button class="btn btn-info">Send Test SMS</button>
+						</div>
+						<div class="col-xs-4">
+							<h4>Possible Custom variables-(If it's based on daily,weekly or monthly):</h4>
+							<code>
+								You can use following variables: <br>[shop_name], [shop_domain], [customer_count].  
+							</code>
+					</div>
+					<div class="col-xs-6">
+							<div class="form-group"> 
+								<textarea class="Text_area"></textarea>
+							</div>
+						</div>
+						<div class="col-xs-2">
+							<button class="btn btn-info">Send Test SMS</button>
+						</div>
+					</div>	
+		</div>					
 				</div>
 			</form>
 		</div>
