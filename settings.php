@@ -100,10 +100,15 @@
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
-									<p style="margin-top: 30px;"></p>
+										<p style="margin-top: 30px;"></p>
 									 <textarea class="sms-textarea"></textarea>
-								</div> 
-								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+								</div>
+							</div>
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								&nbsp;&nbsp;
 							</div>
 						</div>
 						<div class="customer-signup-verification customer-alerts">
@@ -117,10 +122,14 @@
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
 									<textarea class="sms-textarea"></textarea>
-								</div> 
-								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+								</div>
 							</div>
-							
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								&nbsp;&nbsp;
+							</div>
 						</div>
 						<div class="order-placed customer-alerts">
 							<div class="col-xs-4">
@@ -133,10 +142,14 @@
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
 									 <textarea class="sms-textarea"></textarea>
-								</div> 
-								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+								</div>
 							</div>
-							
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								&nbsp;&nbsp;
+							</div>
 						</div>
 						<div class="order-status-changed customer-alerts">
 							<div class="col-xs-4">
@@ -149,10 +162,14 @@
 								<div class="form-group">
 									 <p style="margin-top: 30px;"></p>
 									 <textarea class="sms-textarea"></textarea>
-								</div> 
-								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
+								</div>
 							</div>
-							
+							<div class="col-xs-11 text-right">
+								<p></p>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								&nbsp;&nbsp;
+							</div>
 						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
@@ -172,7 +189,7 @@
 							<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
 							</div>
-							<div class="clear"></div>
+							<div class="clear">&nbsp;</div>
 							<div class="col-xs-4">
 								<h4>Possible Custom variables-(If it's for Single Customer):</h4>
 								<code>
@@ -188,7 +205,7 @@
 							<div class="col-xs-2">
 								<button class="btn btn-info">Send Test SMS</button>
 							</div>
-							<div class="clear"></div>
+							<div class="clear">&nbsp;</div>
 							<div class="col-xs-4">
 								<h4>Possible Custom variables-(If it's based on daily,weekly or monthly):</h4>
 								<code>
@@ -206,6 +223,9 @@
 							</div>
 							<div class="clear"></div>
 						</div>	
+					</div>
+					<div class="col-xs-12 text-right" style="padding: 20px;">
+						<a href="javascript: void(0);" class="btn btn-success" onClick="return saveAll();">Save all configuration</a>
 					</div>					
 				</div>
 			</form>
