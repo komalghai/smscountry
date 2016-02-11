@@ -24,8 +24,7 @@
   float: left;
   height: 139px;
 }
-.btn.btn-info {
-  width: 26%;
+.send-test-sms {
   float: right;
   margin: 20px 0;
 }
@@ -52,10 +51,8 @@
 								<div class="form-group">
 									<p></p>
 									 <textarea class="Text_area"></textarea>
-								</div>
-								<div class="col-xs-2">
-								<button class="btn btn-info">Send Test SMS</button>
-							</div>
+								</div> 
+								<button class="btn btn-info send-test-sms">Send Test SMS</button> 
 							</div>
 							
 						</div>
