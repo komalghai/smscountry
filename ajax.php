@@ -26,7 +26,7 @@ if(!empty($action)){
 			$store = $_REQUEST['store'];
 			$req = curl_init();
 			curl_setopt($req,CURLOPT_URL, "https://{$store}/admin/shop.json");
-			curl_setopt($req,CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($req, CURLOPT_RETURNTRANSFER, 1);
 			$storeData=curl_exec($req);
 			curl_close($req);
 			echo "<pre>";
