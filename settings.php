@@ -197,6 +197,17 @@
 				margin-left: 80px;
 				width: 33.3333%;
 			}
+			.single-loader {
+				background: #eee none repeat scroll 0 0;
+				clear: both;
+				height: 100%;
+				left: 0;
+				opacity: 0.7;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 999;
+			}
 		</style>
 	</head>
 	<body>
