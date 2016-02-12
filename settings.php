@@ -62,46 +62,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 		
 		function save(type){
 			if(type =='') return;
-			switch(type){
-				case 'CustomerCustomerSignup':
-					return saveSMS('CustomerCustomerSignup', jQuery(document).find('textarea[name="CustomerCustomerSignup"]').val());
-					break;
-				
-				case 'CustomerCustomerSignupVerification':
-					return saveSMS('CustomerCustomerSignupVerification', jQuery(document).find('textarea[name="CustomerCustomerSignupVerification"]').val());
-					break;
-				
-				case 'CustomerOrderPlaced':
-					return saveSMS('CustomerOrderPlaced', jQuery(document).find('textarea[name="CustomerOrderPlaced"]').val());
-					break;
-				
-				case 'CustomerOrderStatusChanged':
-					return saveSMS('CustomerOrderStatusChanged', jQuery(document).find('textarea[name="CustomerOrderStatusChanged"]').val());
-					break;
-				
-				case 'AdminCustomerSignup':
-					return saveSMS('AdminCustomerSignup', jQuery(document).find('textarea[name="AdminCustomerSignup"]').val());
-					break;
-				
-				case 'AdminCustomerSignupScheduled':
-					return saveSMS('AdminCustomerSignupScheduled', jQuery(document).find('textarea[name="AdminCustomerSignupScheduled"]').val());
-					break;
-				
-				case 'AdminOrderPlaced':
-					return saveSMS('AdminOrderPlaced', jQuery(document).find('textarea[name="AdminOrderPlaced"]').val());
-					break;
-				
-				case 'AdminOrderReturnRequest':
-					return saveSMS('AdminOrderReturnRequest', jQuery(document).find('textarea[name="AdminOrderReturnRequest"]').val());
-					break;
-				
-				case 'AdminContactInquiry':
-					return saveSMS('AdminContactInquiry', jQuery(document).find('textarea[name="AdminContactInquiry"]').val());
-					break;
-				
-				default:
-					break;
-			}
+			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val());
 		}
 		
 		function saveAll(){
