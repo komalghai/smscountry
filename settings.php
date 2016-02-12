@@ -185,6 +185,7 @@
 				border-bottom: 2px solid #31b0d5;
 				float: left;
 				padding: 20px 0;
+				position: relative;
 				width: 100%;
 			}
 			.right {
@@ -209,6 +210,12 @@
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
 						<div class="customer-signup customer-alerts">
+							<div id="CustomerCustomerSignupLoader" style="display: none;" class="single-loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>New Customer Signup:</h4>
 								<code class="code">
@@ -229,6 +236,12 @@
 							</div>
 						</div>
 						<div class="customer-signup-verification customer-alerts">
+							<div id="CustomerCustomerSignupVerificationLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
@@ -249,6 +262,12 @@
 							</div>
 						</div>
 						<div class="order-placed customer-alerts">
+							<div id="CustomerOrderPlacedLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>New Order Placed:</h4>
 								<code class="code">
@@ -269,6 +288,12 @@
 							</div>
 						</div>
 						<div class="order-status-changed customer-alerts">
+							<div id="CustomerOrderStatusChangedLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>Order status changed:</h4>
 								<code class="code">
@@ -293,6 +318,12 @@
 						<div class="admin-customer-signup customer-alerts">
 							<h4>New Customer Signup:</h4>
 							<div class="col-xs-12">
+								<div id="AdminCustomerSignupLoader" style="display: none;" class="loader">
+									<div style="margin: 80px 0px 0px 40%;">
+										<div style="margin-left: 80px;">Saving</div>
+										<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+									</div>
+								</div>
 								<div class="col-xs-4">
 									<h5>Single Customer Signup:</h5>
 									<code class="code">
@@ -313,6 +344,12 @@
 								</div>
 							</div>
 							<div class="col-xs-12">
+								<div id="AdminCustomerSignupScheduledLoader" style="display: none;" class="loader">
+									<div style="margin: 80px 0px 0px 40%;">
+										<div style="margin-left: 80px;">Saving</div>
+										<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+									</div>
+								</div>
 								<div class="col-xs-4">
 									<h5>Daily, weekly or Monthly signups:</h5>
 									<code class="code">
@@ -340,6 +377,12 @@
 							</div>
 						</div>	
 						<div class="admin-order-placed customer-alerts">
+							<div id="AdminOrderPlacedLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>New Order Placed:</h4>
 								<code class="code">
@@ -360,6 +403,12 @@
 							</div>
 						</div>
 						<div class="admin-order-return-request customer-alerts">
+							<div id="AdminOrderReturnRequestLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>Order Return Request:</h4>
 								<code class="code">
@@ -380,6 +429,12 @@
 							</div>
 						</div>
 						<div class="admin-contact-inquiry customer-alerts">
+							<div id="AdminContactInquiryLoader" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
 							<div class="col-xs-4">
 								<h4>Contact Inquiry:</h4>
 								<code class="code">
