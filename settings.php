@@ -1,3 +1,4 @@
+<?php require('conf.php'); ?>
 <!DOCTYPE html>
 <html>
 	<head>
