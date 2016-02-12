@@ -1,7 +1,7 @@
 <?php 
 require('conf.php');
 global $db;
-
+$store = $_REQUEST['store'];
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
 $config = unserialize($config['data']);
