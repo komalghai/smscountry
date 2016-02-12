@@ -1,4 +1,20 @@
-<?php require('conf.php'); ?>
+<?php 
+require('conf.php');
+global $db;
+
+$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+$config = pg_fetch_assoc($config);
+$config = unserialize($config['data']);
+$CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
+$CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
+$CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? $config['SMSHTML']['CustomerOrderPlaced'] : null;
+$CustomerOrderStatusChanged = isset($config['SMSHTML']['CustomerOrderStatusChanged']) ? $config['SMSHTML']['CustomerOrderStatusChanged'] : null;
+$AdminCustomerSignup = isset($config['SMSHTML']['AdminCustomerSignup']) ? $config['SMSHTML']['AdminCustomerSignup'] : null;
+$AdminCustomerSignupScheduled = isset($config['SMSHTML']['AdminCustomerSignupScheduled']) ? $config['SMSHTML']['AdminCustomerSignupScheduled'] : null;
+$AdminOrderPlaced = isset($config['SMSHTML']['AdminOrderPlaced']) ? $config['SMSHTML']['AdminOrderPlaced'] : null;
+$AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) ? $config['SMSHTML']['AdminOrderReturnRequest'] : null;
+$AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -236,7 +252,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 										<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="CustomerCustomerSignup"></textarea>
+									 <textarea class="sms-textarea" name="CustomerCustomerSignup"><?php echo $CustomerCustomerSignup; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -262,7 +278,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									<textarea class="sms-textarea" name="CustomerCustomerSignupVerification"></textarea>
+									<textarea class="sms-textarea" name="CustomerCustomerSignupVerification"><?php echo $CustomerCustomerSignupVerification; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -288,7 +304,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="CustomerOrderPlaced"></textarea>
+									 <textarea class="sms-textarea" name="CustomerOrderPlaced"><?php echo $CustomerOrderPlaced; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -314,7 +330,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									 <p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="CustomerOrderStatusChanged"></textarea>
+									 <textarea class="sms-textarea" name="CustomerOrderStatusChanged"><?php echo $CustomerOrderStatusChanged; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -344,7 +360,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 										<p style="margin-top: 30px;"></p>
-										<textarea class="sms-textarea" name="AdminCustomerSignup"></textarea>
+										<textarea class="sms-textarea" name="AdminCustomerSignup"><?php echo $AdminCustomerSignup; ?></textarea>
 									</div>
 								</div>
 								<div class="col-xs-11 text-right">
@@ -376,7 +392,7 @@
 								<div class="col-xs-6">
 									<div class="form-group">
 											<p style="margin-top: 30px;"></p>
-										 <textarea class="sms-textarea" name="AdminCustomerSignupScheduled"></textarea>
+										 <textarea class="sms-textarea" name="AdminCustomerSignupScheduled"><?php echo $AdminCustomerSignupScheduled; ?></textarea>
 									</div>
 								</div>
 								<div class="col-xs-11 text-right">
@@ -403,7 +419,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="AdminOrderPlaced"></textarea>
+									 <textarea class="sms-textarea" name="AdminOrderPlaced"><?php echo $AdminOrderPlaced; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -429,7 +445,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="AdminOrderReturnRequest"></textarea>
+									 <textarea class="sms-textarea" name="AdminOrderReturnRequest"><?php echo $AdminOrderReturnRequest; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
@@ -455,7 +471,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p style="margin-top: 30px;"></p>
-									 <textarea class="sms-textarea" name="AdminContactInquiry"></textarea>
+									 <textarea class="sms-textarea" name="AdminContactInquiry"><?php echo $AdminContactInquiry; ?></textarea>
 								</div>
 							</div>
 							<div class="col-xs-11 text-right">
