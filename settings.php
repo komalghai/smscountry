@@ -197,12 +197,12 @@
 				margin-left: 80px;
 				width: 33.3333%;
 			}
-			.single-loader {
+			.loader {
 				background: #eee none repeat scroll 0 0;
 				clear: both;
 				height: 100%;
 				left: 0;
-				opacity: 0.7;
+				opacity: 0.8;
 				position: absolute;
 				top: 0;
 				width: 100%;
@@ -221,7 +221,7 @@
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
 						<div class="customer-signup customer-alerts">
-							<div id="CustomerCustomerSignupLoader" style="display: none;" class="single-loader">
+							<div id="CustomerCustomerSignupLoader" style="display: none;" class="loader">
 								<div style="margin: 80px 0px 0px 40%;">
 									<div style="margin-left: 80px;">Saving</div>
 									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
