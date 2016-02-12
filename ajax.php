@@ -24,8 +24,11 @@ if(!empty($action)){
 
 		case 'sendTestSMS':
 			$store = $_REQUEST['store'];
-			echo "https://{$store}/admin/shop.json";
-			$storeData = file_get_contents("https://{$store}/admin/shop.json");
+			$req = curl_init();
+			curl_setopt($req,CURLOPT_URL, "https://{$store}/admin/shop.json");
+			curl_setopt($req,CURLOPT_RETURNTRANSFER,true);
+			$storeData=curl_exec($req);
+			curl_close($req);
 			echo "<pre>";
 			print_R(json_decode($storeData));
 			exit();
