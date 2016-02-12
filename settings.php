@@ -1,8 +1,3 @@
-<?php 
-echo "<pre>";
-print_r($_SERVER);
-die;
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,6 +21,122 @@ die;
 				});
 			}
 		});
+		
+		function sendTestSMS(type){
+			if(type =='') return;
+			switch(type){
+				case 'CustomerCustomerSignup':
+					return;
+					break;
+				
+				case 'CustomerCustomerSignupVerification':
+					return;
+					break;
+				
+				case 'CustomerOrderPlaced':
+					return;
+					break;
+				
+				case 'CustomerOrderStatusChanged':
+					return;
+					break;
+				
+				case 'AdminCustomerSignup':
+					return;
+					break;
+				
+				case 'AdminCustomerSignupScheduled':
+					return;
+					break;
+				
+				case 'AdminOrderPlaced':
+					return;
+					break;
+				
+				case 'AdminOrderReturnRequest':
+					return;
+					break;
+				
+				case 'AdminContactInquiry':
+					return;
+					break;
+				
+				default:
+					break;
+			}
+		}
+		
+		function save(type){
+			if(type =='') return;
+			switch(type){
+				case 'CustomerCustomerSignup':
+					return saveSMS('CustomerCustomerSignup', jQuery(document).find('textarea[name="CustomerCustomerSignup"]').val());
+					break;
+				
+				case 'CustomerCustomerSignupVerification':
+					return saveSMS('CustomerCustomerSignupVerification', jQuery(document).find('textarea[name="CustomerCustomerSignupVerification"]').val());
+					break;
+				
+				case 'CustomerOrderPlaced':
+					return saveSMS('CustomerOrderPlaced', jQuery(document).find('textarea[name="CustomerOrderPlaced"]').val());
+					break;
+				
+				case 'CustomerOrderStatusChanged':
+					return saveSMS('CustomerOrderStatusChanged', jQuery(document).find('textarea[name="CustomerOrderStatusChanged"]').val());
+					break;
+				
+				case 'AdminCustomerSignup':
+					return saveSMS('AdminCustomerSignup', jQuery(document).find('textarea[name="AdminCustomerSignup"]').val());
+					break;
+				
+				case 'AdminCustomerSignupScheduled':
+					return saveSMS('AdminCustomerSignupScheduled', jQuery(document).find('textarea[name="AdminCustomerSignupScheduled"]').val());
+					break;
+				
+				case 'AdminOrderPlaced':
+					return saveSMS('AdminOrderPlaced', jQuery(document).find('textarea[name="AdminOrderPlaced"]').val());
+					break;
+				
+				case 'AdminOrderReturnRequest':
+					return saveSMS('AdminOrderReturnRequest', jQuery(document).find('textarea[name="AdminOrderReturnRequest"]').val());
+					break;
+				
+				case 'AdminContactInquiry':
+					return saveSMS('AdminContactInquiry', jQuery(document).find('textarea[name="AdminContactInquiry"]').val());
+					break;
+				
+				default:
+					break;
+			}
+		}
+		
+		function saveAll(){
+			
+		}
+		
+		function saveSMS(_key, _value){
+			if(_key == '') return;
+			jQuery('#'+_key+'Loader').fadeIn();
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'saveSMS',
+					store: '<?php echo $_REQUEST['shop']; ?>',
+					key: _key,
+					value: _value,
+				},
+				success: function(response){
+					console.log(response);
+					jQuery('#'+_key+'Loader').fadeOut();
+				},
+				error: function(response){
+					console.log('\nERR: ');
+					console.log(response);
+					jQuery('#'+_key+'Loader').fadeIn();
+				}
+			});
+		}		
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -178,7 +289,7 @@ die;
 						</div>
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
-						<div class="customer-signup customer-alerts">
+						<div class="admin-customer-signup customer-alerts">
 							<h4>New Customer Signup:</h4>
 							<div class="col-xs-12">
 								<div class="col-xs-4">
@@ -227,7 +338,7 @@ die;
 								</div>
 							</div>
 						</div>	
-						<div class="order-placed customer-alerts">
+						<div class="admin-order-placed customer-alerts">
 							<div class="col-xs-4">
 								<h4>New Order Placed:</h4>
 								<code class="code">
@@ -247,7 +358,7 @@ die;
 								&nbsp;&nbsp;
 							</div>
 						</div>
-						<div class="order-return-request customer-alerts">
+						<div class="admin-order-return-request customer-alerts">
 							<div class="col-xs-4">
 								<h4>Order Return Request:</h4>
 								<code class="code">
@@ -267,7 +378,7 @@ die;
 								&nbsp;&nbsp;
 							</div>
 						</div>
-						<div class="order-retrun-request customer-alerts">
+						<div class="admin-contact-inquiry customer-alerts">
 							<div class="col-xs-4">
 								<h4>Contact Inquiry:</h4>
 								<code class="code">
