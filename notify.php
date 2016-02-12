@@ -41,6 +41,19 @@ if(!empty($action)){
 				}
 			}
 			break;
+		case 'config':
+			$result = pg_query($db, "SELECT * FROM configuration ORDER BY id ASC");
+			if(pg_num_rows($result)){
+				while($response = pg_fetch_assoc($result)){
+					$json = $response['data'];
+					if(!empty($json)){
+						echo "{$response['store']}:: <pre>";
+						print_R(json_decode($json));
+						echo "</pre>";
+					}
+				}
+			}
+			break;
 		default:
 			break;
 	}
