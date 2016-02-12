@@ -41,46 +41,23 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 		
 		function sendTestSMS(type){
 			if(type =='') return;
-			switch(type){
-				case 'CustomerCustomerSignup':
-					return;
-					break;
-				
-				case 'CustomerCustomerSignupVerification':
-					return;
-					break;
-				
-				case 'CustomerOrderPlaced':
-					return;
-					break;
-				
-				case 'CustomerOrderStatusChanged':
-					return;
-					break;
-				
-				case 'AdminCustomerSignup':
-					return;
-					break;
-				
-				case 'AdminCustomerSignupScheduled':
-					return;
-					break;
-				
-				case 'AdminOrderPlaced':
-					return;
-					break;
-				
-				case 'AdminOrderReturnRequest':
-					return;
-					break;
-				
-				case 'AdminContactInquiry':
-					return;
-					break;
-				
-				default:
-					break;
-			}
+			jQuery('#testSMSLoader').fadeIn();
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'sendTestSMS',
+					store: '<?php echo $_REQUEST['shop']; ?>',
+					type: type,
+				},
+				success: function(response){
+					console.log(response);
+					jQuery('#testSMSLoader').fadeOut();
+				},
+				error: function(response){
+					jQuery('#testSMSLoader').fadeOut();
+				}
+			});
 		}
 		
 		function save(type){
@@ -128,7 +105,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 		}
 		
 		function saveAll(){
-			
+			return;
 		}
 		
 		function saveSMS(_key, _value){
@@ -144,13 +121,10 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 					value: _value,
 				},
 				success: function(response){
-					console.log(response);
 					jQuery('#'+_key+'Loader').fadeOut();
 				},
 				error: function(response){
-					console.log('\nERR: ');
-					console.log(response);
-					jQuery('#'+_key+'Loader').fadeIn();
+					jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
 		}		
@@ -212,6 +186,9 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 			.col-xs-4 {
 				margin-left: 80px;
 				width: 33.3333%;
+			}
+			.loader-fixed {
+				position: fixed !important;
 			}
 			.loader {
 				background: #eee none repeat scroll 0 0;
@@ -483,10 +460,17 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 						</div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
-						<a href="javascript: void(0);" class="btn btn-success" onClick="return saveAll();">Save all configuration</a>
+						<p>&nsp;</p>
+						<!--a href="javascript: void(0);" class="btn btn-success" onClick="return saveAll();">Save all configuration</a-->
 					</div>					
 				</div>
 			</form>
+			<div style="display: none;" id="testSMSLoader" class="loader-fixed">
+				<div style="margin: 80px 0px 0px 40%;">
+					<div style="margin-left: 80px;">Sending</div>
+					<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
