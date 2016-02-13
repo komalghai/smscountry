@@ -428,7 +428,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 					</div>					
 				</div>
 			</form>
-			<div style="display: none;" id="testSMSLoader" class="loader-fixed">
+			<div style="display: none;" id="testSMSLoader" class="loader loader-fixed">
 				<div style="margin: 80px 0px 0px 40%;">
 					<div style="margin-left: 80px;">Sending</div>
 					<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
