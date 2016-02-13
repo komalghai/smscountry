@@ -430,20 +430,24 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 					<div id="sms-history" class="nav-content">
 						<table class="table table-bordered">
 							<thead>
-								<th>ID</th>
-								<th>Message</th>
-								<th>Recipient Name</th>
-								<th>Recipient #</th>
-								<th>Sent On</th>
-								<th>Status</th>
+								<tr>
+									<th>ID</th>
+									<th>Message</th>
+									<th>Recipient Name</th>
+									<th>Recipient #</th>
+									<th>Sent On</th>
+									<th>Status</th>
+								</tr>
 							</thead>
 							<tbody>
-								<tr>1</tr>
-								<tr>Hi Customer, please verify your number.</tr>
-								<tr>Anuj Nagpal</tr>
-								<tr>9898989878</tr>
-								<tr>Feb 2, 2016</tr>
-								<tr>Delivered</tr>
+								<tr>
+									<td>1</td>
+									<td>Hi Customer, please verify your number.</td>
+									<td>Anuj Nagpal</td>
+									<td>9898989878</td>
+									<td>Feb 2, 2016</td>
+									<td>Delivered</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
