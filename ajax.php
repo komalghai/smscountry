@@ -37,12 +37,36 @@ if(!empty($action)){
 			$messagetype = MESSAGE_TYPE;
 			$DReports = DELIVERY_REPORT;
 			$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-			echo "<pre>";
-			print_r($storeData);
-			/* $customVariables = array(
-					'' => $store
-				); */
+			$customVariables = array(
+					'[shop_name]' => $storeData->shop->name,
+					'[shop_domain]' => $storeData->shop->domain,
+					'[customer_count]' => '36',
+					'[customer_firstname]' => 'Jon',
+					'[customer_lastname]' => 'Doe',
+					'[verification_code]' => '5623321',
+					'[customer_address]' => '1444 S. Alameda Street',
+					'[customer_postcode]' => '90021',
+					'[customer_city]' => 'Los Angeles',
+					'[customer_country]' => 'United States',
+					'[order_id]' => '10045',
+					'[order_total]' => '$982.00',
+					'[order_products_count]' => '3',
+					'[order_status]' => 'Pending',
+					'[order_old_status]' => 'Pending',
+					'[order_new_status]' => 'Fullfilled',
+					'[order_date]' => '26th Jan, 2016',
+					'[return_product_name]' => 'Nokia v.2',
+					'[return_reason]' => 'The seal of package was broken, looks like it was used before.',
+					'[customer_name]' => 'John Doe',
+					'[customer_email]' => 'johndoe342@mail.com',
+					'[customer_message]' => 'Hi , This message is regarding testing.',
+				);
+			foreach($customVariables as $find => $replace){
+				$message = str_replace($find, $replace, $message);
+			}
 			$message = urlencode($message);
+			echo $message;
+			die;
 			exit('Working :)');
 			
 			$ch = curl_init();
