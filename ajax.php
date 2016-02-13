@@ -1,5 +1,7 @@
 <?php 
 require('conf.php');
+require __DIR__.'/vendor/autoload.php';
+use phpish\shopify;
 global $db;
 $action = $_REQUEST['action'];
 if(!empty($action)){
@@ -24,7 +26,9 @@ if(!empty($action)){
 
 		case 'sendTestSMS':
 			$store = $_REQUEST['store'];
-			$storeData = file_get_contents("https://{$store}/admin/shop.json?api_key=".SHOPIFY_APP_API_KEY);
+			$code = $_REQUEST['code'];
+			$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
+			$storeData = file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
 			echo "<pre>";
 			print_R(json_decode($storeData));
 			exit();
