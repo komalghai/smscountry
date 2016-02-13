@@ -1,4 +1,6 @@
 <?php 
+require('functions.php');
+
 /** saving globals **/
 $GLOBALS['base_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/';
 $GLOBALS['ajax_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/ajax.php';
