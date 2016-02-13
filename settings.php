@@ -1,5 +1,7 @@
 <?php 
 require('conf.php');
+require __DIR__.'/vendor/autoload.php';
+use phpish\shopify;
 global $db;
 $store = $_REQUEST['shop'];
 $code = $_REQUEST['code'];
