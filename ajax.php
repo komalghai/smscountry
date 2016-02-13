@@ -37,7 +37,7 @@ if(!empty($action)){
 					'[shop_name]' => $storeData->shop->name,
 					'[shop_domain]' => $storeData->shop->domain,
 					'[customer_count]' => '36',
-					'[customer_firstname]' => 'Jon',
+					'[customer_firstname]' => 'John',
 					'[customer_lastname]' => 'Doe',
 					'[verification_code]' => '5623321',
 					'[customer_address]' => '1444 S. Alameda Street',
@@ -55,7 +55,7 @@ if(!empty($action)){
 					'[return_reason]' => 'The seal of package was broken, looks like it was used before.',
 					'[customer_name]' => 'John Doe',
 					'[customer_email]' => 'johndoe342@mail.com',
-					'[customer_message]' => 'Hi , This message is regarding testing.',
+					'[customer_message]' => 'Hi, This message is regarding testing.',
 				);
 			foreach($customVariables as $find => $replace){
 				$message = str_replace($find, $replace, $message);
