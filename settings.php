@@ -48,6 +48,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 				data: {
 					action: 'sendTestSMS',
 					store: '<?php echo $_REQUEST['shop']; ?>',
+					code: '<?php echo $_REQUEST['code']; ?>',
 					type: type,
 				},
 				success: function(response){
