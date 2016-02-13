@@ -2,6 +2,9 @@
 require('conf.php');
 global $db;
 $store = $_REQUEST['shop'];
+$code = $_REQUEST['code'];
+$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
+$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
 $config = unserialize($config['data']);
@@ -39,18 +42,18 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 			}
 		});
 		
-		function sendTestSMS(type){
-			if(type =='') return;
+		function sendTestSMS(_type){
+			if(_type =='') return;
 			jQuery('#testSMSLoader').fadeIn();
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
 				data: {
 					action: 'sendTestSMS',
-					store: '<?php echo $_REQUEST['shop']; ?>',
-					code: '<?php echo $_REQUEST['code']; ?>',
-					type: type,
-					message: jQuery(document).find('textarea[name="'+type+'"]').val(),
+					mobilenumber: '<?php echo $storeData->shop->phone; ?>',
+					shop: '<?php echo $storeData->shop->name; ?>',
+					domain: '<?php echo $storeData->shop->domain; ?>',
+					message: jQuery(document).find('textarea[name="'+_type+'"]').val(),
 				},
 				success: function(response){
 					console.log(response);
