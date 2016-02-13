@@ -50,6 +50,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 					store: '<?php echo $_REQUEST['shop']; ?>',
 					code: '<?php echo $_REQUEST['code']; ?>',
 					type: type,
+					message: jQuery(document).find('textarea[name="'+type+'"]').val(),
 				},
 				success: function(response){
 					console.log(response);
