@@ -45,7 +45,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 		});
 		
 		function sendTestSMS(_type){
-			if(_type =='') return;
+			if((_type =='') || (jQuery(document).find('textarea[name="'+_type+'"]').val() == '')) return;
 			jQuery('#testSMSLoader').fadeIn();
 			jQuery.ajax({
 				type: 'post',
