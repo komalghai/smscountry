@@ -31,6 +31,9 @@ if(!empty($action)){
 			$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
 			$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 			$mobilenumber = $storeData->shop->phone;
+			echo "<pre>";
+			print_R($storeData);
+			die;
 			$user = SMS_USERNAME;
 			$password = SMS_PASSWORD;
 			$senderid = SENDER_ID;
