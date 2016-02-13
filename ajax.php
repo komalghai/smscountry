@@ -25,15 +25,10 @@ if(!empty($action)){
 			break;
 
 		case 'sendTestSMS':
-			$store = $_REQUEST['store'];
-			$code = $_REQUEST['code'];
+			$shop = $_REQUEST['shop'];
+			$domain = $_REQUEST['domain'];
 			$message = $_REQUEST['message'];
-			$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
-			$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
-			$mobilenumber = $storeData->shop->phone;
-			echo "<pre>";
-			print_R($storeData);
-			die;
+			$mobilenumber = $_REQUEST['mobilenumber'];
 			$user = SMS_USERNAME;
 			$password = SMS_PASSWORD;
 			$senderid = SENDER_ID;
@@ -67,7 +62,7 @@ if(!empty($action)){
 			foreach($customVariables as $find => $replace){
 				$message = str_replace($find, $replace, $message);
 			}
-			$message = urlencode($message);
+			/* $message = urlencode($message); */
 			echo $message;
 			die;
 			exit('Working :)');
