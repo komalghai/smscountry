@@ -428,7 +428,7 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 						</div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
-						<p>&nsp;</p>
+						<p>&nbsp;</p>
 						<!--a href="javascript: void(0);" class="btn btn-success" onClick="return saveAll();">Save all configuration</a-->
 					</div>					
 				</div>
