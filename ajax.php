@@ -1,7 +1,5 @@
 <?php 
 require('conf.php');
-require __DIR__.'/vendor/autoload.php';
-use phpish\shopify;
 global $db;
 $action = $_REQUEST['action'];
 if(!empty($action)){
