@@ -24,7 +24,7 @@ if(!empty($action)){
 
 		case 'sendTestSMS':
 			$store = $_REQUEST['store'];
-			$storeData = file_get_contents("https://{$store}/admin/shop.json");
+			$storeData = file_get_contents("https://{$store}/admin/shop.json?api_key=".SHOPIFY_APP_API_KEY);
 			echo "<pre>";
 			print_R(json_decode($storeData));
 			exit();
