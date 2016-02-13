@@ -27,16 +27,12 @@ if(!empty($action)){
 		case 'sendTestSMS':
 			$store = $_REQUEST['store'];
 			$code = $_REQUEST['code'];
+			$message = $_REQUEST['message'];
 			$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
-			$storeData = file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
-			echo "<pre>";
-			print_R(json_decode($storeData));
-			exit();
-			return;
+			$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
+			$mobilenumber = $storeData->shop->phone; 
 			$user = SMS_USERNAME;
-			$password = SMS_PASSWORD; 
-			$mobilenumbers = "919XXXXXXXXX"; 
-			$message = "test messgae";
+			$password = SMS_PASSWORD;
 			$senderid = SENDER_ID;
 			$messagetype = MESSAGE_TYPE;
 			$DReports = DELIVERY_REPORT;
@@ -50,7 +46,7 @@ if(!empty($action)){
 			curl_setopt ($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-			curl_setopt ($ch, CURLOPT_POSTFIELDS, "User={$user}&passwd={$password}&mobilenumber={$mobilenumbers}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}");
+			curl_setopt ($ch, CURLOPT_POSTFIELDS, "User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}");
 			$ret = curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$curlresponse = curl_exec($ch);
 			if(curl_errno($ch))
@@ -62,13 +58,12 @@ if(!empty($action)){
 				$info = curl_getinfo($ch);
 				curl_close($ch);
 				echo $curlresponse;
-				//echo "Message Sent Succesfully" ;
 			}
 			break;
 			
 		default:
 			break;
-			
+		
 	}
 } else {
 	exit("ERR: NO ACTION DEFINED!");
