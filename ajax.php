@@ -60,10 +60,10 @@ if(!empty($action)){
 			foreach($customVariables as $find => $replace){
 				$message = str_replace($find, $replace, $message);
 			}
-			/* $message = urlencode($message); */
-			echo $message;
+			$message = urlencode($message);
+			/* echo $message;
 			die;
-			exit('Working :)');
+			exit('Working :)'); */
 			
 			$ch = curl_init();
 			if (!$ch){
