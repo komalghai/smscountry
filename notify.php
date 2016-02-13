@@ -48,7 +48,7 @@ if(!empty($action)){
 					$json = $response['data'];
 					if(!empty($json)){
 						echo "{$response['store']}:: <pre>";
-						print_R(json_decode($json));
+						print_R(unserialize($json));
 						echo "</pre>";
 					}
 				}
