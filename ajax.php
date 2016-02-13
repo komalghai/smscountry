@@ -30,14 +30,21 @@ if(!empty($action)){
 			$message = $_REQUEST['message'];
 			$access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $code);
 			$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
-			$mobilenumber = $storeData->shop->phone; 
+			$mobilenumber = $storeData->shop->phone;
 			$user = SMS_USERNAME;
 			$password = SMS_PASSWORD;
 			$senderid = SENDER_ID;
 			$messagetype = MESSAGE_TYPE;
 			$DReports = DELIVERY_REPORT;
 			$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
+			echo "<pre>";
+			print_r($storeData);
+			/* $customVariables = array(
+					'' => $store
+				); */
 			$message = urlencode($message);
+			exit('Working :)');
+			
 			$ch = curl_init();
 			if (!$ch){
 				die("Couldn't initialize a cURL handle");
