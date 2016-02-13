@@ -151,9 +151,8 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 				margin-right: 59px;
 				width: 50%;
 			}
-			.col-xs-4 {
+			.nav-content .col-xs-4 {
 				margin-left: 80px;
-				width: 33.3333%;
 			}
 			.loader-fixed {
 				position: fixed !important;
@@ -177,8 +176,9 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
 					<ul class="tabs nav">
-						<li class="col-xs-6 active"><a href="#customer-sms-alerts">Customer SMS Alerts</a></li>
-						<li class="col-xs-6"><a href="#admin-sms-alerts">Admin SMS Alerts</a></li>
+						<li class="col-xs-4 active"><a href="#customer-sms-alerts">Customer SMS Alerts</a></li>
+						<li class="col-xs-4"><a href="#admin-sms-alerts">Admin SMS Alerts</a></li>
+						<li class="col-xs-4"><a href="#sms-history">SMS History</a></li>
 					</ul>
 					<div id="customer-sms-alerts" class="nav-content" style="display: block;">
 						<div class="customer-signup customer-alerts">
@@ -426,6 +426,26 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 								&nbsp;&nbsp;
 							</div>
 						</div>
+					</div>
+					<div id="sms-history" class="nav-content">
+						<table class="table table-bordered">
+							<thead>
+								<th>ID</th>
+								<th>Message</th>
+								<th>Recipient Name</th>
+								<th>Recipient #</th>
+								<th>Sent On</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								<tr>1</tr>
+								<tr>Hi Customer, please verify your number.</tr>
+								<tr>Anuj Nagpal</tr>
+								<tr>9898989878</tr>
+								<tr>Feb 2, 2016</tr>
+								<tr>Delivered</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
 						<p>&nbsp;</p>
