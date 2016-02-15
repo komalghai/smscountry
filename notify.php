@@ -3,11 +3,17 @@ require('conf.php');
 if(!session_id()) session_start();
 global $db;
 date_default_timezone_set('Asia/Kolkata');
+
 $now = date('Y-m-d H:i:s');
-$updated = "Updated: {$now}\n\n";
-$updated .= serialize($_REQUEST);
+$updated = "Updated: {$now}";
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
+
+$store = $_REQUEST['store'];
 $action = $_REQUEST['action'];
+$storeData = json_decode(file_get_contents('https://'.SHOPIFY_APP_API_KEY.':'.SHOPIFY_APP_SHARED_SECRET.'@'.$store.'/admin/shop.json'));
+echo "<pre>";
+print_r($storeData);
+die;
 if(!empty($action)){
 	$data = '';
 	$webhook = fopen('php://input' , 'rb'); 
@@ -16,13 +22,20 @@ if(!empty($action)){
 	} 
 	fclose($webhook);
 	
-	/* $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+	$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 	$config = pg_fetch_assoc($config);
-	$config = unserialize($config['data']); */
-		
+	$config = unserialize($config['data']);
 	switch($action){
 		case 'customer_signup':
-			/* sendMessage($message, $mobilenumber, $recipient_name, 'CustomerSignup'); */
+			/* if(!empty($data->default_address->phone)){
+				$recipient_name = $data->default_address->name;
+				$customerMessage = $config['SMSHTML']['CustomerCustomerSignup'];
+				sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerCustomerSignup');
+			}
+			if(!empty()){
+				$adminMessage = $config['SMSHTML']['AdminCustomerSignup'];
+				sendMessage($adminMessage, $mobilenumber, $recipient_name, 'AdminCustomerSignup');
+			} */
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'");
 			break;
 		case 'order_created':
