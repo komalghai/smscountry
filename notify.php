@@ -100,6 +100,10 @@ if(!empty($action)){
 				}
 			}
 			break;
+		case 'session':
+			echo "<pre>";
+			print_R($_SESSION);
+			break;
 		default:
 			break;
 	}
