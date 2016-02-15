@@ -3,7 +3,9 @@ if(!session_id()) session_start();
 /** variables **/
 $GLOBALS['base_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/';
 $GLOBALS['ajax_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/ajax.php';
-$_SESSION['store'] = isset($_REQUEST['shop']) ? $_REQUEST['shop'] : null;
+if(isset($_REQUEST['shop'])){
+	$_SESSION['store'] = $_REQUEST['shop'];
+}
 
 /** shopify credentials **/
 define('SHOPIFY_APP_API_KEY', '2f32ee6aa7b785c18281b4cf8fc26346'); 
