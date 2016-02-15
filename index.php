@@ -20,10 +20,10 @@ if(pg_num_rows($shop_exists) < 1){
 	
 	$url = "https://{$shop}/admin/webhooks.json";
 	$topics = array(
-			'customers/create' => "https://smscountry.herokuapp.com/notify.php?action=customer_signup&store={$shop}",
-			'orders/create' => "https://smscountry.herokuapp.com/notify.php?action=order_created&store={$shop}",
-			'orders/updated' => "https://smscountry.herokuapp.com/notify.php?action=order_updated&store={$shop}",
-			'app/uninstalled' => "https://smscountry.herokuapp.com/notify.php?action=app_uninstalled&store={$shop}",
+			'customers/create' => "https://smscountry.herokuapp.com/notify.php?action=customer_signup",
+			'orders/create' => "https://smscountry.herokuapp.com/notify.php?action=order_created",
+			'orders/updated' => "https://smscountry.herokuapp.com/notify.php?action=order_updated",
+			'app/uninstalled' => "https://smscountry.herokuapp.com/notify.php?action=app_uninstalled",
 		);
 	foreach($topics as $topic => $address){
 		$data = array(
