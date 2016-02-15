@@ -9,6 +9,7 @@ $now = date('Y-m-d H:i:s');
 $updated = "Updated: {$now}";
 $updated .= print_R($_SESSION, true);
 $updated .= print_R($_REQUEST, true);
+pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 $store = $_SESSION['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
