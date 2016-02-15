@@ -27,15 +27,9 @@ if(!empty($action)){
 			$domain = $_REQUEST['domain'];
 			$message = $_REQUEST['message'];
 			$mobilenumber = $_REQUEST['mobilenumber'];
-			$user = SMS_USERNAME;
-			$password = SMS_PASSWORD;
-			$senderid = SENDER_ID;
-			$messagetype = MESSAGE_TYPE;
-			$DReports = DELIVERY_REPORT;
-			$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 			$customVariables = array(
-					'[shop_name]' => $storeData->shop->name,
-					'[shop_domain]' => $storeData->shop->domain,
+					'[shop_name]' => $shop,
+					'[shop_domain]' => $domain,
 					'[customer_count]' => '36',
 					'[customer_firstname]' => 'John',
 					'[customer_lastname]' => 'Doe',
@@ -61,31 +55,7 @@ if(!empty($action)){
 				$message = str_replace($find, $replace, $message);
 			}
 			$message = urlencode($message);
-			/* echo $message;
-			die;
-			exit('Working :)'); */
-			
-			$ch = curl_init();
-			if (!$ch){
-				die("Couldn't initialize a cURL handle");
-			}
-			$ret = curl_setopt($ch, CURLOPT_URL,$url);
-			curl_setopt ($ch, CURLOPT_POST, 1);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-			curl_setopt ($ch, CURLOPT_POSTFIELDS, "User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}");
-			$ret = curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$curlresponse = curl_exec($ch);
-			if(curl_errno($ch))
-			echo 'curl error : '. curl_error($ch);
-			if (empty($ret)) {
-				die(curl_error($ch));
-				curl_close($ch);
-			} else {
-				$info = curl_getinfo($ch);
-				curl_close($ch);
-				echo $curlresponse;
-			}
+			sendMessage($message, $mobilenumber);
 			break;
 			
 		default:
