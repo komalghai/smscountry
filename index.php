@@ -21,7 +21,7 @@ if(pg_num_rows($shop_exists) < 1){
 	$url = "https://{$shop}/admin/webhooks.json";
 	$topics = array(
 			'customers/create' => "https://smscountry.herokuapp.com/notify.php?store={$shop}&action=customer_signup",
-			'orders/create' => "https://smscountry.herokuapp.com/notify.php?action=store={$shop}&order_created",
+			'orders/create' => "https://smscountry.herokuapp.com/notify.php?store={$shop}&action=order_created",
 			'orders/updated' => "https://smscountry.herokuapp.com/notify.php?store={$shop}&action=order_updated",
 			'app/uninstalled' => "https://smscountry.herokuapp.com/notify.php?store={$shop}&action=app_uninstalled",
 		);
