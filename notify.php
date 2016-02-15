@@ -4,7 +4,8 @@ if(!session_id()) session_start();
 global $db;
 date_default_timezone_set('Asia/Kolkata');
 $now = date('Y-m-d H:i:s');
-$updated = "Updated: {$now}";
+$updated = "Updated: {$now}\n\n";
+$updated .= serialize($_REQUEST);
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 $action = $_REQUEST['action'];
 if(!empty($action)){
@@ -14,8 +15,14 @@ if(!empty($action)){
 		$data .= fread($webhook, 4096); 
 	} 
 	fclose($webhook);
+	
+	/* $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+	$config = pg_fetch_assoc($config);
+	$config = unserialize($config['data']); */
+		
 	switch($action){
 		case 'customer_signup':
+			/* sendMessage($message, $mobilenumber, $recipient_name, 'CustomerSignup'); */
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'");
 			break;
 		case 'order_created':
@@ -29,7 +36,7 @@ if(!empty($action)){
 			pg_query($db, "DELETE FROM configuration WHERE store = '{$store}'");
 			break;
 		case 'debug':
-			$result = pg_query($db, "SELECT * FROM debug WHERE id NOT IN(1) ORDER BY id ASC");
+			$result = pg_query($db, "SELECT * FROM debug ORDER BY id ASC");
 			if(pg_num_rows($result)){
 				while($response = pg_fetch_assoc($result)){
 					$json = $response['value'];
