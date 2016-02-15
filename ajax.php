@@ -55,7 +55,7 @@ if(!empty($action)){
 				$message = str_replace($find, $replace, $message);
 			}
 			$message = urlencode($message);
-			sendMessage($message, $mobilenumber);
+			sendTestMessage($message, $mobilenumber);
 			break;
 			
 		default:
