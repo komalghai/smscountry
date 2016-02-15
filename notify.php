@@ -11,7 +11,7 @@ $updated = "Updated: {$now}";
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 
 $store = $_REQUEST['store'];
-$action = $_REQUEST['action'];
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 $storeData = @file_get_contents('https://'.$store.'/admin/shop.json?api_key='.SHOPIFY_APP_API_KEY);
 echo "<pre>";
 print_r($storeData);
