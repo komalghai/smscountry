@@ -18,10 +18,10 @@ if(pg_num_rows($shop_exists) < 1){
 	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$url = "https://{$shop}/admin/webhooks.json";
 	$topics = array(
-			'customers/create' => 'https://smscountry.herokuapp.com/notify.php?action=customer_signup',
-			'orders/create' => 'https://smscountry.herokuapp.com/notify.php?action=order_created',
-			'orders/updated' => 'https://smscountry.herokuapp.com/notify.php?action=order_updated',
-			'app/uninstalled' => 'https://smscountry.herokuapp.com/notify.php?action=app_uninstalled',
+			'customers/create' => "https://smscountry.herokuapp.com/notify.php?action=customer_signup&store={$shop}",
+			'orders/create' => "https://smscountry.herokuapp.com/notify.php?action=order_created&store={$shop}",
+			'orders/updated' => "https://smscountry.herokuapp.com/notify.php?action=order_updated&store={$shop}",
+			'app/uninstalled' => "https://smscountry.herokuapp.com/notify.php?action=app_uninstalled&store={$shop}",
 		);
 	foreach($topics as $topic => $address){
 		$data = array(
