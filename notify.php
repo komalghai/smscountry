@@ -1,7 +1,13 @@
 <?php 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require('conf.php');
 if(!session_id()) session_start();
 global $db;
+date_default_timezone_set('Asia/Kolkata');
+$now = date('Y-m-d H:i:s');
+$updated = "Updated: {$now}";
+
 $store = $_REQUEST['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
@@ -50,6 +56,12 @@ if(!empty($action)){
 					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
 				}
 			}
+			$webhook = fopen('php://input' , 'rb'); 
+			while(!feof($webhook)){
+				$updated .= fread($webhook, 4096); 
+			} 
+			fclose($webhook);
+			pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
