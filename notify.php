@@ -1,13 +1,14 @@
 <?php 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require('conf.php');
 if(!session_id()) session_start();
+require('conf.php');
 global $db;
 date_default_timezone_set('Asia/Kolkata');
 $now = date('Y-m-d H:i:s');
 $updated = "Updated: {$now}";
-
+print_R($_SESSION);
+print_R($_REQUEST);
 $store = $_SESSION['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
