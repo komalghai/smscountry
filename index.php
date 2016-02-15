@@ -7,15 +7,17 @@ global $db;
 $shop = $_REQUEST['shop'];
 $shop_exists = pg_query($db, "SELECT * FROM configuration WHERE store = '{$shop}'");
 if(pg_num_rows($shop_exists) < 1){
+	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
 	$lastRow = pg_query($db, "SELECT id FROM configuration ORDER by id DESC limit 1");
 	$lastID = pg_fetch_assoc($lastRow);
 	$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 1;
 	$data = array(
 			'shop_name' => $shop,
+			'access_token' => $access_token,
 		);
 	$data = serialize($data);
 	pg_query($db, "INSERT INTO configuration (id, store, data) VALUES ('{$lastID}', '{$shop}', '{$data}')");
-	$access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
+	
 	$url = "https://{$shop}/admin/webhooks.json";
 	$topics = array(
 			'customers/create' => "https://smscountry.herokuapp.com/notify.php?action=customer_signup&store={$shop}",
