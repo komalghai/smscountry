@@ -1,7 +1,9 @@
 <?php 
-/** saving globals **/
+if(!session_id()) session_start();
+/** variables **/
 $GLOBALS['base_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/';
 $GLOBALS['ajax_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/ajax.php';
+$_SESSION['store'] = isset($_REQUEST['shop']) ? $_REQUEST['shop'] : null;
 
 /** shopify credentials **/
 define('SHOPIFY_APP_API_KEY', '2f32ee6aa7b785c18281b4cf8fc26346'); 
@@ -24,3 +26,4 @@ if(!$db){
 	echo "Error : Unable to open database\n"; 
 }
 require('functions.php');
+
