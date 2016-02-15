@@ -1,25 +1,14 @@
 <?php 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 require('conf.php');
 if(!session_id()) session_start();
 global $db;
-date_default_timezone_set('Asia/Kolkata');
-
-$now = date('Y-m-d H:i:s');
-$updated = "Updated: {$now}";
-pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
-
 $store = $_REQUEST['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
-
-$storeCurl = curl_init();
-curl_setopt($storeCurl, CURLOPT_URL, 'https://'.$store.'/admin/shop.json');
-curl_setopt($storeCurl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($storeCurl, CURLOPT_HEADER, false);
-curl_setopt($storeCurl, CURLOPT_POSTFIELDS, 'api_key='.SHOPIFY_APP_API_KEY);
-$storeData = curl_exec($storeCurl);
-curl_close($storeCurl);
+$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+$config = pg_fetch_assoc($config);
+$config = unserialize($config['data']);
+$access_token = $config['access_token'];
+$storeData = @file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
 echo "<pre>";
 print_r($storeData);
 die;
@@ -31,9 +20,6 @@ if(!empty($action)){
 	} 
 	fclose($webhook);
 	
-	$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
-	$config = pg_fetch_assoc($config);
-	$config = unserialize($config['data']);
 	switch($action){
 		case 'customer_signup':
 			/* if(!empty($data->default_address->phone)){
