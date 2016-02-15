@@ -10,6 +10,7 @@ pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 
 $store = $_REQUEST['store'];
 $action = $_REQUEST['action'];
+echo 'https://'.SHOPIFY_APP_API_KEY.':'.SHOPIFY_APP_SHARED_SECRET.'@'.$store.'/admin/shop.json'; die;
 $storeData = @file_get_contents('https://'.SHOPIFY_APP_API_KEY.':'.SHOPIFY_APP_SHARED_SECRET.'@'.$store.'/admin/shop.json');
 echo "<pre>";
 print_r($storeData);
