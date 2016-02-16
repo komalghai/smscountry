@@ -39,6 +39,7 @@ if(!empty($action)){
 						$customerMessage = str_replace($find, $replace, $customerMessage);
 					}
 					sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerCustomerSignup');
+					exit('ko');
 				}
 			}
 			if(!empty($storeData->shop->phone)){
