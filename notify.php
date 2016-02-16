@@ -78,7 +78,7 @@ if(!empty($action)){
 					$json = $response['value'];
 					if(!empty($json)){
 						echo "{$response['key']}:: <pre>";
-						print_R(json_decode($json));
+						print_R($json);
 						echo "</pre>";
 					}
 				}
