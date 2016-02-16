@@ -5,8 +5,9 @@ require('conf.php');
 global $db;
 /* $updated = print_r($_REQUEST, true); */
 /* pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'"); */
-$store = $_REQUEST['store'];
-$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+$action = explode('::', $_REQUEST['action']);
+$action = $action[0];
+$store = $action[1];
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
 $config = unserialize($config['data']);
@@ -89,10 +90,6 @@ if(!empty($action)){
 					}
 				}
 			}
-			break;
-		case 'session':
-			echo "<pre>";
-			print_R($_SESSION);
 			break;
 		default:
 			break;
