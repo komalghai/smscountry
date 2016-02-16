@@ -21,7 +21,7 @@ if(!empty($action)){
 				if($updated){
 					exit('1');
 				} else {
-					exit(pg_last_error($db));
+					exit('0');
 				}
 			}
 			break;
