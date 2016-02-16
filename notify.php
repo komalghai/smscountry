@@ -7,8 +7,8 @@ $updated = print_r($_REQUEST, true);
 $debug = fopen('php://input' , 'rb'); 
 while(!feof($debug)){
 	$updated .= fread($debug, 4096); 
-} 
-fclose($webhook);
+}
+fclose($debug);
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 $store = $_REQUEST['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
