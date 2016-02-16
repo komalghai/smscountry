@@ -6,14 +6,14 @@ global $db;
 /* $updated = print_r($_REQUEST, true); */
 /* pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'"); */
 $action = explode('::', $_REQUEST['action']);
+echo "<pre>";
+print_R($action);
+die;
 $action = $action[0];
 $store = $action[1];
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 echo "SELECT data FROM configuration WHERE store = '{$store}'";
 $config = pg_fetch_assoc($config);
-echo "<pre>";
-print_R($config);
-die;
 $config = unserialize($config['data']);
 $access_token = $config['access_token'];
 $storeData = @file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
