@@ -4,6 +4,11 @@ ini_set('display_errors', 1);
 require('conf.php');
 global $db;
 $updated = print_r($_REQUEST, true);
+$debug = fopen('php://input' , 'rb'); 
+while(!feof($debug)){
+	$updated .= fread($debug, 4096); 
+} 
+fclose($webhook);
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 $store = $_REQUEST['store'];
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
@@ -52,13 +57,6 @@ if(!empty($action)){
 					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
 				}
 			}
-			
-			$debug = fopen('php://input' , 'rb'); 
-			while(!feof($debug)){
-				$updated .= fread($debug, 4096); 
-			} 
-			fclose($webhook);
-			pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
