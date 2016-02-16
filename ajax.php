@@ -13,6 +13,9 @@ if(!empty($action)){
 				$config = pg_fetch_assoc($config);
 				$config = unserialize($config['data']);
 				$config['SMSHTML'][$key] = $value;
+				echo "<pre>";
+				print_r($config);
+				die;
 				$config = serialize($config);
 				$updated = pg_query($db, "UPDATE configuration SET data = '{$config}' WHERE store = '{$store}'");
 				if($updated){
