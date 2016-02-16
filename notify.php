@@ -69,7 +69,6 @@ if(!empty($action)){
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_status_changed'");
 			break;
 		case 'app_uninstalled':
-			$store = $data->domain;
 			pg_query($db, "DELETE FROM configuration WHERE store = '{$store}'");
 			break;
 		case 'debug':
