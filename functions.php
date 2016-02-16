@@ -8,7 +8,7 @@ if(!function_exists('saveMessage')){
 		$lastID = $lastID + 1;
 		$character_count = strlen($message);
 		$created_at = date('Y-m-d H:i:s');
-		return pg_query($db, "INSERT INTO messages (id, message_text, recipient_name, recipient_number, type, character_count, created_at, status) VALUES ('{$lastID}', '{$message}', '{$recipient_name}', '{$recipient_number}', '{$message_type}', '{$character_count}', '{$created_at}', '{$status}')");
+		pg_query($db, "INSERT INTO messages (id, message_text, recipient_name, recipient_number, type, character_count, created_at, status) VALUES ('{$lastID}', '{$message}', '{$recipient_name}', '{$recipient_number}', '{$message_type}', '{$character_count}', '{$created_at}', '{$status}')");
 	}
 }
 
