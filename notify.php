@@ -25,6 +25,9 @@ if(!empty($action)){
 			$result = pg_query($db, "SELECT * FROM debug WHERE key = 'customer_signup' ORDER BY id ASC");
 			$data = pg_fetch_assoc($result);
 			$data = json_decode($data['value']);
+			echo "<pre>";
+			print_r($data);
+			die;
 			if(!empty($data->default_address->phone)){
 				$recipient_name = $data->default_address->name;
 				$customerMessage = $config['SMSHTML']['CustomerCustomerSignup'];
