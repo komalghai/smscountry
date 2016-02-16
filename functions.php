@@ -11,7 +11,7 @@ if(!function_exists('saveMessage')){
 
 if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
-		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
+		/* $url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 		$user = SMS_USERNAME;
 		$password = SMS_PASSWORD;
 		$senderid = SENDER_ID;
@@ -37,11 +37,11 @@ if(!function_exists('sendMessage')){
 			$status = 'pending';
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
-			}
+			} */
 			saveMessage(urldecode($message), $recipient_name, $mobilenumber, $type, $status);
-			echo $curlresponse;
+			/* echo $curlresponse;
 			exit();
-		}
+		} */
 	}
 }
 
