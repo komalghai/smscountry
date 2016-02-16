@@ -4,13 +4,10 @@ ini_set('display_errors', 1);
 require('conf.php');
 global $db;
 $updated = print_r($_REQUEST, true);
-$debug = fopen('php://input' , 'rb'); 
-while(!feof($debug)){
-	$updated .= fread($debug, 4096); 
-}
-fclose($debug);
 pg_query($db, "UPDATE debug SET value = '{$updated}' WHERE key = 'updated'");
-$store = $_REQUEST['store'];
+/* $store = $_REQUEST['store'];*/
+die;
+$store = 'temp';
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
