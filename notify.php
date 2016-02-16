@@ -26,9 +26,11 @@ if(!empty($action)){
 			$data = pg_fetch_assoc($result);
 			$data = json_decode($data['value']);
 			if(!empty($data->default_address->phone)){
+				echo "1";
 				$recipient_name = $data->default_address->name;
 				$customerMessage = $config['SMSHTML']['CustomerCustomerSignup'];
 				if(!empty($customerMessage)){
+					echo "3";
 					$customVariables = array(
 							'[shop_name]' => $storeData->shop->name,
 							'[shop_domain]' => $storeData->shop->domain,
@@ -40,8 +42,13 @@ if(!empty($action)){
 					}
 					sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerCustomerSignup');
 					exit('ko');
+				} else {
+					echo "4";
 				}
+			} else {
+				echo "2";
 			}
+			exit('9');
 			if(!empty($storeData->shop->phone)){
 				$adminMessage = $config['SMSHTML']['AdminCustomerSignup'];
 				if(!empty($adminMessage)){
