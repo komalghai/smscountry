@@ -6,9 +6,8 @@ if(!empty($action)){
 	switch($action){
 		case 'saveSMS':
 			$key = $_REQUEST['key']; 
-			$value = htmlentities(addcslashes($_REQUEST['value']));
+			$value = addcslashes($_REQUEST['value']);
 			$store = $_REQUEST['store'];
-			echo "debugging.";
 			if(!empty($key) && !empty($value)){
 				$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 				$config = pg_fetch_assoc($config);
