@@ -18,11 +18,9 @@ if(!empty($action)){
 		$data .= fread($webhook, 4096); 
 	}
 	fclose($webhook);
+	$data = json_decode($data);
 	switch($action){
 		case 'customer_signup':
-			$result = pg_query($db, "SELECT * FROM debug WHERE key = 'customer_signup' ORDER BY id ASC");
-			$data = pg_fetch_assoc($result);
-			$data = json_decode($data['value']);
 			if(!empty($data->default_address->phone)){
 				$recipient_name = $data->default_address->name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['CustomerCustomerSignup']);
