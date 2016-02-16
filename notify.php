@@ -24,7 +24,7 @@ if(!empty($action)){
 		case 'customer_signup':
 			$result = pg_query($db, "SELECT * FROM debug WHERE key = 'customer_signup' ORDER BY id ASC");
 			$data = pg_fetch_assoc($result);
-			$data = unserialize($data['value']);
+			/* $data = unserialize($data['value']); */
 			echo "<pre>";
 			print_r($data);
 			die;
