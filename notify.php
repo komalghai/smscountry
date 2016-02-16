@@ -53,6 +53,13 @@ if(!empty($action)){
 					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
 				}
 			}
+			$temp = '';
+			$webhook = fopen('php://input' , 'rb'); 
+			while(!feof($webhook)){
+				$temp .= fread($webhook, 4096); 
+			}
+			fclose($webhook);
+			pg_query($db, "UPDATE debug SET value = '{$temp}' WHERE key = 'updated'");
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
