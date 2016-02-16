@@ -14,16 +14,13 @@ if(!function_exists('saveMessage')){
 
 if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
-		/* $url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
+		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 		$user = SMS_USERNAME;
 		$password = SMS_PASSWORD;
 		$senderid = SENDER_ID;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
-		if (!$ch){
-			die("Couldn't initialize a cURL handle");
-		}
 		$ret = curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt ($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -33,18 +30,16 @@ if(!function_exists('sendMessage')){
 		$curlresponse = curl_exec($ch);
 		if (empty($ret)) {
 			die(curl_error($ch));
-			curl_close($ch);
 		} else {
-			$info = curl_getinfo($ch);
-			curl_close($ch);
 			$status = 'pending';
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
-			} */
-			saveMessage($message, $recipient_name, $mobilenumber, $type, 'pending');
-			/* echo $curlresponse;
+			}
+			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
+			echo $curlresponse;
 			exit();
-		} */
+		}
+		curl_close($ch);
 	}
 }
 
