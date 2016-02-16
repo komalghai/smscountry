@@ -10,15 +10,15 @@ $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?acc
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
 $config = unserialize($config['data']);
-$CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
-$CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
-$CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? $config['SMSHTML']['CustomerOrderPlaced'] : null;
-$CustomerOrderStatusChanged = isset($config['SMSHTML']['CustomerOrderStatusChanged']) ? $config['SMSHTML']['CustomerOrderStatusChanged'] : null;
-$AdminCustomerSignup = isset($config['SMSHTML']['AdminCustomerSignup']) ? $config['SMSHTML']['AdminCustomerSignup'] : null;
-$AdminCustomerSignupScheduled = isset($config['SMSHTML']['AdminCustomerSignupScheduled']) ? $config['SMSHTML']['AdminCustomerSignupScheduled'] : null;
-$AdminOrderPlaced = isset($config['SMSHTML']['AdminOrderPlaced']) ? $config['SMSHTML']['AdminOrderPlaced'] : null;
-$AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) ? $config['SMSHTML']['AdminOrderReturnRequest'] : null;
-$AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
+$CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? urldecode($config['SMSHTML']['CustomerCustomerSignup']) : null;
+$CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? urldecode($config['SMSHTML']['CustomerCustomerSignupVerification']) : null;
+$CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? urldecode($config['SMSHTML']['CustomerOrderPlaced']) : null;
+$CustomerOrderStatusChanged = isset($config['SMSHTML']['CustomerOrderStatusChanged']) ? urldecode($config['SMSHTML']['CustomerOrderStatusChanged']) : null;
+$AdminCustomerSignup = isset($config['SMSHTML']['AdminCustomerSignup']) ? urldecode($config['SMSHTML']['AdminCustomerSignup']) : null;
+$AdminCustomerSignupScheduled = isset($config['SMSHTML']['AdminCustomerSignupScheduled']) ? urldecode($config['SMSHTML']['AdminCustomerSignupScheduled']) : null;
+$AdminOrderPlaced = isset($config['SMSHTML']['AdminOrderPlaced']) ? urldecode($config['SMSHTML']['AdminOrderPlaced']) : null;
+$AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) ? urldecode($config['SMSHTML']['AdminOrderReturnRequest']) : null;
+$AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? urldecode($config['SMSHTML']['AdminContactInquiry']) : null;
 ?>
 <!DOCTYPE html>
 <html>
