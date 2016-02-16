@@ -18,7 +18,7 @@ if(!empty($action)){
 				if($updated){
 					exit('1');
 				} else {
-					exit(pg_result_error($updated));
+					exit(pg_last_error($db));
 				}
 			}
 			break;
