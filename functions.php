@@ -38,7 +38,7 @@ if(!function_exists('sendMessage')){
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
 			} */
-			saveMessage(urldecode($message), $recipient_name, $mobilenumber, $type, $status);
+			saveMessage(urldecode($message), $recipient_name, $mobilenumber, $type, 'delivered');
 			/* echo $curlresponse;
 			exit();
 		} */
