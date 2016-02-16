@@ -25,7 +25,7 @@ if(!empty($action)){
 			$data = json_decode($data['value']);
 			if(!empty($data->default_address->phone)){
 				$recipient_name = $data->default_address->name;
-				$customerMessage = $config['SMSHTML']['CustomerCustomerSignup'];
+				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['CustomerCustomerSignup']);
 				if(!empty($customerMessage)){
 					$customVariables = array(
 							'[shop_name]' => $storeData->shop->name,
@@ -40,7 +40,7 @@ if(!empty($action)){
 				}
 			}
 			if(!empty($storeData->shop->phone)){
-				$adminMessage = $config['SMSHTML']['AdminCustomerSignup'];
+				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['AdminCustomerSignup']);
 				if(!empty($adminMessage)){
 					$customVariables = array(
 							'[shop_name]' => $storeData->shop->name,
