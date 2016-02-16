@@ -10,10 +10,7 @@ $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'
 $config = pg_fetch_assoc($config);
 $config = unserialize($config['data']);
 $access_token = $config['access_token'];
-$storeData = @file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
-echo "<pre>";
-print_r($storeData);
-die;
+$storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 if(!empty($action)){
 	$data = '';
 	$webhook = fopen('php://input' , 'rb'); 
