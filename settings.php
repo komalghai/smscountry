@@ -19,6 +19,8 @@ $AdminCustomerSignupScheduled = isset($config['SMSHTML']['AdminCustomerSignupSch
 $AdminOrderPlaced = isset($config['SMSHTML']['AdminOrderPlaced']) ? $config['SMSHTML']['AdminOrderPlaced'] : null;
 $AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) ? $config['SMSHTML']['AdminOrderReturnRequest'] : null;
 $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
+
+$historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html>
@@ -440,14 +442,16 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Hi Customer, please verify your number.</td>
-									<td>Anuj Nagpal</td>
-									<td>9898989878</td>
-									<td>Feb 2, 2016</td>
-									<td>Delivered</td>
-								</tr>
+								<?php $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
+									<tr>
+										<td><?php echo $i; ?></td>
+										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
+										<td><?php echo $history['recipient_name']; ?></td>
+										<td><?php echo $history['recipient_number']; ?></td>
+										<td><?php echo date('F j, Y@g:i a', strtotime($history['created_at'])); ?></td>
+										<td><?php echo $history['status']; ?></td>
+									</tr>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
