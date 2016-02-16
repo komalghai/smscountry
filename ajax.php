@@ -7,16 +7,14 @@ if(!empty($action)){
 		case 'saveSMS':
 			$key = $_REQUEST['key']; 
 			$value = addcslashes($_REQUEST['value']);
+			$value = str_replace('\n', '<br>', $value);
 			$store = $_REQUEST['store'];
 			if(!empty($key) && !empty($value)){
 				$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 				$config = pg_fetch_assoc($config);
 				$config = unserialize($config['data']);
 				$config['SMSHTML'][$key] = $value;
-				/* $config = serialize($config); */
-				echo "<pre>";
-				print_r($config);
-				die;
+				$config = serialize($config);
 				$updated = pg_query($db, "UPDATE configuration SET data = '{$config}' WHERE store = '{$store}'");
 				if($updated){
 					exit('1');
