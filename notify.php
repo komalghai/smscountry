@@ -9,11 +9,12 @@ $action = explode('::', $_REQUEST['action']);
 $action = $action[0];
 $store = $action[1];
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+echo "SELECT data FROM configuration WHERE store = '{$store}'";
 $config = pg_fetch_assoc($config);
 echo "<pre>";
 print_R($config);
 die;
-/* $config = unserialize($config['data']);
+$config = unserialize($config['data']);
 $access_token = $config['access_token'];
 $storeData = @file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}");
 if(!empty($action)){
@@ -59,7 +60,7 @@ if(!empty($action)){
 					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
 				}
 			}
-			// pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'");
+			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_placed'");
@@ -100,5 +101,5 @@ if(!empty($action)){
 			break;
 	}
 }
-exit('Query executed!'); */
+exit('Query executed!');
 ?>
