@@ -36,8 +36,6 @@ if(!function_exists('sendMessage')){
 				$status = 'delivered';
 			}
 			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
-			echo $curlresponse;
-			exit();
 		}
 		curl_close($ch);
 	}
@@ -68,8 +66,6 @@ if(!function_exists('sendTestMessage')){
 		} else {
 			$info = curl_getinfo($ch);
 			curl_close($ch);
-			echo $curlresponse;
-			exit();
 		}
 	}
 }
