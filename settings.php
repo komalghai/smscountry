@@ -77,9 +77,10 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 		}
 		function save(type,check){
 			if(type =='') return;
-			
-			
-			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),jQuery(document).find('checkbox[name="'+check+'"]').is(":checked"));
+			var active=false;
+			if(jQuery(document).find('checkbox[name="'+check+'"]').is(":checked"))
+			{ active=true; }
+			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),active);
 		}
 		
 		function saveAll(){
