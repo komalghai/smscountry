@@ -191,6 +191,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
+							<input type="checkbox" name="custsignup"/>
 								<h4>New Customer Signup:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
@@ -217,6 +218,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
+							<input type="checkbox" name="custsignupverf"/>
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [verification_code].
@@ -243,6 +245,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
+							<input type="checkbox" name="custoderp"/>
 								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
@@ -269,6 +272,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
+							<input type="checkbox" name="custorderschange"/>
 								<h4>Order status changed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
