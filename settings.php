@@ -14,6 +14,7 @@ $config = unserialize($config['data']);
 
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 $CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
+$smsactive = isset($config['SMSHTML']['smsactive']) ? $config['SMSHTML']['smsactive'] : null;
 $CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? $config['SMSHTML']['CustomerOrderPlaced'] : null;
 $CustomerOrderStatusChanged = isset($config['SMSHTML']['CustomerOrderStatusChanged']) ? $config['SMSHTML']['CustomerOrderStatusChanged'] : null;
 $AdminCustomerSignup = isset($config['SMSHTML']['AdminCustomerSignup']) ? $config['SMSHTML']['AdminCustomerSignup'] : null;
@@ -223,7 +224,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignup"/>
+							<input type="checkbox" name="custsignup" <?php if($smsactive==true) {echo "checked";} ?> />
 								<h4>New Customer Signup:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
@@ -250,7 +251,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignupverf"/>
+							<input type="checkbox" name="custsignupverf" <?php if($smsactive==true) {echo "checked";} ?>/>
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [verification_code].
@@ -265,7 +266,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							<div class="col-xs-11 text-right">
 								<p></p>
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignupVerification');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignupVerification');">Save</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignupVerification','custsignupverf');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
@@ -277,7 +278,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custoderp"/>
+							<input type="checkbox" name="custoderp" <?php if($smsactive==true) {echo "checked";} ?>/>
 								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
@@ -292,7 +293,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							<div class="col-xs-11 text-right">
 								<p></p>
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderPlaced');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderPlaced');">Save</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderPlaced','custoderp');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
