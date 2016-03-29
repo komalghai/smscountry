@@ -9,7 +9,7 @@ $access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SH
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
-echo '<pre>'.$config.'</pre>';
+echo '<pre>';print_r($config); echo'</pre>';
 $config = unserialize($config['data']);
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 $CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
