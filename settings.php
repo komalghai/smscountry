@@ -78,6 +78,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
+			alert('input[name="'+check+'"]:checked');
 			alert(jQuery('input[name="'+check+'"]:checked').length);
 			if(jQuery('input[name="'+check+'"]').is(":checked"))
 			{ active=true; }
