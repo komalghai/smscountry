@@ -9,8 +9,9 @@ $access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SH
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
-echo '<pre>';print_r($config); echo'</pre>';
+echo '<pre>';print($config); echo'</pre>';
 $config = unserialize($config['data']);
+
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 $CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
 $CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? $config['SMSHTML']['CustomerOrderPlaced'] : null;
@@ -73,6 +74,12 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 		function save(type){
 			if(type =='') return;
 			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val());
+		}
+		function save(type,check){
+			if(type =='') return;
+			
+			
+			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),jQuery(document).find('checkbox[name="'+check+'"]').is(":checked"));
 		}
 		
 		function saveAll(){
@@ -207,7 +214,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							<div class="col-xs-11 text-right">
 								<p></p>
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
-								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup');">Save</a>
+								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup,custsignup');">Save</a>
 								&nbsp;&nbsp;
 							</div>
 						</div>
