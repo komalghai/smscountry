@@ -106,6 +106,26 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 					jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
+		}	function saveSMS(_key, _value,activ){
+			if(_key == '') return;
+			jQuery('#'+_key+'Loader').fadeIn();
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'saveSMS',
+					store: '<?php echo $_REQUEST['shop']; ?>',
+					key: _key,
+					value: _value,
+					active: activ,
+				},
+				success: function(response){
+					jQuery('#'+_key+'Loader').fadeOut();
+				},
+				error: function(response){
+					jQuery('#'+_key+'Loader').fadeOut();
+				}
+			});
 		}		
 		</script>
 		<style type="text/css">
