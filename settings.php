@@ -77,11 +77,38 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 				}
 			});
 		}
-		
-		function save(type){
-			if(type =='') return;
-			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val());
+		function sendTestSMS(_type,mobileno){
+			if((_type =='') || (jQuery(document).find('textarea[name="'+_type+'"]').val() == '')) return;
+			jQuery('#testSMSLoader').fadeIn();
+			var mobileno = jQuery(document).find('input[name="'+mobileno+'"]').val());
+			if(mobileno==''){
+			var mobilenumber='<?php echo $storeData->shop->phone; ?>';
+			}
+			else {
+			var mobilenumber=mobileno;
+			}
+			alert(mobilenumber);
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'sendTestSMS',
+					mobilenumber: mobilenumber,
+					shop: '<?php echo $storeData->shop->name; ?>',
+					domain: '<?php echo $storeData->shop->domain; ?>',
+					message: jQuery(document).find('textarea[name="'+_type+'"]').val(),
+					
+				},
+				success: function(response){
+					console.log(response);
+					jQuery('#testSMSLoader').fadeOut();
+				},
+				error: function(response){
+					jQuery('#testSMSLoader').fadeOut();
+				}
+			});
 		}
+		
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
@@ -244,7 +271,8 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup');">Send Test SMS</a>
+								Mobile No<input type="text" name="CustomerCustomerSignupmobile"/>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup','CustomerCustomerSignupmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup','custsignup');">Save</a>
 								&nbsp;&nbsp;
 							</div>
