@@ -319,7 +319,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged');">Send Test SMS</a>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged','custorderschange');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderStatusChanged');">Save</a>
 								&nbsp;&nbsp;
 							</div>
