@@ -11,18 +11,19 @@ $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'
 $config = pg_fetch_assoc($config);
 echo '<pre>';print_r($config); echo'</pre>';
 $config = unserialize($config['data']);
-
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
+$CustomerSignupsmsactive = isset($config['SMSHTML']['CustomerCustomerSignup']['smsactive']) ? $config['SMSHTML']['CustomerCustomerSignup']['smsactive'] : null;
 $CustomerCustomerSignupVerification = isset($config['SMSHTML']['CustomerCustomerSignupVerification']) ? $config['SMSHTML']['CustomerCustomerSignupVerification'] : null;
-$smsactive = isset($config['SMSHTML']['smsactive']) ? $config['SMSHTML']['smsactive'] : null;
+$CustomerSignupVerificationsmsactive = isset($config['SMSHTML']['CustomerCustomerSignupVerification']['smsactive']) ? $config['SMSHTML']['CustomerCustomerSignupVerification']['smsactive'] : null;
 $CustomerOrderPlaced = isset($config['SMSHTML']['CustomerOrderPlaced']) ? $config['SMSHTML']['CustomerOrderPlaced'] : null;
+$CustomerOrderPlacedsmsactive = isset($config['SMSHTML']['CustomerOrderPlaced']['smsactive']) ? $config['SMSHTML']['CustomerOrderPlaced']['smsactive'] : null;
 $CustomerOrderStatusChanged = isset($config['SMSHTML']['CustomerOrderStatusChanged']) ? $config['SMSHTML']['CustomerOrderStatusChanged'] : null;
+$CustomerOrderStatusChangedsmsactive = isset($config['SMSHTML']['CustomerOrderStatusChanged']['smsactive']) ? $config['SMSHTML']['CustomerOrderStatusChanged']['smsactive'] : null;
 $AdminCustomerSignup = isset($config['SMSHTML']['AdminCustomerSignup']) ? $config['SMSHTML']['AdminCustomerSignup'] : null;
 $AdminCustomerSignupScheduled = isset($config['SMSHTML']['AdminCustomerSignupScheduled']) ? $config['SMSHTML']['AdminCustomerSignupScheduled'] : null;
 $AdminOrderPlaced = isset($config['SMSHTML']['AdminOrderPlaced']) ? $config['SMSHTML']['AdminOrderPlaced'] : null;
 $AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) ? $config['SMSHTML']['AdminOrderReturnRequest'] : null;
 $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
-
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
@@ -224,7 +225,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignup" <?php if($smsactive==true) {echo "checked";} ?> />
+							<input type="checkbox" name="custsignup" <?php if($CustomerSignupsmsactive=='true') {echo "checked";} ?> />
 								<h4>New Customer Signup:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
@@ -251,7 +252,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignupverf" <?php if($smsactive==true) {echo "checked";} ?>/>
+							<input type="checkbox" name="custsignupverf" <?php if($CustomerSignupVerificationsmsactive=='true') {echo "checked";} ?>/>
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [verification_code].
@@ -278,7 +279,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custoderp" <?php if($smsactive==true) {echo "checked";} ?>/>
+							<input type="checkbox" name="custoderp" <?php if($CustomerOrderPlacedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
@@ -305,7 +306,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custorderschange"/>
+							<input type="checkbox" name="custorderschange" <?php if($CustomerOrderStatusChangedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>Order status changed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
