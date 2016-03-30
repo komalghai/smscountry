@@ -271,7 +271,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								Mobile No<input type="text" name="CustomerCustomerSignupmobile"/>
+								Mobile No<input type="text" name="CustomerCustomerSignupmobile" value="<?php echo $storeData->shop->phone; ?>"/>
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup','CustomerCustomerSignupmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup','custsignup');">Save</a>
 								&nbsp;&nbsp;
@@ -299,7 +299,8 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignupVerification');">Send Test SMS</a>
+								Mobile No<input type="text" name="CustomerCustomerSignupVerificationmobile" value="<?php echo $storeData->shop->phone; ?>"/>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignupVerification','CustomerCustomerSignupVerificationmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignupVerification','custsignupverf');">Save</a>
 								&nbsp;&nbsp;
 							</div>
@@ -326,7 +327,8 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderPlaced');">Send Test SMS</a>
+								Mobile No<input type="text" name="CustomerOrderPlacedmobile" value="<?php echo $storeData->shop->phone; ?>"/>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderPlaced','CustomerOrderPlacedmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderPlaced','custoderp');">Save</a>
 								&nbsp;&nbsp;
 							</div>
@@ -353,7 +355,8 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 							</div>
 							<div class="col-xs-11 text-right">
 								<p></p>
-								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged','custorderschange');">Send Test SMS</a>
+								Mobile No<input type="text" name="CustomerOrderStatusChangeddmobile" value="<?php echo $storeData->shop->phone; ?>"/>
+								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged','CustomerOrderStatusChangedmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderStatusChanged','custorderschange');">Save</a>
 								&nbsp;&nbsp;
 							</div>
