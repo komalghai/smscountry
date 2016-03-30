@@ -257,7 +257,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignup" <?php if($CustomerSignupsmsactive=='true') {echo "checked";} ?> />
+							Enable/Disable Sms Alert<input type="checkbox" name="custsignup" <?php if($CustomerSignupsmsactive=='true') {echo "checked";} ?> />
 								<h4>New Customer Signup:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
@@ -285,7 +285,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custsignupverf" <?php if($CustomerSignupVerificationsmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="custsignupverf" <?php if($CustomerSignupVerificationsmsactive=='true') {echo "checked";} ?>/>
 								<h4>New Customer Signup verification:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [verification_code].
@@ -313,7 +313,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custoderp" <?php if($CustomerOrderPlacedsmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="custoderp" <?php if($CustomerOrderPlacedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
@@ -341,7 +341,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="custorderschange" <?php if($CustomerOrderStatusChangedsmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="custorderschange" <?php if($CustomerOrderStatusChangedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>Order status changed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
@@ -374,7 +374,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 									</div>
 								</div>
 								<div class="col-xs-4">
-								<input type="checkbox" name="checkAdminCustomerSignup" <?php if($AdminCustomerSignupsmsactive=='true') {echo "checked";} ?>/>
+								Enable/Disable Sms Alert<input type="checkbox" name="checkAdminCustomerSignup" <?php if($AdminCustomerSignupsmsactive=='true') {echo "checked";} ?>/>
 									<h5>Single Customer Signup:</h5>
 									<code class="code">
 										You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname].
@@ -401,7 +401,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 									</div>
 								</div>
 								<div class="col-xs-4">
-								<input type="checkbox" name="checkAdminCustomerSignupScheduled" <?php if($AdminCustomerSignupScheduledsmsactive=='true') {echo "checked";} ?>/>
+								Enable/Disable Sms Alert<input type="checkbox" name="checkAdminCustomerSignupScheduled" <?php if($AdminCustomerSignupScheduledsmsactive=='true') {echo "checked";} ?>/>
 									<h5>Daily, weekly or Monthly signups:</h5>
 									<code class="code">
 										You can use following variables: <br>[shop_name], [shop_domain], [customer_count].
@@ -435,7 +435,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="checkAdminOrderPlaced" <?php if($AdminOrderPlacedsmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="checkAdminOrderPlaced" <?php if($AdminOrderPlacedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>New Order Placed:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_status].
@@ -462,7 +462,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="checkAdminOrderReturnRequest" <?php if($AdminOrderReturnRequestsmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="checkAdminOrderReturnRequest" <?php if($AdminOrderReturnRequestsmsactive=='true') {echo "checked";} ?>/>
 								<h4>Order Return Request:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_address],[customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_status],[return_product_name],[return_reason].
@@ -489,7 +489,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								</div>
 							</div>
 							<div class="col-xs-4">
-							<input type="checkbox" name="checkAdminContactInquiry" <?php if($AdminContactInquirysmsactive=='true') {echo "checked";} ?>/>
+							Enable/Disable Sms Alert<input type="checkbox" name="checkAdminContactInquiry" <?php if($AdminContactInquirysmsactive=='true') {echo "checked";} ?>/>
 								<h4>Contact Inquiry:</h4>
 								<code class="code">
 									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname],[customer_email],[customer_message].
