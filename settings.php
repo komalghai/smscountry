@@ -9,7 +9,7 @@ $access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SH
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
-echo '<pre>';print_r($config); echo'</pre>';
+//echo '<pre>';print_r($config); echo'</pre>';
 $config = unserialize($config['data']);
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 echo $CustomerSignupsmsactive = isset($config['smsactive']['CustomerCustomerSignup']) ? $config['smsactive']['CustomerCustomerSignup'] : null;
@@ -87,7 +87,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 			else {
 			var mobilenumber=mobileno;
 			}
-			alert(mobilenumber);
+			//alert(mobilenumber);
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
@@ -112,11 +112,11 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
-			alert(jQuery(document).find('input[name="'+check+'"]:checked'));
-			alert(jQuery(document).find('input[name="'+check+'"]:checked').length);
+		//	alert(jQuery(document).find('input[name="'+check+'"]:checked'));
+		//	alert(jQuery(document).find('input[name="'+check+'"]:checked').length);
 			if(jQuery(document).find('input[name="'+check+'"]').is(":checked"))
 			{ active=true; }
-			alert(active);
+		//	alert(active);
 			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),active);
 		}
 		
