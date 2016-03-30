@@ -80,7 +80,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 		function sendTestSMS(_type,mobileno){
 			if((_type =='') || (jQuery(document).find('textarea[name="'+_type+'"]').val() == '')) return;
 			jQuery('#testSMSLoader').fadeIn();
-			var mobileno = jQuery(document).find('input[name="'+mobileno+'"]').val());
+			var mobileno = jQuery(document).find('input[name="'+mobileno+'"]').val();
 			if(mobileno==''){
 			var mobilenumber='<?php echo $storeData->shop->phone; ?>';
 			}
