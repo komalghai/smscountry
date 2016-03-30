@@ -333,7 +333,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 					</div>
 					<div id="admin-sms-alerts" class="nav-content">
 						<div class="admin-customer-signup customer-alerts">
-						<input type="checkbox" name="checkAdminCustomerSignup" <?php if($AdminCustomerSignupsmsactive=='true') {echo "checked";} ?>/>
+						
 							<h4>New Customer Signup:</h4>
 							<div class="col-xs-12">
 								<div id="AdminCustomerSignupLoader" style="display: none;" class="loader">
@@ -358,7 +358,7 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 								<div class="col-xs-11 text-right">
 									<p></p>
 									<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminCustomerSignup','checkAdminCustomerSignup');">Send Test SMS</a>
-									<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminCustomerSignup');">Save</a>
+									<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminCustomerSignup','checkAdminCustomerSignup');">Save</a>
 									&nbsp;&nbsp;
 								</div>
 							</div>
