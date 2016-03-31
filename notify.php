@@ -124,8 +124,84 @@ if(!empty($action)){
 			
 			break;
 		case 'order_updated':
-			$data=serialize($data);
-			pg_query($db, "UPDATE debug SET `value` = '{$data}' WHERE key = 'order_status_changed'");
+			//$data=serialize($data);
+			//pg_query($db, "UPDATE debug SET `value` = '{$data}' WHERE key = 'order_status_changed'");
+			if($data->confirmed=='true') {
+						$order_status="Order Confirmed";
+					}
+					else{
+						$order_status="Order pending";
+					}
+					
+			if(!empty($data->default_address->phone) && $CustomerOrderPlacedsmsactive=="true" ){
+				$recipient_name = $data->default_address->name;
+				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
+				if(!empty($customerMessage)){
+					
+					$customVariables = array(
+							'[shop_name]' => $storeData->shop->name,
+							'[shop_domain]' => $storeData->shop->domain,
+							'[customer_firstname]' => $data->shipping_address->first_name,
+							'[customer_lastname]' => $data->shipping_address->last_name,
+							'[customer_address]' => $data->shipping_address->address1,
+							'[customer_postcode]'=>$data->shipping_address->zip,
+		                    '[customer_city]'=>$data->shipping_address->city,
+							'[customer_country]'=>$data->shipping_address->country,
+							'[order_id]'=>$data->order_number,
+							'[order_total]'=>$data->total_price,
+							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
+							'[order_old_status]'=>$data->$order_status,
+							'[order_new_status]'=>$data->$financial_status,
+						);
+					foreach($customVariables as $find => $replace){
+						$customerMessage = str_replace($find, $replace, $customerMessage);
+					}
+					if($data->cancelled_at!="null") {
+						$cancel=$data->cancelled_at;
+						$cancel_reason=$data->cancel_reason;
+						$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
+						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrdercancel');
+					}
+					else{
+						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+					}
+				}
+			}
+			if(!empty($storeData->shop->phone) && $AdminOrderPlacedsmsactive=="true"){
+				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['$AdminOrderStatusChanged']);
+				if(!empty($adminMessage)){
+					$customVariables = array(
+							
+							'[shop_name]' => $storeData->shop->name,
+							'[shop_domain]' => $storeData->shop->domain,
+							'[customer_firstname]' => $data->shipping_address->first_name,
+							'[customer_lastname]' => $data->shipping_address->last_name,
+							'[customer_address]' => $data->shipping_address->address1,
+							'[customer_postcode]'=>$data->shipping_address->zip,
+		                    '[customer_city]'=>$data->shipping_address->city,
+							'[customer_country]'=>$data->shipping_address->country,
+							'[order_id]'=>$data->order_number,
+							'[order_total]'=>$data->total_price,
+							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
+							'[order_old_status]'=>$data->$order_status,
+							'[order_new_status]'=>$data->$financial_status,
+						
+						);
+					foreach($customVariables as $find => $replace){
+						$adminMessage = str_replace($find, $replace, $adminMessage);
+					}
+					if($data->cancelled_at!="null") {
+						$cancel=$data->cancelled_at;
+						$cancel_reason=$data->cancel_reason;
+						$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$AdminOrderStatusChanged']);
+						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrdercancel');
+					}
+					else{
+						sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminOrderStatusChanged');
+					}
+					
+				}
+			}
 			break;
 		case 'app_uninstalled':
 			pg_query($db, "DELETE FROM configuration WHERE store = '{$store}'");
