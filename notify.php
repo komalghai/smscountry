@@ -124,7 +124,8 @@ if(!empty($action)){
 			
 			break;
 		case 'order_updated':
-			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_status_changed'");
+			$data=serialize($data);
+			pg_query($db, "UPDATE debug SET `value` = '{$data}' WHERE key = 'order_status_changed'");
 			break;
 		case 'app_uninstalled':
 			pg_query($db, "DELETE FROM configuration WHERE store = '{$store}'");
