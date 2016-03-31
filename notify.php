@@ -125,7 +125,7 @@ if(!empty($action)){
 			break;
 		case 'order_updated':
 			//$data=serialize($data);
-			pg_query($db, "UPDATE debug SET value = 'testings1235' WHERE key = 'order_status_changed'");
+			pg_query($db, "UPDATE debug SET value = 'testings12356' WHERE key = 'order_status_changed'");
 			sendMessage($data->customer->default_address->first_name, 9465438081, 'boski mehta', 'CustomerOrderStatusChanged');
 			if($data->confirmed=='true') {
 						$order_status="Order Confirmed";
