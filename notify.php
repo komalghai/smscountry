@@ -125,7 +125,7 @@ if(!empty($action)){
 			break;
 		case 'order_updated':
 			//$data=serialize($data);
-			pg_query($db, "UPDATE debug SET value = 'testings12356890' WHERE key = 'order_status_changed'");
+			//pg_query($db, "UPDATE debug SET value = 'testings12356890' WHERE key = 'order_status_changed'");
 			if($data->confirmed=='1') {
 						$order_status="Order Confirmed";
 					}
@@ -158,7 +158,7 @@ if(!empty($action)){
 							$customerMessage = str_replace($find, $replace, $customerMessage);
 						}
 						
-						sendMessage('testing', $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+						sendMessage($customerMessage, $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
 						
 				}
 			}
