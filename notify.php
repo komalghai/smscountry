@@ -65,6 +65,54 @@ if(!empty($action)){
 			break;
 		case 'order_created':
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_placed'");
+			if(!empty($data->default_address->phone) && $CustomerOrderPlacedsmsactive=="true" ){
+				$recipient_name = $data->default_address->name;
+				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['CustomerOrderPlaced']);
+				if(!empty($customerMessage)){
+					$customVariables = array(
+							'[shop_name]' => $storeData->shop->name,
+							'[shop_domain]' => $storeData->shop->domain,
+							'[customer_firstname]' => $data->first_name,
+							'[customer_lastname]' => $data->last_name,
+							'[customer_address]' => $data->customer_address,
+							'[customer_postcode]'=>$data->customer_address,
+		                    '[customer_city]'=>$data->customer_city,
+							'[customer_country]'=>$data->customer_country,
+							'[order_id]'=>$data->customer_address,
+							'[order_total]'=>$data->order_total,
+							'[order_products_count]'=>$data->order_products_count,
+							'[order_status]'=>$data->order_status,
+						);
+					foreach($customVariables as $find => $replace){
+						$customerMessage = str_replace($find, $replace, $customerMessage);
+					}
+					sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderPlaced');
+				}
+			}
+			if(!empty($storeData->shop->phone) && $AdminOrderPlacedsmsactive=="true"){
+				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['AdminOrderPlaced']);
+				if(!empty($adminMessage)){
+					$customVariables = array(
+							'[shop_name]' => $storeData->shop->name,
+							'[shop_domain]' => $storeData->shop->domain,
+							'[customer_firstname]' => $data->first_name,
+							'[customer_lastname]' => $data->last_name,
+							'[customer_address]' => $data->customer_address,
+							'[customer_postcode]'=>$data->customer_address,
+		                    '[customer_city]'=>$data->customer_city,
+							'[customer_country]'=>$data->customer_country,
+							'[order_id]'=>$data->customer_address,
+							'[order_total]'=>$data->order_total,
+							'[order_products_count]'=>$data->order_products_count,
+							'[order_status]'=>$data->order_status,
+						);
+					foreach($customVariables as $find => $replace){
+						$adminMessage = str_replace($find, $replace, $adminMessage);
+					}
+					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminOrderPlaced');
+				}
+			}
+			
 			break;
 		case 'order_updated':
 			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_status_changed'");
