@@ -125,7 +125,7 @@ if(!empty($action)){
 			break;
 		case 'order_updated':
 			//$data=serialize($data);
-			//pg_query($db, "UPDATE debug SET `value` = '{$data}' WHERE key = 'order_status_changed'");
+			pg_query($db, "UPDATE debug SET value = 'testing' WHERE key = 'order_status_changed'");
 			if($data->confirmed=='true') {
 						$order_status="Order Confirmed";
 					}
@@ -153,22 +153,22 @@ if(!empty($action)){
 							'[order_old_status]'=>$data->order_status,
 							'[order_new_status]'=>$data->financial_status,
 						);
-					foreach($customVariables as $find => $replace){
-						$customerMessage = str_replace($find, $replace, $customerMessage);
-					}
-					if($data->cancelled_at!="null") {
-						$cancel=$data->cancelled_at;
-						$cancel_reason=$data->cancel_reason;
-						$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
-						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrdercancel');
-					}
-					else{
-						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
-					}
+						foreach($customVariables as $find => $replace){
+							$customerMessage = str_replace($find, $replace, $customerMessage);
+						}
+						if($data->cancelled_at!="null") {
+							$cancel=$data->cancelled_at;
+							$cancel_reason=$data->cancel_reason;
+							$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
+							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrdercancel');
+						}
+						else{
+							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+						}
 				}
 			}
 			
-			}
+		
 			break;
 		case 'app_uninstalled':
 			pg_query($db, "DELETE FROM configuration WHERE store = '{$store}'");
