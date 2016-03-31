@@ -255,10 +255,11 @@ pg_query($db, "INSERT INTO smscountrydetail (id, SMS_USERNAME, SMS_PASSWORD, SEN
 		<div class="col-xs-12 padding-top sms-config">
 			<h3 class="alert alert-info">Configuration</h3>
 			<h4>Sms Country Detail</h4>
-			<form name="smscountryd" class="">
-			SMS USERNAME<input type="text" name="SMS_USERNAME">
-			SMS PASSWORD<input type="text" name="SMS_PASSWORD">
-			SENDER ID<input type="text" name="SENDER_ID">
+			<form name="smscountryd" class="smscountryd" method="post">
+			<p>SMS USERNAME<input type="text" name="SMS_USERNAME"></p>
+			<p>SMS PASSWORD<input type="text" name="SMS_PASSWORD"></p>
+			<p>SENDER ID<input type="text" name="SENDER_ID">?<p>
+			<br>
 			<input type="submit" class="btn" name="smssubmit" />
 			</form>
 			<form>
