@@ -133,7 +133,7 @@ if(!empty($action)){
 						$order_status="Order pending";
 					}
 					
-			if(!empty($data->default_address->phone) && $CustomerOrderPlacedsmsactive=="true" ){
+			if(!empty($data->default_address->phone) && $CustomerOrderStatusChangedsmsactive=="true" ){
 				$recipient_name = $data->default_address->name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
 				if(!empty($customerMessage)){
@@ -150,8 +150,8 @@ if(!empty($action)){
 							'[order_id]'=>$data->order_number,
 							'[order_total]'=>$data->total_price,
 							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
-							'[order_old_status]'=>$data->$order_status,
-							'[order_new_status]'=>$data->$financial_status,
+							'[order_old_status]'=>$data->order_status,
+							'[order_new_status]'=>$data->financial_status,
 						);
 					foreach($customVariables as $find => $replace){
 						$customerMessage = str_replace($find, $replace, $customerMessage);
@@ -167,7 +167,7 @@ if(!empty($action)){
 					}
 				}
 			}
-			if(!empty($storeData->shop->phone) && $AdminOrderPlacedsmsactive=="true"){
+			if(!empty($storeData->shop->phone) && $AdminStatusChangedsmsactive=="true"){
 				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['$AdminOrderStatusChanged']);
 				if(!empty($adminMessage)){
 					$customVariables = array(
@@ -183,8 +183,8 @@ if(!empty($action)){
 							'[order_id]'=>$data->order_number,
 							'[order_total]'=>$data->total_price,
 							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
-							'[order_old_status]'=>$data->$order_status,
-							'[order_new_status]'=>$data->$financial_status,
+							'[order_old_status]'=>$data->order_status,
+							'[order_new_status]'=>$data->financial_status,
 						
 						);
 					foreach($customVariables as $find => $replace){
