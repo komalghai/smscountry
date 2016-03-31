@@ -32,7 +32,7 @@ $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry'
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 $config= pg_query($db, "SELECT * FROM debug where id =5");
 $config = pg_fetch_assoc($config);
-echo '<pre>hello';print_r($config); echo'</pre>';
+//echo '<pre>hello';print_r($config); echo'</pre>';
 ?>
 <!DOCTYPE html>
 <html>
@@ -347,7 +347,7 @@ echo '<pre>hello';print_r($config); echo'</pre>';
 							Enable/Disable Sms Alert <input type="checkbox" name="custorderschange" <?php if($CustomerOrderStatusChangedsmsactive=='true') {echo "checked";} ?>/>
 								<h4>Order status changed:</h4>
 								<code class="code">
-									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date].
+									You can use following variables: <br>[shop_name], [shop_domain], [customer_firstname], [customer_lastname], [customer_address], [customer_postcode],[customer_city],[customer_country],[order_id],[order_total],[order_products_count],[order_old_status],[order_new_status],[order_date][financial_status].
 								</code>
 							</div>
 							<div class="col-xs-6">
