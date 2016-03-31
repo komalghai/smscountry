@@ -30,6 +30,7 @@ $AdminOrderReturnRequestsmsactive = isset($config['smsactive']['AdminOrderReturn
 $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
+echo pg_query($db, "SELECT * FROM debug where key=order_placed");
 ?>
 <!DOCTYPE html>
 <html>
