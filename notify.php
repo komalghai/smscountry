@@ -64,24 +64,31 @@ if(!empty($action)){
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
+		if($data->confirmed=='true') {
+						$order_status="Order Confirmed";
+					}
+					else{
+						$order_status="Order pending";
+					}
 			//pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_placed'");
 			if(!empty($data->default_address->phone) && $CustomerOrderPlacedsmsactive=="true" ){
 				$recipient_name = $data->default_address->name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['CustomerOrderPlaced']);
 				if(!empty($customerMessage)){
+					
 					$customVariables = array(
 							'[shop_name]' => $storeData->shop->name,
 							'[shop_domain]' => $storeData->shop->domain,
-							'[customer_firstname]' => $data->first_name,
-							'[customer_lastname]' => $data->last_name,
-							'[customer_address]' => $data->customer_address,
-							'[customer_postcode]'=>$data->customer_address,
-		                    '[customer_city]'=>$data->customer_city,
-							'[customer_country]'=>$data->customer_country,
-							'[order_id]'=>$data->customer_address,
-							'[order_total]'=>$data->order_total,
-							'[order_products_count]'=>$data->order_products_count,
-							'[order_status]'=>$data->order_status,
+							'[customer_firstname]' => $data->shipping_address->first_name,
+							'[customer_lastname]' => $data->shipping_address->last_name,
+							'[customer_address]' => $data->shipping_address->address1,
+							'[customer_postcode]'=>$data->shipping_address->zip,
+		                    '[customer_city]'=>$data->shipping_address->city,
+							'[customer_country]'=>$data->shipping_address->country,
+							'[order_id]'=>$data->order_number,
+							'[order_total]'=>$data->total_price,
+							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
+							'[order_status]'=>$order_status,
 						);
 					foreach($customVariables as $find => $replace){
 						$customerMessage = str_replace($find, $replace, $customerMessage);
@@ -93,18 +100,20 @@ if(!empty($action)){
 				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['AdminOrderPlaced']);
 				if(!empty($adminMessage)){
 					$customVariables = array(
+							
 							'[shop_name]' => $storeData->shop->name,
 							'[shop_domain]' => $storeData->shop->domain,
-							'[customer_firstname]' => $data->first_name,
-							'[customer_lastname]' => $data->last_name,
-							'[customer_address]' => $data->customer_address,
-							'[customer_postcode]'=>$data->customer_address,
-		                    '[customer_city]'=>$data->customer_city,
-							'[customer_country]'=>$data->customer_country,
-							'[order_id]'=>$data->customer_address,
-							'[order_total]'=>$data->order_total,
-							'[order_products_count]'=>$data->order_products_count,
-							'[order_status]'=>$data->order_status,
+							'[customer_firstname]' => $data->shipping_address->first_name,
+							'[customer_lastname]' => $data->shipping_address->last_name,
+							'[customer_address]' => $data->shipping_address->address1,
+							'[customer_postcode]'=>$data->shipping_address->zip,
+		                    '[customer_city]'=>$data->shipping_address->city,
+							'[customer_country]'=>$data->shipping_address->country,
+							'[order_id]'=>$data->order_number,
+							'[order_total]'=>$data->total_price,
+							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
+							'[order_status]'=>$order_status,
+						
 						);
 					foreach($customVariables as $find => $replace){
 						$adminMessage = str_replace($find, $replace, $adminMessage);
