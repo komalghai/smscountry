@@ -41,7 +41,7 @@ if(isset($_REQUEST['smssubmit'])){
 	$SMS_USERNAME=$_REQUEST['SMS_USERNAME'];
 	$SMS_PASSWORD=$_REQUEST['SMS_PASSWORD'];
 	$SENDER_ID=$_REQUEST['SENDER_ID'];
-pg_query($db, "INSERT INTO smscountrydetail (id, SMS_USERNAME, SMS_PASSWORD, SENDER_ID) VALUES ('{$lastID}','{$SMS_USERNAME}', '{$SMS_PASSWORD}', '{$SENDER_ID}')");
+echo pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('{$lastID}','{$SMS_USERNAME}', '{$SMS_PASSWORD}', '{$SENDER_ID}')");
 }
 ?>
 <!DOCTYPE html>
@@ -258,7 +258,7 @@ pg_query($db, "INSERT INTO smscountrydetail (id, SMS_USERNAME, SMS_PASSWORD, SEN
 			<form name="smscountryd" class="smscountryd" method="post">
 			<p>SMS USERNAME<input type="text" name="SMS_USERNAME"></p>
 			<p>SMS PASSWORD<input type="text" name="SMS_PASSWORD"></p>
-			<p>SENDER ID<input type="text" name="SENDER_ID">?<p>
+			<p>SENDER ID<input type="text" name="SENDER_ID"></p>
 			<br>
 			<input type="submit" class="btn" name="smssubmit" />
 			</form>
