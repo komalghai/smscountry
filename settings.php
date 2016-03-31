@@ -33,16 +33,6 @@ $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 $config= pg_query($db, "SELECT * FROM debug where id =5");
 $config = pg_fetch_assoc($config);
 //echo '<pre>hello';print_r($config); echo'</pre>';
-if(isset($_REQUEST['smssubmit'])){
-	$lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
-		$lastID = pg_fetch_assoc($lastRow);
-		$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
-		$lastID = $lastID + 1;
-	$SMS_USERNAME=$_REQUEST['SMS_USERNAME'];
-	$SMS_PASSWORD=$_REQUEST['SMS_PASSWORD'];
-	$SENDER_ID=$_REQUEST['SENDER_ID'];
-echo pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('{$lastID}','{$SMS_USERNAME}', '{$SMS_PASSWORD}', '{$SENDER_ID}')");
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,7 +111,33 @@ echo pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password
 				}
 			});
 		}
-		
+		function smscontrydetail(SMS_USERNAME,SMS_PASSWORD,SENDER_ID){
+			var SMS_USERNAME=jQuery(document).find('text[name="'+SMS_USERNAME+'"]').val();
+			var SMS_PASSWORD=jQuery(document).find('text[name="'+SMS_PASSWORD+'"]').val();
+			var SENDER_ID=jQuery(document).find('text[name="'+SENDER_ID+'"]').val();
+			alert(SMS_USERNAME +SMS_PASSWORD +SENDER_ID);
+			return savesmscontrydetail(SMS_USERNAME, SMS_PASSWORD,SENDER_ID);
+		}
+		function savesmscontrydetail(SMS_USERNAME, SMS_PASSWORD,SENDER_ID){
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'savesmscontrydetail',
+					store: '<?php echo $_REQUEST['shop']; ?>',
+					SMS_USERNAME: SMS_USERNAME,
+					SMS_PASSWORD: SMS_PASSWORD,
+					SENDER_ID:SENDER_ID,
+				},
+				success: function(response){
+					alert('data save');
+					//jQuery('#'+_key+'Loader').fadeOut();
+				},
+				error: function(response){
+					alert(response);
+				}
+			});
+		}
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
@@ -255,12 +271,12 @@ echo pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password
 		<div class="col-xs-12 padding-top sms-config">
 			<h3 class="alert alert-info">Configuration</h3>
 			<h4>Sms Country Detail</h4>
-			<form name="smscountryd" class="smscountryd" method="post">
+			<form>
 			<p>SMS USERNAME<input type="text" name="SMS_USERNAME"></p>
 			<p>SMS PASSWORD<input type="text" name="SMS_PASSWORD"></p>
 			<p>SENDER ID<input type="text" name="SENDER_ID"></p>
 			<br>
-			<input type="submit" class="btn" name="smssubmit" />
+			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('SMS_USERNAME','SMS_PASSWORD','SENDER_ID');">Save</a>
 			</form>
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
