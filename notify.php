@@ -172,7 +172,7 @@ if(!empty($action)){
 						else{
 							sendMessage($customerMessage, $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
 						} */ 
-						sendMessage($customerMessage, $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+						sendMessage('testing', $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
 						
 				}
 			}
