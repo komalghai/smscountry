@@ -62,7 +62,22 @@ if(!empty($action)){
 			$message = urlencode($message);
 			sendTestMessage($message, $mobilenumber);
 			break;
-			
+			case 'savesmscontrydetail':
+			$SMS_USERNAME = $_REQUEST['SMS_USERNAME'];
+			$SMS_PASSWORD = $_REQUEST['SMS_PASSWORD'];
+			$SENDER_ID = $_REQUEST['SENDER_ID'];
+			$lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
+		$lastID = pg_fetch_assoc($lastRow);
+		$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
+		$lastID = $lastID + 1;
+	
+	$inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('{$lastID}','{$SMS_USERNAME}', '{$SMS_PASSWORD}', '{$SENDER_ID}')");
+	if($inserted){
+					exit('1');
+				} else {
+					exit('0');
+				}
+			break;
 		default:
 			break;
 		
