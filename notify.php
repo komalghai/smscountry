@@ -64,7 +64,7 @@ if(!empty($action)){
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
 			break;
 		case 'order_created':
-			pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_placed'");
+			//pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'order_placed'");
 			if(!empty($data->default_address->phone) && $CustomerOrderPlacedsmsactive=="true" ){
 				$recipient_name = $data->default_address->name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['CustomerOrderPlaced']);
