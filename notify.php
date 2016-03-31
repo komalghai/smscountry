@@ -153,6 +153,7 @@ if(!empty($action)){
 							'[order_old_status]'=>$data->order_status,
 							'[order_new_status]'=>$data->fulfillment_status,
 							'[financial_status]'=>$data->financial_status,
+							'[order_date]'=>$data->updated_at,
 						);
 						foreach($customVariables as $find => $replace){
 							$customerMessage = str_replace($find, $replace, $customerMessage);
