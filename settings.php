@@ -32,7 +32,7 @@ $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry'
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 $config= pg_query($db, "SELECT * FROM debug where key=order_placed");
 $config = pg_fetch_assoc($config);
-echo '<pre>';print_r($config); echo'</pre>';
+echo '<pre>hello';print_r($config); echo'</pre>';
 ?>
 <!DOCTYPE html>
 <html>
