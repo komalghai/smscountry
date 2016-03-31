@@ -157,7 +157,7 @@ if(!empty($action)){
 						foreach($customVariables as $find => $replace){
 							$customerMessage = str_replace($find, $replace, $customerMessage);
 						}
-						if($data->cancelled_at!="null") {
+						/* if($data->cancelled_at!="null") {
 							$cancel=$data->cancelled_at;
 							$cancel_reason=$data->cancel_reason;
 							$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
@@ -165,7 +165,8 @@ if(!empty($action)){
 						}
 						else{
 							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
-						}
+						} */
+						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
 				}
 			}
 			
