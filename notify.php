@@ -126,7 +126,7 @@ if(!empty($action)){
 		case 'order_updated':
 			//$data=serialize($data);
 			pg_query($db, "UPDATE debug SET value = 'testings1235' WHERE key = 'order_status_changed'");
-			sendMessage(serialize($data), 9465438081, 'boski mehta', 'CustomerOrderStatusChanged');
+			sendMessage($data->customer->default_address->first_name, 9465438081, 'boski mehta', 'CustomerOrderStatusChanged');
 			if($data->confirmed=='true') {
 						$order_status="Order Confirmed";
 					}
@@ -134,8 +134,8 @@ if(!empty($action)){
 						$order_status="Order pending";
 					}
 					
-			if(!empty($data->default_address->phone) && $CustomerOrderStatusChangedsmsactive=="true" ){
-				$recipient_name = $data->default_address->name;
+			if(!empty($data->default_address->stdClass->phone) && $CustomerOrderStatusChangedsmsactive=="true" ){
+				$recipient_name = $data->default_address->stdClass->name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
 				if(!empty($customerMessage)){
 					
@@ -152,7 +152,7 @@ if(!empty($action)){
 							'[order_total]'=>$data->total_price,
 							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
 							'[order_old_status]'=>$data->order_status,
-							'[order_new_status]'=>$data->financial_status,
+							'[order_new_status]'=>$data->fulfillment_status,
 						);
 						foreach($customVariables as $find => $replace){
 							$customerMessage = str_replace($find, $replace, $customerMessage);
@@ -166,7 +166,7 @@ if(!empty($action)){
 						else{
 							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
 						} */
-						sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+						sendMessage($customerMessage, $data->default_address->stdClass->phone, $recipient_name, 'CustomerOrderStatusChanged');
 				}
 			}
 			
