@@ -125,48 +125,49 @@ if(!empty($action)){
 			break;
 		case 'order_updated':
 			//$data=serialize($data);
-			pg_query($db, "UPDATE debug SET value = 'testings12356' WHERE key = 'order_status_changed'");
-			sendMessage($data->customer->default_address->first_name, 9465438081, 'boski mehta', 'CustomerOrderStatusChanged');
-			if($data->confirmed=='true') {
+			pg_query($db, "UPDATE debug SET value = 'testings1235689' WHERE key = 'order_status_changed'");
+			sendMessage($data->customer->default_address->phone, 9465438081, 'boski mehta', 'CustomerOrderStatusChanged');
+			if($data->confirmed=='1') {
 						$order_status="Order Confirmed";
 					}
 					else{
 						$order_status="Order pending";
 					}
 					
-			if(!empty($data->default_address->stdClass->phone) && $CustomerOrderStatusChangedsmsactive=="true" ){
-				$recipient_name = $data->default_address->stdClass->name;
+			if(!empty($data->customer->default_address->phone) && $CustomerOrderStatusChangedsmsactive=="true" ){
+				$recipient_name = $data->customer->default_address->first_name;
 				$customerMessage = str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
 				if(!empty($customerMessage)){
 					
 					$customVariables = array(
 							'[shop_name]' => $storeData->shop->name,
 							'[shop_domain]' => $storeData->shop->domain,
-							'[customer_firstname]' => $data->shipping_address->first_name,
-							'[customer_lastname]' => $data->shipping_address->last_name,
-							'[customer_address]' => $data->shipping_address->address1,
-							'[customer_postcode]'=>$data->shipping_address->zip,
-		                    '[customer_city]'=>$data->shipping_address->city,
-							'[customer_country]'=>$data->shipping_address->country,
+							'[customer_firstname]' => $data->customer->default_address->first_name,
+							'[customer_lastname]' => $data->customer->default_address->last_name,
+							'[customer_address]' => $data->customer->default_address->address1,
+							'[customer_postcode]'=>$data->customer->default_address->zip,
+		                    '[customer_city]'=>$data->customer->default_address->city,
+							'[customer_country]'=>$data->customer->default_address->country,
 							'[order_id]'=>$data->order_number,
 							'[order_total]'=>$data->total_price,
 							'[order_products_count]'=>$data->line_items->fulfillable_quantity,
 							'[order_old_status]'=>$data->order_status,
 							'[order_new_status]'=>$data->fulfillment_status,
+							'[financial_status]'=>$data->financial_status,
 						);
 						foreach($customVariables as $find => $replace){
 							$customerMessage = str_replace($find, $replace, $customerMessage);
 						}
-						/* if($data->cancelled_at!="null") {
+						 if($data->cancelled_at!="null") {
 							$cancel=$data->cancelled_at;
 							$cancel_reason=$data->cancel_reason;
 							$customerMessage='Your order is canceled'.$cancel_reason.str_replace('<br>', '\n', $config['SMSHTML']['$CustomerOrderStatusChanged']);
-							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrdercancel');
+							sendMessage($customerMessage, $data->customer->default_address->phone, $recipient_name, 'CustomerOrdercancel');
 						}
 						else{
-							sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
-						} */
-						sendMessage($customerMessage, $data->default_address->stdClass->phone, $recipient_name, 'CustomerOrderStatusChanged');
+							sendMessage($customerMessage, $data->customer->default_address->phone, $recipient_name, 'CustomerOrderStatusChanged');
+						} 
+						
 				}
 			}
 			
