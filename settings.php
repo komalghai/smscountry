@@ -127,7 +127,7 @@ $sender_id=$config['sender_id'];
 		   }
 		}
 		function savesmscontrydetail(sms_username, sms_password,sender_id){
-			Query('#smscountrydetail2').fadeIn();
+			jQuery('#smscountrydetail2').fadeIn();
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
