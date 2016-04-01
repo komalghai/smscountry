@@ -66,13 +66,21 @@ if(!empty($action)){
 			$sms_username = $_REQUEST['sms_username'];
 			$sms_password = $_REQUEST['sms_password'];
 			$sender_id = $_REQUEST['sender_id'];
+			$store = $_REQUEST['store'];
 			 $lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
 		$lastID = pg_fetch_assoc($lastRow);
 		$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
 		$lastID = $lastID + 1; 
 	echo "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('1','{$sms_username}', '{$sms_password}', '{$sender_id}')";
-	echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}')");
-	if($inserted){
+	$storeexist = pg_query($db, "SELECT store FROM smscountrydetail  limit 1");
+	$storeexist = pg_fetch_assoc($storeexist);
+	if((pg_num_rows($lastRow) > 0)){
+	$updated1 = pg_query($db, "UPDATE smscountrydetail SET sms_username = '{$sms_username}' ,sms_password='{$sms_password}' , sender_id='{$sender_id}',store='{$store}'  WHERE store = '{$store}'");	
+	}
+	else {
+	echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id,store) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}','{$store}')");
+	}
+	if($inserted  or $updated1){
 					exit('1');
 				} else {
 					exit('0');
