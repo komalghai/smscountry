@@ -111,23 +111,23 @@ $config = pg_fetch_assoc($config);
 				}
 			});
 		}
-		function smscontrydetail(SMS_USERNAME,SMS_PASSWORD,SENDER_ID){
-			var SMS_USERNAME=jQuery(document).find('text[name="'+SMS_USERNAME+'"]').val();
-			var SMS_PASSWORD=jQuery(document).find('text[name="'+SMS_PASSWORD+'"]').val();
-			var SENDER_ID=jQuery(document).find('text[name="'+SENDER_ID+'"]').val();
-			alert(SMS_USERNAME +SMS_PASSWORD +SENDER_ID);
-			return savesmscontrydetail(SMS_USERNAME, SMS_PASSWORD,SENDER_ID);
+		function smscontrydetail(sms_username,sms_password,sender_id){
+			var sms_username=jQuery(document).find('input[name="'+sms_username+'"]').val();
+			var sms_password=jQuery(document).find('input[name="'+sms_password+'"]').val();
+			var sender_id=jQuery(document).find('input[name="'+sender_id+'"]').val();
+			alert(sms_username +sms_password +sender_id);
+			return savesmscontrydetail(sms_username, sms_password,sender_id);
 		}
-		function savesmscontrydetail(SMS_USERNAME, SMS_PASSWORD,SENDER_ID){
+		function savesmscontrydetail(sms_username, sms_password,sender_id){
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
 				data: {
 					action: 'savesmscontrydetail',
 					store: '<?php echo $_REQUEST['shop']; ?>',
-					SMS_USERNAME: SMS_USERNAME,
-					SMS_PASSWORD: SMS_PASSWORD,
-					SENDER_ID:SENDER_ID,
+					sms_username: sms_username,
+					sms_password: sms_password,
+					sender_id:sender_id,
 				},
 				success: function(response){
 					alert('data save');
@@ -272,11 +272,11 @@ $config = pg_fetch_assoc($config);
 			<h3 class="alert alert-info">Configuration</h3>
 			<h4>Sms Country Detail</h4>
 			<form>
-			<p>SMS USERNAME<input type="text" name="SMS_USERNAME"></p>
-			<p>SMS PASSWORD<input type="text" name="SMS_PASSWORD"></p>
-			<p>SENDER ID<input type="text" name="SENDER_ID"></p>
+			<p>SMS USERNAME<input type="text" name="sms_username"></p>
+			<p>SMS PASSWORD<input type="text" name="sms_password"></p>
+			<p>SENDER ID<input type="text" name="sender_id"></p>
 			<br>
-			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('SMS_USERNAME','SMS_PASSWORD','SENDER_ID');">Save</a>
+			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
 			</form>
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
