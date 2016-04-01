@@ -66,12 +66,12 @@ if(!empty($action)){
 			$sms_username = $_REQUEST['sms_username'];
 			$sms_password = $_REQUEST['sms_password'];
 			$sender_id = $_REQUEST['sender_id'];
-			/* $lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
+			 $lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
 		$lastID = pg_fetch_assoc($lastRow);
 		$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
-		$lastID = $lastID + 1; */
+		$lastID = $lastID + 1; 
 	echo "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('1','{$sms_username}', '{$sms_password}', '{$sender_id}')";
-	echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('1','{$sms_username}', '{$sms_password}', '{$sender_id}')");
+	echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}')");
 	if($inserted){
 					exit('1');
 				} else {
