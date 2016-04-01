@@ -68,25 +68,42 @@ if(!empty($action)){
 			$sender_id = $_REQUEST['sender_id'];
 			$store = $_REQUEST['store'];
 			 $lastRow = pg_query($db, "SELECT id FROM smscountrydetail ORDER by id DESC limit 1");
-		$lastID = pg_fetch_assoc($lastRow);
-		$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
-		$lastID = $lastID + 1; 
-	echo "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('1','{$sms_username}', '{$sms_password}', '{$sender_id}')";
-	$storeexist = pg_query($db, "SELECT store FROM smscountrydetail  limit 1");
-	$storeexist = pg_fetch_assoc($storeexist);
-	if((pg_num_rows($lastRow) > 0)){
-	$updated1 = pg_query($db, "UPDATE smscountrydetail SET sms_username = '{$sms_username}' ,sms_password='{$sms_password}' , sender_id='{$sender_id}',store='{$store}'  WHERE store = '{$store}'");	
-	}
-	else {
-	echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id,store) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}','{$store}')");
-	}
-	if($inserted  or $updated1){
+			$lastID = pg_fetch_assoc($lastRow);
+			$lastID = (pg_num_rows($lastRow) > 0) ? $lastID['id'] : 0;
+			$lastID = $lastID + 1; 
+			echo "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id) VALUES ('1','{$sms_username}', '{$sms_password}', '{$sender_id}')";
+			$storeexist = pg_query($db, "SELECT store FROM smscountrydetail  limit 1");
+			$storeexist = pg_fetch_assoc($storeexist);
+			if((pg_num_rows($lastRow) > 0)){
+				$updated1 = pg_query($db, "UPDATE smscountrydetail SET sms_username = '{$sms_username}' ,sms_password='{$sms_password}' , sender_id='{$sender_id}',store='{$store}'  WHERE store = '{$store}'");	
+			}
+			else {
+				echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id,store) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}','{$store}')");
+			}
+		if($inserted  or $updated1){
 					exit('1');
 				} else {
 					exit('0');
 				}
 			break;
 		default:
+			break;
+			case:'Searchhistory':
+			$phone = $_REQUEST['phone'];
+			$status = $_REQUEST['status'];
+			if($phone!="" || $status!=""){
+			 $config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'");
+			 $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
+									<tr>
+										<td><?php echo $i; ?></td>
+										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
+										<td><?php echo $history['recipient_name']; ?></td>
+										<td><?php echo $history['recipient_number']; ?></td>
+										<td><?php echo date('F j, Y@g:i a', strtotime($history['created_at'])); ?></td>
+										<td><?php echo $history['status']; ?></td>
+									</tr>
+								<?php } ?>
+			<?php }
 			break;
 		
 	}
