@@ -91,9 +91,19 @@ if(!empty($action)){
 			case:'Searchhistory':
 			$phone = $_REQUEST['phone'];
 			$status = $_REQUEST['status'];
-			if($phone!="" || $status!=""){
-			 $config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'");
-			 $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
+			if($phone!="" && $status!=""){
+				$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'"); 
+			}
+			else if($phone!="" && $status==""){
+					$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}'"); 
+			}
+			else if($phone=="" && $status!=""){
+					$config = pg_query($db, "SELECT * FROM messages where status='{$status}'"); 
+			}
+			else {
+				$config = pg_query($db, "SELECT * FROM messages"); 
+			}
+			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
 										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
@@ -103,7 +113,7 @@ if(!empty($action)){
 										<td><?php echo $history['status']; ?></td>
 									</tr>
 								<?php } ?>
-			<?php }
+			<?php 
 			break;
 		
 	}
