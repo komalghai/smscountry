@@ -118,10 +118,16 @@ $sender_id=$config['sender_id'];
 			var sms_username=jQuery(document).find('input[name="'+sms_username+'"]').val();
 			var sms_password=jQuery(document).find('input[name="'+sms_password+'"]').val();
 			var sender_id=jQuery(document).find('input[name="'+sender_id+'"]').val();
-			alert(sms_username +sms_password +sender_id);
-			return savesmscontrydetail(sms_username, sms_password,sender_id);
+			//alert(sms_username +sms_password +sender_id);
+			if(sms_username='' || sms_password='' || sender_id='' ) {
+				alert("Please fill all the fields");
+			}
+			else {
+				return savesmscontrydetail(sms_username, sms_password,sender_id);
+		   }
 		}
 		function savesmscontrydetail(sms_username, sms_password,sender_id){
+			jQuery('#'+_key+'Loader').fadeIn();
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
@@ -133,11 +139,11 @@ $sender_id=$config['sender_id'];
 					sender_id:sender_id,
 				},
 				success: function(response){
-					alert('data save');
-					//jQuery('#'+_key+'Loader').fadeOut();
+					//alert('data save');
+					jQuery('#smscountrydetail2').fadeOut();
 				},
 				error: function(response){
-					alert(response);
+					jQuery('#smscountrydetail2').fadeOut();
 				}
 			});
 		}
@@ -273,6 +279,7 @@ $sender_id=$config['sender_id'];
 	<body>
 		<div class="col-xs-12 padding-top sms-config">
 			<h3 class="alert alert-info">Configuration</h3>
+			<div class="smscountrydetail1">
 			<h4>Sms Country Detail</h4>
 			<form>
 			<p>SMS USERNAME<input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
@@ -281,6 +288,13 @@ $sender_id=$config['sender_id'];
 			<br>
 			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
 			</form>
+			<div id="smscountrydetail2" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
+			</div>
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
 					<ul class="tabs nav">
@@ -554,6 +568,16 @@ $sender_id=$config['sender_id'];
 						</div>
 					</div>
 					<div id="sms-history" class="nav-content">
+					<h2>filter By </h2>
+					Phone no <select name="phonefilter">
+					<?php $recipient_number = pg_query($db, "SELECT DISTINCT recipient_number FROM messages ORDER BY id DESC"); 
+							while($recipient_number = pg_fetch_assoc($recipient_number)) {
+								echo "<option value='{$recipient_number['recipient_number']}'>'{$recipient_number['recipient_number']}'</option>";
+								
+							}
+						
+					
+					?>
 						<table class="table table-bordered">
 							<thead>
 								<tr>
