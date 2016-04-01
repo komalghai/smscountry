@@ -88,7 +88,7 @@ if(!empty($action)){
 			break;
 		default:
 			break;
-			case:'Searchhistory':
+			case 'Searchhistory':
 			$phone = $_REQUEST['phone'];
 			$status = $_REQUEST['status'];
 			if($phone!="" && $status!=""){
