@@ -150,12 +150,9 @@ $sender_id=$config['sender_id'];
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
-		//	alert(jQuery(document).find('input[name="'+check+'"]:checked'));
-		//	alert(jQuery(document).find('input[name="'+check+'"]:checked').length);
-			if(jQuery(document).find('input[name="'+check+'"]').is(":checked"))
+		 if(jQuery(document).find('input[name="'+check+'"]').is(":checked"))
 			{ active=true; }
-		//	alert(active);
-			return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),active);
+		   return saveSMS(type, jQuery(document).find('textarea[name="'+type+'"]').val(),active);
 		}
 		
 		function saveAll(){
@@ -201,7 +198,29 @@ $sender_id=$config['sender_id'];
 					jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
-		}		
+		}
+			function Search(phonefilter,statusfilter) {
+			$( "#"+phonefilter+" option:selected" ).val();	
+			$( "#"+statusfilter+" option:selected" ).val();	
+			jQuery.ajax({
+				type: 'post',
+				url: '<?php echo $ajax_url; ?>',
+				data: {
+					action: 'Searchhistory',
+					store: '<?php echo $_REQUEST['shop']; ?>',
+					phone: phonefilter,
+					status: statusfilter,
+					
+				},
+				success: function(data){
+					$('.msgdata').html(data);
+					//jQuery('#'+_key+'Loader').fadeOut();
+				},
+				error: function(response){
+					//jQuery('#'+_key+'Loader').fadeOut();
+				}
+			});
+			}	
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -569,15 +588,22 @@ $sender_id=$config['sender_id'];
 					</div>
 					<div id="sms-history" class="nav-content">
 					<h5>filter By </h5>
-					Phone no <select name="phonefilter">
-					<?php $recipient_number1 = pg_query($db, "SELECT recipient_number FROM messages"); 
+					Phone no <select name="phonefilter" id='phonefilter'>
+					<option value="">Select Phone No</option>
+					<?php $recipient_number1 = pg_query($db, "SELECT distinct recipient_number,status FROM messages"); 
 							while($recipient_number = pg_fetch_assoc($recipient_number1)) {
 								echo "<option value=".$recipient_number['recipient_number'].">".$recipient_number['recipient_number']."</option>";
 								
 							}
 						echo "</select>";
-					
+						echo "Status <select id='statusfilter' name='statusfilter'><option value=''>Select Status</option>";
+						while($recipient_number = pg_fetch_assoc($recipient_number1)) {
+							echo "<option value=".$recipient_number['status'].">".$recipient_number['status']."</option>";
+						}
+					echo "</select>";
+				
 					?>
+					<a class="btn btn-success" href="javascript: void(0);" onclick="return Search('phonefilter','statusfilter');">Search</a>
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -589,7 +615,7 @@ $sender_id=$config['sender_id'];
 									<th>Status</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="msgdata">
 								<?php $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
