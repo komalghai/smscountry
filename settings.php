@@ -592,7 +592,7 @@ $sender_id=$config['sender_id'];
 					<option value="">Select Phone No</option>
 					<?php $recipient_number1 = pg_query($db, "SELECT distinct recipient_number,status FROM messages"); 
 							while($recipient_number = pg_fetch_assoc($recipient_number1)) {
-								echo "<option value=".$recipient_number['recipient_number'].">".$recipient_number['recipient_number']."</option>";
+								echo "<option value=".$recipient_number['recipient_number'].">".$recipient_number['recipient_number'].'status'.$recipient_number['status']."</option>";
 								
 							}
 						echo "</select>";
