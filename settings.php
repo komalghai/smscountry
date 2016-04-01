@@ -570,8 +570,9 @@ $sender_id=$config['sender_id'];
 					<div id="sms-history" class="nav-content">
 					<h5>filter By </h5>
 					Phone no <select name="phonefilter">
-					<?php $recipient_number1 = pg_query($db, "SELECT DISTINCT recipient_number FROM messages ORDER BY id DESC"); 
+					<?php $recipient_number1 = pg_query($db, "SELECT recipient_number FROM messages ORDER BY id DESC"); 
 							while($recipient_number = pg_fetch_assoc($recipient_number1)) {
+								echo $recipient_number1['recipient_number'];
 								echo "<option value=".$recipient_number1['recipient_number'].">".$recipient_number1['recipient_number']."</option>";
 								
 							}
