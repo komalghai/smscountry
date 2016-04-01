@@ -30,8 +30,11 @@ $AdminOrderReturnRequestsmsactive = isset($config['smsactive']['AdminOrderReturn
 $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
-$config= pg_query($db, "SELECT * FROM debug where id =5");
+$config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
+$sms_username=$config['sms_username'];
+$sms_password=$config['sms_password'];
+$sender_id=$config['sender_id'];
 //echo '<pre>hello';print_r($config); echo'</pre>';
 ?>
 <!DOCTYPE html>
@@ -272,9 +275,9 @@ $config = pg_fetch_assoc($config);
 			<h3 class="alert alert-info">Configuration</h3>
 			<h4>Sms Country Detail</h4>
 			<form>
-			<p>SMS USERNAME<input type="text" name="sms_username"></p>
-			<p>SMS PASSWORD<input type="text" name="sms_password"></p>
-			<p>SENDER ID<input type="text" name="sender_id"></p>
+			<p>SMS USERNAME<input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
+			<p>SMS PASSWORD<input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
+			<p>SENDER ID<input type="text" name="sender_id" value="<?php echo $sender_id; ?>"></p>
 			<br>
 			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
 			</form>
