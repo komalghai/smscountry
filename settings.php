@@ -208,8 +208,8 @@ $sender_id=$config['sender_id'];
 				data: {
 					action: 'Searchhistory',
 					store: '<?php echo $_REQUEST['shop']; ?>',
-					phone: phonefilter,
-					status: statusfilter,
+					phone: phoneno,
+					status: status,
 					
 				},
 				success: function(data){
