@@ -119,7 +119,7 @@ $sender_id=$config['sender_id'];
 			var sms_password=jQuery(document).find('input[name="'+sms_password+'"]').val();
 			var sender_id=jQuery(document).find('input[name="'+sender_id+'"]').val();
 			//alert(sms_username +sms_password +sender_id);
-			if(sms_username='' || sms_password='' || sender_id='' ) {
+			if(sms_username=='' || sms_password=='' || sender_id=='' ) {
 				alert("Please fill all the fields");
 			}
 			else {
