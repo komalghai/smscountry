@@ -200,8 +200,8 @@ $sender_id=$config['sender_id'];
 			});
 		}
 			function Search(phonefilter,statusfilter) {
-			$( "#"+phonefilter+" option:selected" ).val();	
-			$( "#"+statusfilter+" option:selected" ).val();	
+			var phoneno=$( "#"+phonefilter+" option:selected" ).val();	
+			var status=$( "#"+statusfilter+" option:selected" ).val();	
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
@@ -590,16 +590,18 @@ $sender_id=$config['sender_id'];
 					<h5>filter By </h5>
 					Phone no <select name="phonefilter" id='phonefilter'>
 					<option value="">Select Phone No</option>
-					<?php $recipient_number1 = pg_query($db, "SELECT distinct recipient_number,status FROM messages"); 
+					<?php $recipient_number1 = pg_query($db, "SELECT distinct recipient_number,distinct status FROM messages"); 
 							while($recipient_number = pg_fetch_assoc($recipient_number1)) {
 								echo "<option value=".$recipient_number['recipient_number'].">".$recipient_number['recipient_number'].'status'.$recipient_number['status']."</option>";
 								
 							}
 						echo "</select>";
 						echo "Status <select id='statusfilter' name='statusfilter'><option value=''>Select Status</option>";
-						while($recipient_number = pg_fetch_assoc($recipient_number1)) {
-							echo "<option value=".$recipient_number['status'].">".$recipient_number['status']."</option>";
-						}
+						/* while($status = pg_fetch_assoc($recipient_number1)) {
+							echo "<option value=".$status['status'].">".$status['status']."</option>";
+						} */
+						echo "<option value='pending'>Pending</option>";
+						echo "<option value='delivered'>delivered</option>";
 					echo "</select>";
 				
 					?>
