@@ -64,6 +64,11 @@ if(!function_exists('sendTestMessage')){
 			die(curl_error($ch));
 			curl_close($ch);
 		} else {
+			$status = 'pending';
+			if(strpos($curlresponse, 'OK') !== false){
+				$status = 'delivered';
+			}
+			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
 			$info = curl_getinfo($ch);
 			curl_close($ch);
 		}
