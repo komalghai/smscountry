@@ -293,6 +293,17 @@ $sender_id=$config['sender_id'];
 				width: 100%;
 				z-index: 999;
 			}
+			.smscountrydetail1 > h4 {
+			  color: #31708f;
+			  text-align: center;
+			}
+			.smscountrydetail1 > form {
+			  margin: 20px 0 0;
+			  text-align: center;
+			}
+			.smscountrydetail1 input {
+			  margin: 5px 4px 0 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -300,6 +311,7 @@ $sender_id=$config['sender_id'];
 			<h3 class="alert alert-info">Configuration</h3>
 			<div class="smscountrydetail1">
 			<h4>SMSCountry API Configuration Settings</h4>
+			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
 			<form>
 			<p><b>SMSCountry Username</b><input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
 			<p><b>SMSCountry Password</b><input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
