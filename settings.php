@@ -199,9 +199,11 @@ $sender_id=$config['sender_id'];
 				}
 			});
 		}
-			function Search(phonefilter,statusfilter) {
-			var phoneno=$( "#"+phonefilter+" option:selected" ).val();	
+			function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
+			var phoneno=$( "#"+phonefilter).val();	
 			var status=$( "#"+statusfilter+" option:selected" ).val();	
+			var fdatefilter=$( "#"+fdatefilter).val();	
+			var edatefilter=$( "#"+edatefilter).val();	
 			jQuery.ajax({
 				type: 'post',
 				url: '<?php echo $ajax_url; ?>',
@@ -210,6 +212,8 @@ $sender_id=$config['sender_id'];
 					store: '<?php echo $_REQUEST['shop']; ?>',
 					phone: phoneno,
 					status: status,
+					fdatefilter:fdatefilter,
+					edatefilter,edatefilter,
 					
 				},
 				success: function(data){
@@ -643,14 +647,14 @@ $sender_id=$config['sender_id'];
 					</div>
 					<div id="sms-history" class="nav-content">
 					<h5>filter By </h5>
-					Phone no <select name="phonefilter" id='phonefilter'>
-					<option value="">Select Phone No</option>
-					<?php $recipient_number1 = pg_query($db, "SELECT distinct recipient_number FROM messages"); 
+					Phone no <input  type="text" name="phonefilter" id='phonefilter'>
+					<?php /* <option value="">Select Phone No</option>
+					  $recipient_number1 = pg_query($db, "SELECT distinct recipient_number FROM messages"); 
 							while($recipient_number = pg_fetch_assoc($recipient_number1)) {
 								echo "<option value=".$recipient_number['recipient_number'].">".$recipient_number['recipient_number']."</option>";
 								
 							}
-						echo "</select>";
+						echo "</select>"; */
 						echo "Status <select id='statusfilter' name='statusfilter'><option value=''>Select Status</option>";
 						/* while($status = pg_fetch_assoc($recipient_number1)) {
 							echo "<option value=".$status['status'].">".$status['status']."</option>";
@@ -660,7 +664,9 @@ $sender_id=$config['sender_id'];
 					echo "</select>";
 				
 					?>
-					<a class="btn btn-success" href="javascript: void(0);" onclick="return Search('phonefilter','statusfilter');">Search</a>
+					From_date<input  type="text" name="fdatefilter" id='fdatefilter'/>
+					end_date<input  type="text" name="edatefilter" id='edatefilter'/>
+					<a class="btn btn-success" href="javascript: void(0);" onclick="return Search('phonefilter','statusfilter','fdatefilter','edatefilter');">Search</a>
 						<table class="table table-bordered">
 							<thead>
 								<tr>
