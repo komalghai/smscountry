@@ -361,7 +361,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup','CustomerCustomerSignupmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup','custsignup');">Save</a>
 								&nbsp;&nbsp;
-								<p>(Country Code followed by mobile number)</p>
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="customer-signup-verification customer-alerts">
@@ -390,6 +390,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignupVerification','CustomerCustomerSignupVerificationmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignupVerification','custsignupverf');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="order-placed customer-alerts">
@@ -418,6 +419,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderPlaced','CustomerOrderPlacedmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderPlaced','custoderp');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="order-status-changed customer-alerts">
@@ -446,6 +448,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerOrderStatusChanged','CustomerOrderStatusChangedmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerOrderStatusChanged','custorderschange');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 					</div>
@@ -511,6 +514,7 @@ $sender_id=$config['sender_id'];
 									<p></p>
 									<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminCustomerSignupScheduled');">Send Test SMS</a>
 									<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminCustomerSignupScheduled','checkAdminCustomerSignupScheduled');">Save</a>
+									<p class="mtext">(Country Code followed by mobile number)</p>
 									&nbsp;&nbsp;
 								</div>
 							</div>
@@ -541,6 +545,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminOrderPlaced','AdminOrderPlacedmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminOrderPlaced','checkAdminOrderPlaced');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="admin-order-return-request customer-alerts">
@@ -569,6 +574,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminOrderReturnRequest','AdminOrderReturnRequestmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminOrderReturnRequest','checkAdminOrderReturnRequest');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="admin-contact-inquiry customer-alerts">
@@ -597,6 +603,7 @@ $sender_id=$config['sender_id'];
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('AdminContactInquiry','AdminContactInquirymobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('AdminContactInquiry','checkAdminContactInquiry');">Save</a>
 								&nbsp;&nbsp;
+								<p class="mtext">(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 					</div>
