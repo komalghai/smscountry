@@ -299,10 +299,10 @@ $sender_id=$config['sender_id'];
 		<div class="col-xs-12 padding-top sms-config">
 			<h3 class="alert alert-info">Configuration</h3>
 			<div class="smscountrydetail1">
-			<h4>Sms Country Detail</h4>
+			<h4>Sms Country detail" to "SMSCountry API Configuration Settings</h4>
 			<form>
-			<p>SMS USERNAME<input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
-			<p>SMS PASSWORD<input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
+			<p>SMSCountry Username<input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
+			<p>SMSCountry Password<input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
 			<p>SENDER ID<input type="text" name="sender_id" value="<?php echo $sender_id; ?>"></p>
 			<br>
 			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
@@ -345,9 +345,11 @@ $sender_id=$config['sender_id'];
 							<div class="col-xs-11 text-right">
 								<p></p>
 								Mobile No<input type="text" name="CustomerCustomerSignupmobile" value="<?php echo $storeData->shop->phone; ?>"/>
+								
 								<a href="javascript: void(0);" class="btn btn-info" onclick="return sendTestSMS('CustomerCustomerSignup','CustomerCustomerSignupmobile');">Send Test SMS</a>
 								<a class="btn btn-success" href="javascript: void(0);" onclick="return save('CustomerCustomerSignup','custsignup');">Save</a>
 								&nbsp;&nbsp;
+								<p>(Country Code followed by mobile number)</p>
 							</div>
 						</div>
 						<div class="customer-signup-verification customer-alerts">
