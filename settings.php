@@ -298,11 +298,45 @@ $sender_id=$config['sender_id'];
 			  text-align: center;
 			}
 			.smscountrydetail1 > form {
-			  margin: 20px 0 0;
+			  margin: 20px auto 0;
 			  text-align: center;
+			  width: 40%;
 			}
-			.smscountrydetail1 input {
-			  margin: 5px 4px 0 10px;
+
+			.smscountrydetail1 form p b {
+			  box-sizing: border-box;
+			  float: left;
+			  font-family: arial;
+			  font-size: 18px;
+			  font-weight: 400;
+			  letter-spacing: 0.5px;
+			  padding: 0 15px;
+			  text-align: left;
+			  width: 100%;
+			}
+			.smscountrydetail1 form p input {
+			  float: left;
+			  margin: 10px;
+			  padding: 10px;
+			  text-align: left;
+			  width: 90%;
+			}
+
+			.smscountrydetail1 form a.btn.btn-success {
+			  border-bottom: 2px solid #449d44;
+			  border-radius: 5px;
+			  color: #fff;
+			  float: left;
+			  font-size: 18px;
+			  margin: 10px 10px 20px;
+			  padding: 6px 0;
+			  width: 25%;
+			}
+
+			.customer-signup.customer-alerts p.mtext {
+			  float: left;
+			  padding-right: 8px;
+			  width: 85%;
 			}
 		</style>
 	</head>
