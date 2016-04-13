@@ -1,7 +1,6 @@
 <?php 
 require('conf.php');
 require __DIR__.'/vendor/autoload.php';
-include ('paginate.php'); //include of paginat page
 use phpish\shopify;
 global $db;
 $store = $_REQUEST['shop'];
@@ -251,9 +250,11 @@ $sender_id=$config['sender_id'];
 			}
 			 $(function(){
  $.ajax({
-	     url:"dbmanupulate.php",
-                  type:"POST",
-                  data:"actionfunction=showData&page=1",
+	    url: '<?php echo $ajax_url; ?>',
+                  type:"post",
+				  action: 'pagination',
+				  page:1,
+                 
         cache: false,
         success: function(response){
 		   
@@ -268,10 +269,11 @@ $sender_id=$config['sender_id'];
 	   $page = $page.substring(($pageind+5));
        
 	   $.ajax({
-	     url:"dbmanupulate.php",
-                  type:"POST",
-                  data:"actionfunction=showData&page="+$page,
-        cache: false,
+	     url: '<?php echo $ajax_url; ?>',
+                 type:"post",
+				  action: 'pagination',
+				  page:$page,
+		 cache: false,
         success: function(response){
 		   
 		  $('#pagination').html(response);
