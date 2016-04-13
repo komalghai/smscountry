@@ -112,7 +112,7 @@ function pagination($limit,$adjacents,$rows,$page){
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a class='page-numbers' href=\"?page=$counter\">$counter</a>";					
+						$pagination.= "<a class='page-numbers' changePagination(2);' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 				}
 				$last='';
 			}
