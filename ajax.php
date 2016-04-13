@@ -32,7 +32,7 @@ if(!empty($action)){
 				$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 				$config = pg_fetch_assoc($config);
 				$config = unserialize($config['data']);
-				$config['sms_admin_phone'] = $active;
+				$config['sms_admin_phone'] = $sms_admin_phone;
 				$config = serialize($config);
 				$updated = pg_query($db, "UPDATE configuration SET data = '{$config}' WHERE store = '{$store}'");
 				if($updated){
