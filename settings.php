@@ -146,26 +146,7 @@ $sender_id=$config['sender_id'];
 					jQuery('#smscountrydetail2').fadeOut();
 				}
 			});
-			function smsadminphoneno(sms_admin_phone){
-			jQuery('#sms_admin_phoneno').fadeIn();
-			jQuery.ajax({
-				type: 'post',
-				url: '<?php echo $ajax_url; ?>',
-				data: {
-					action: 'sms_admin_phone',
-					store: '<?php echo $_REQUEST['shop']; ?>',
-					sms_admin_phone: sms_admin_phone,
-					
-				},
-				success: function(response){
-					//alert('data save');
-					jQuery('#sms_admin_phoneno').fadeOut();
-				},
-				error: function(response){
-					jQuery('#sms_admin_phoneno').fadeOut();
-				}
-			});
-		}
+			
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
@@ -243,7 +224,28 @@ $sender_id=$config['sender_id'];
 					//jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
-			}	
+			}
+			function smsadminphoneno(sms_admin_phone){
+				var sms_admin_phone=$( "#"+sms_admin_phone).val();	
+				jQuery('#sms_admin_phoneno').fadeIn();
+				jQuery.ajax({
+					type: 'post',
+					url: '<?php echo $ajax_url; ?>',
+					data: {
+						action: 'sms_admin_phone',
+						store: '<?php echo $_REQUEST['shop']; ?>',
+						sms_admin_phone: sms_admin_phone,
+						
+					},
+					success: function(response){
+						//alert('data save');
+						jQuery('#sms_admin_phoneno').fadeOut();
+					},
+					error: function(response){
+						jQuery('#sms_admin_phoneno').fadeOut();
+					}
+				});
+			}			
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -387,8 +389,7 @@ $sender_id=$config['sender_id'];
 			<h4>Admin Phone No</h4>
 			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
 			<form>
-			<p><b></b><input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
-			<p><b>Phone No</b><input type="text" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
+			<p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
 			<br>
 			<a class="btn btn-success" href="javascript: void(0);" onclick="return smsadminphoneno('sms_admin_phone');">Save</a>
 			</form>
