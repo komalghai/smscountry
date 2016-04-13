@@ -39,7 +39,7 @@ global $db;
 							</tbody>
    
 
-<?php pagination($limit,$adjacent,$rows,$page);  
+<?php pagination($limit,2,$rows,$page);  
 	
 function pagination($limit,$adjacents,$rows,$page){	
 	$pagination='';
