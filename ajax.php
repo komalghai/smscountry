@@ -103,7 +103,7 @@ if(!empty($action)){
 					exit('0');
 				}
 			break;
-			case 'pagination':
+			case 'pagination2':
 			 /* if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
 			$actionfunction = $_REQUEST['actionfunction'];
   
@@ -240,8 +240,7 @@ function pagination($limit,$adjacents,$rows,$page){
 	echo $pagination;  
 }
 			break;
-		default:
-			break;
+		
 			case 'Searchhistory':
 			$phone = $_REQUEST['phone'];
 			$status = $_REQUEST['status'];
@@ -269,7 +268,8 @@ function pagination($limit,$adjacents,$rows,$page){
 								<?php } ?>
 			<?php 
 			break;
-		
+		default:
+			break;
 	}
 } else {
 	exit("ERR: NO ACTION DEFINED!");
