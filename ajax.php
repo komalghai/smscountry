@@ -110,6 +110,7 @@ if(!empty($action)){
 			$edatefilter = $_REQUEST['edatefilter'];
 			echo $fdatefilterdate=('Y-m-j g:i a', strtotime($fdatefilter));
 			echo $edatefilterdate=('Y-m-j g:i a', strtotime($edatefilter));
+			die();
 			$query="SELECT * FROM messages where";
 			if($phone!=""){
 				$query. = "recipient_number='{$phone}' and";
