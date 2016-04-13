@@ -106,10 +106,10 @@ if(!empty($action)){
 			case 'Searchhistory':
 			$phone = $_REQUEST['phone'];
 			$status = $_REQUEST['status'];
-			$fdatefilter = $_REQUEST['fdatefilter']+ " 00:00:00";
-			$edatefilter = $_REQUEST['edatefilter']+ " 00:00:00";;
-			//echo $fdatefilter=date('Y-m-j g:i:s', strtotime("'".$fdatefilter."'"));
-			//echo $edatefilter=date('Y-m-j g:i:s', strtotime("'".$edatefilter."'"));
+			$fdatefilter = $_REQUEST['fdatefilter'];
+			$edatefilter = $_REQUEST['edatefilter'];
+			echo $fdatefilter=date('Y-m-j g:i:s', strtotime($fdatefilter));
+			echo $edatefilter=date('Y-m-j g:i:s', strtotime($edatefilter));
 			
 			if($phone!="" && $status!=""){
 				$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'"); 
