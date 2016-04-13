@@ -1,7 +1,7 @@
 <?php
 require('conf.php');
 global $db;
-
+echo "testing";	die(1);
  if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
 $actionfunction = $_REQUEST['actionfunction'];
     echo $adjacent;
