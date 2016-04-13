@@ -5,9 +5,9 @@ global $db;
  if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
 $actionfunction = $_REQUEST['actionfunction'];
   
-   call_user_func($actionfunction,$_REQUEST,$con,$limit,$adjacent);
+   call_user_func($actionfunction,$_REQUEST,10,$adjacent);
 }
-function showData($data,$con,$limit,$adjacent){
+function showData($data,$limit,$adjacent){
   $page = $data['page'];
    if($page==1){
    $start = 0;  
