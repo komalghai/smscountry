@@ -130,14 +130,14 @@ if(!empty($action)){
 				$query.="recipient_number='{$phone}' AND";
 			}
 			 if($status!=""){
-					$query.= "status='{$status}' AND";
+					$query.= " status='{$status}' AND";
 			}
 			if($fdatefilter!="" && $edatefilter!="" ){
-					$query.="created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' AND";
+					$query.=" created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' AND";
 			}
 			
 			echo $query=substr($query, 0, -3);
-			//$config = pg_query($db, $query);   
+			$config = pg_query($db, $query);   
 			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
