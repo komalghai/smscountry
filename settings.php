@@ -225,7 +225,7 @@ $sender_id=$config['sender_id'];
 				}
 			});
 			} 
-			function smsadminphoneno(smsadminphone){
+			/* function smsadminphoneno(smsadminphone){
 				
 				var sms_admin_phone=$( "#"+smsadminphone).val();	
 				alert(sms_admin_phone);
@@ -247,7 +247,7 @@ $sender_id=$config['sender_id'];
 						jQuery('#sms_admin_phoneno').fadeOut();
 					}
 				});
-			}			
+			} */			
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
