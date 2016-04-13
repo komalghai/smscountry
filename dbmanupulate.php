@@ -56,7 +56,7 @@ function pagination($limit,$adjacents,$rows,$page){
 		
 		//previous button
 		if ($page > 1) 
-			$prev_.= "<a class='page-numbers' onclick='changePagination({$$prev});' class='page-numbers' href=\"javascript:void(0);\">previous</a>";
+			$prev_.= "<a class='page-numbers' onclick='changePagination({$prev});' class='page-numbers' href=\"javascript:void(0);\">previous</a>";
 		else{
 			//$pagination.= "<span class=\"disabled\">previous</span>";	
 			}
@@ -119,7 +119,7 @@ function pagination($limit,$adjacents,$rows,$page){
             
 			}
 		if ($page < $counter - 1) 
-			$next_.= "<a class='page-numbers' href=\"?page=$next\">next</a>";
+			$next_.= "<a class='page-numbers' onclick='changePagination({$next});' href=\"javascript:void(0);\">next</a>";
 		else{
 			//$pagination.= "<span class=\"disabled\">next</span>";
 			}
