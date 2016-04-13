@@ -108,9 +108,9 @@ if(!empty($action)){
 			$status = $_REQUEST['status'];
 			$fdatefilter = $_REQUEST['fdatefilter'];
 			$edatefilter = $_REQUEST['edatefilter'];
-			//echo $fdatefilterdate=('Y-m-j g:i a', strtotime($fdatefilter));
-			//echo $edatefilterdate=('Y-m-j g:i a', strtotime($edatefilter));
-			//exit('0');
+			echo $fdatefilterdate=('Y-m-j g:i a', strtotime($fdatefilter));
+			echo $edatefilterdate=('Y-m-j g:i a', strtotime($edatefilter));
+			
 			$query="SELECT * FROM messages where";
 			if($phone!=""){
 				$query. = "recipient_number='{$phone}' and";
