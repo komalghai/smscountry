@@ -146,7 +146,7 @@ $sender_id=$config['sender_id'];
 					jQuery('#smscountrydetail2').fadeOut();
 				}
 			});
-			
+		}
 		function save(type,check){
 			if(type =='') return;
 			var active=false;
@@ -199,7 +199,7 @@ $sender_id=$config['sender_id'];
 				}
 			});
 		}
-			 function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
+			function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
 			var phoneno=$( "#"+phonefilter).val();	
 			var status=$( "#"+statusfilter+" option:selected" ).val();	
 			var fdatefilter=$( "#"+fdatefilter).val();	
@@ -224,30 +224,7 @@ $sender_id=$config['sender_id'];
 					//jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
-			} 
-			/* function smsadminphoneno(smsadminphone){
-				
-				var sms_admin_phone=$( "#"+smsadminphone).val();	
-				alert(sms_admin_phone);
-				jQuery('#sms_admin_phoneno').fadeIn();
-				jQuery.ajax({
-					type: 'post',
-					url: '<?php echo $ajax_url; ?>',
-					data: {
-						action: 'sms_admin_phone',
-						store: '<?php echo $_REQUEST['shop']; ?>',
-						sms_admin_phone: sms_admin_phone,
-						
-					},
-					success: function(response){
-						//alert('data save');
-						jQuery('#sms_admin_phoneno').fadeOut();
-					},
-					error: function(response){
-						jQuery('#sms_admin_phoneno').fadeOut();
-					}
-				});
-			} */			
+			}	
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -381,22 +358,6 @@ $sender_id=$config['sender_id'];
 			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
 			</form>
 			<div id="smscountrydetail2" style="display: none;" class="loader">
-								<div style="margin: 80px 0px 0px 40%;">
-									<div style="margin-left: 80px;">Saving</div>
-									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
-								</div>
-							</div>
-			</div>
-			<div style="clear:both"></div>
-			<div class="smscountrydetail1">
-			<h4>Admin Phone No</h4>
-			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
-			<form>
-			<p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
-			<br>
-			<a class="btn btn-success" href="javascript: void(0);" onclick="return smsadminphoneno('sms_admin_phone');">Save</a>
-			</form>
-			<div id="sms_admin_phoneno" style="display: none;" class="loader">
 								<div style="margin: 80px 0px 0px 40%;">
 									<div style="margin-left: 80px;">Saving</div>
 									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
