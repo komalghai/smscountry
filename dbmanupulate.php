@@ -1,27 +1,26 @@
 <?php
-//require('conf.php');
-//global $db;
-echo "testing";	die(1);
- if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
-$actionfunction = $_REQUEST['actionfunction'];
-    echo $adjacent;
-	echo $_REQUEST;
-	die();
-   call_user_func($actionfunction,$_REQUEST,10,2);
-}
-function showData($data,$limit,$adjacent){
-  $page = $data['page'];
-   if($page==1){
-   $start = 0;  
-  }
-  else{
-  $start = ($page-1)*$limit;
-  }
-  echo "testing"; die();
-   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
-  echo $rows = pg_num_rows($historyData);
-  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
-  <table class='table table-bordered'>
+require('conf.php');
+global $db;
+
+			 /* if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
+			$actionfunction = $_REQUEST['actionfunction'];
+  
+			call_user_func($actionfunction,$_REQUEST,10,2);
+			}
+	function showData($data,$limit,$adjacent){ */
+		$limit=10;$adjacent=3;
+	  $page = $_REQUEST['page'];
+	   if($page==1){
+	   $start = 0;  
+	  }
+	  else{
+	  $start = ($page-1)*$limit;
+	  }
+	  echo "testing"; 
+	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
+	  echo $rows = pg_num_rows($historyData);
+	 echo  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"); ?>
+			<table class='table table-bordered'>
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -33,8 +32,8 @@ function showData($data,$limit,$adjacent){
 								</tr>
 							</thead>
 							<tbody class='msgdata'>
-								<?php  $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; 
-									$str.="<tr>";
+								<?php  $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
+									
 										<td><?php echo $i; ?></td>
 										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
 										<td><?php echo $history['recipient_name']; ?></td>
@@ -47,7 +46,7 @@ function showData($data,$limit,$adjacent){
    
 
 <?php pagination($limit,$adjacent,$rows,$page);  
-}
+
 function pagination($limit,$adjacents,$rows,$page){	
 	$pagination='';
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
