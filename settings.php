@@ -251,7 +251,7 @@ $sender_id=$config['sender_id'];
 			 $(function(){
 			 alert(1);
 				$.ajax({
-					url: '<?php echo $ajax_url; ?>',
+					url: 'dbmanupulate.php',
 					  type:"post",
 					 data:{
 					  action: 'pagination2',
@@ -271,7 +271,7 @@ $sender_id=$config['sender_id'];
 	   $page = $page.substring(($pageind+5));
        
 	   $.ajax({
-	     url: '<?php echo $ajax_url; ?>',
+	     url: 'dbmanupulate.php',
                  type:"post",
 				 
 				  data:{
