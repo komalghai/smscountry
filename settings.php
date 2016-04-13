@@ -253,9 +253,9 @@ $sender_id=$config['sender_id'];
 				$.ajax({
 					url: '<?php echo $ajax_url; ?>',
 					  type:"post",
+					 data:{
 					  action: 'pagination2',
-					  data:{
-							page:1,
+					 page:1,
 					 },
 					  
 					success: function(response){
@@ -273,9 +273,10 @@ $sender_id=$config['sender_id'];
 	   $.ajax({
 	     url: '<?php echo $ajax_url; ?>',
                  type:"post",
-				  action: 'pagination2',
+				 
 				  data:{
 						page:$page,
+						 action: 'pagination2',
 					 },
 				  
 		 
