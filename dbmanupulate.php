@@ -10,7 +10,7 @@ global $db;
 	  else{
 	  $start = ($page-1)*$limit;
 	  }
-	  //echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
+	  echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
 	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 	  echo $rows = pg_num_rows($historyData);
 	 echo  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"); ?>
