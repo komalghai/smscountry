@@ -121,7 +121,7 @@ if(!empty($action)){
 	  echo "testing"; 
 	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 	  echo $rows = pg_num_rows($historyData);
-	  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
+	 echo  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"); ?>
 			<table class='table table-bordered'>
 							<thead>
 								<tr>
