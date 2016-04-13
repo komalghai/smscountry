@@ -199,7 +199,7 @@ $sender_id=$config['sender_id'];
 				}
 			});
 		}
-			/* function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
+			 function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
 			var phoneno=$( "#"+phonefilter).val();	
 			var status=$( "#"+statusfilter+" option:selected" ).val();	
 			var fdatefilter=$( "#"+fdatefilter).val();	
@@ -224,10 +224,10 @@ $sender_id=$config['sender_id'];
 					//jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
-			} */
-			function smsadminphoneno(sms_admin_phone){
+			} 
+			function smsadminphoneno(smsadminphone){
 				
-				var sms_admin_phone=$( "#"+sms_admin_phone).val();	
+				var sms_admin_phone=$( "#"+smsadminphone).val();	
 				alert(sms_admin_phone);
 				jQuery('#sms_admin_phoneno').fadeIn();
 				jQuery.ajax({
