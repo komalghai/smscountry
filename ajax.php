@@ -127,7 +127,7 @@ if(!empty($action)){
 			
 			  $query="SELECT * FROM messages where";
 			if($phone!=""){
-				$query.="recipient_number='{$phone}' AND";
+				$query.=" recipient_number='{$phone}' AND";
 			}
 			 if($status!=""){
 					$query.= " status='{$status}' AND";
@@ -136,9 +136,11 @@ if(!empty($action)){
 					$query.=" created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' AND";
 			}
 			
-			echo $query=substr($query, 0, -3);
-			$config = pg_query($db, $query);   
-			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
+			 $query=substr($query, 0, -3);
+			$config = pg_query($db, $query);  
+				$rows = pg_num_rows($config);
+             if($rows>0) {			
+					$i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
 										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
@@ -147,7 +149,9 @@ if(!empty($action)){
 										<td><?php echo date('F j, Y@g:i a', strtotime($history['created_at'])); ?></td>
 										<td><?php echo $history['status']; ?></td>
 									</tr>
-								<?php } ?>
+								<?php }
+			 } else { echo "No Record Found" ;}
+								?>
 			<?php 
 			break;
 		default:
