@@ -249,7 +249,7 @@ $sender_id=$config['sender_id'];
 				});
 			}
 			 $(function(){
-			 alert(1);
+			 
 				$.ajax({
 					url: 'dbmanupulate.php',
 					  type:"post",
@@ -265,11 +265,14 @@ $sender_id=$config['sender_id'];
 		
 				});
 			});
-    $('#pagination').on('click','.page-numbers',function(){
+    $('#pagination').on('click','.page-numbers',function(e){
+	e.preventDefault();
+	  alert(1);
        $page = $(this).attr('href');
+	   
 	   $pageind = $page.indexOf('page=');
 	   $page = $page.substring(($pageind+5));
-       
+       alert($page);
 	   $.ajax({
 	     url: 'dbmanupulate.php',
                  type:"post",
