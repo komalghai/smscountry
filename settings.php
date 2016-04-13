@@ -1,6 +1,7 @@
 <?php 
 require('conf.php');
 require __DIR__.'/vendor/autoload.php';
+include ('paginate.php'); //include of paginat page
 use phpish\shopify;
 global $db;
 $store = $_REQUEST['shop'];
@@ -9,7 +10,7 @@ $access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SH
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
-echo '<pre>';print_r($config); echo'</pre>';
+//echo '<pre>';print_r($config); echo'</pre>';
 $config = unserialize($config['data']);
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 $CustomerSignupsmsactive = isset($config['smsactive']['CustomerCustomerSignup']) ? $config['smsactive']['CustomerCustomerSignup'] : null;
@@ -31,6 +32,31 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
 $sms_admin_phone = isset($config['sms_admin_phone']) ? $config['sms_admin_phone'] : null;
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
+$per_page = 5;         // number of results to show per page
+echo $total_results = pg_num_rows($historyData);
+$total_pages = ceil($total_results / $per_page);//total pages we going to have
+//-------------if page is setcheck------------------//
+if (isset($_GET['page'])) {
+    $show_page = $_GET['page'];             //it will telles the current page
+    if ($show_page > 0 && $show_page <= $total_pages) {
+        $start = ($show_page - 1) * $per_page;
+        $end = $start + $per_page;
+    } else {
+        // error - show first set of results
+        $start = 0;              
+        $end = $per_page;
+    }
+} else {
+    // if page isn't set, show first set of results
+    $start = 0;
+    $end = $per_page;
+}
+// display pagination
+$page = intval($_GET['page']);
+
+$tpages=$total_pages;
+if ($page <= 0)
+    $page = 1;
 $config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
 $sms_username=$config['sms_username'];
@@ -729,6 +755,13 @@ $sender_id=$config['sender_id'];
 								<?php } ?>
 							</tbody>
 						</table>
+						<?php  $reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
+								echo '<div class="pagination"><ul>';
+								if ($total_pages > 1) {
+									echo paginate($reload, $show_page, $total_pages);
+								}
+									echo "</ul></div>";
+						?>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
 						<p>&nbsp;</p>
