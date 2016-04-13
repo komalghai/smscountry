@@ -137,4 +137,5 @@ function pagination($limit,$adjacents,$rows,$page){
 
 	echo $pagination;  
 }
+}
 ?>
