@@ -3,17 +3,17 @@ require('conf.php');
 global $db;
 
 		$limit=10;$adjacent=3;
-	  $page = $_REQUEST['page'];
+	  echo $page = $_REQUEST['page'];
 	   if($page==1){
 	   $start = 0;  
 	  }
 	  else{
 	  $start = ($page-1)*$limit;
 	  }
-	  echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
+	  //echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
 	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 	  echo $rows = pg_num_rows($historyData);
-	 echo  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC LIMIT 10 OFFSET {$start}"); ?>
+	 $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC LIMIT 10 OFFSET {$start}"); ?>
 			<table class='table table-bordered'>
 							<thead>
 								<tr>
