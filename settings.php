@@ -754,7 +754,7 @@ $sender_id=$config['sender_id'];
 					From_date<input  type="text" name="fdatefilter" id='fdatefilter'/>
 					end_date<input  type="text" name="edatefilter" id='edatefilter'/>
 					<a class="btn btn-success" href="javascript: void(0);" onclick="return Search('phonefilter','statusfilter','fdatefilter','edatefilter');">Search</a>
-						<table class="table table-bordered">
+						<!--table class="table table-bordered">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -765,9 +765,20 @@ $sender_id=$config['sender_id'];
 									<th>Status</th>
 								</tr>
 							</thead>
-							<div id="pagination" cellspacing="0"></div>
-						</table>
-						
+							<tbody class="msgdata">
+								<?php $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
+									<tr>
+										<td><?php echo $i; ?></td>
+										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
+										<td><?php echo $history['recipient_name']; ?></td>
+										<td><?php echo $history['recipient_number']; ?></td>
+										<td><?php echo date('F j, Y@g:i a', strtotime($history['created_at'])); ?></td>
+										<td><?php echo $history['status']; ?></td>
+									</tr>
+								<?php } ?>
+							</tbody>
+						</table-->
+						<div id="pagination" cellspacing="0"></div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
 						<p>&nbsp;</p>
