@@ -249,20 +249,22 @@ $sender_id=$config['sender_id'];
 				});
 			}
 			 $(function(){
- $.ajax({
-	    url: '<?php echo $ajax_url; ?>',
-                  type:"post",
-				  action: 'pagination',
-				  page:1,
-                 
-        cache: false,
-        success: function(response){
+			 alert(1);
+				$.ajax({
+					url: '<?php echo $ajax_url; ?>',
+					  type:"post",
+					  action: 'pagination2',
+					  data:{
+							page:1,
+					 },
+					  
+					success: function(response){
 		   
-		  $('#pagination').html(response);
-		 
-		}
+						$('#pagination').html(response);
+					}
 		
-	   });
+				});
+			});
     $('#pagination').on('click','.page-numbers',function(){
        $page = $(this).attr('href');
 	   $pageind = $page.indexOf('page=');
@@ -271,9 +273,12 @@ $sender_id=$config['sender_id'];
 	   $.ajax({
 	     url: '<?php echo $ajax_url; ?>',
                  type:"post",
-				  action: 'pagination',
-				  page:$page,
-		 cache: false,
+				  action: 'pagination2',
+				  data:{
+						page:$page,
+					 },
+				  
+		 
         success: function(response){
 		   
 		  $('#pagination').html(response);
@@ -284,7 +289,7 @@ $sender_id=$config['sender_id'];
 	return false;
 	});
 	
-});
+
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
