@@ -4,7 +4,9 @@ global $db;
 
  if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
 $actionfunction = $_REQUEST['actionfunction'];
-  
+    echo $adjacent;
+	echo $_REQUEST;
+	die();
    call_user_func($actionfunction,$_REQUEST,10,2);
 }
 function showData($data,$limit,$adjacent){
