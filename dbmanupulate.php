@@ -18,8 +18,7 @@ function showData($data,$con,$limit,$adjacent){
   
    $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
   echo $rows = pg_num_rows($historyData);
-  $sql = "select * from ajaxpage order by id asc limit $start,$limit"; ?>
-  
+  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
   <table class='table table-bordered'>
 							<thead>
 								<tr>
