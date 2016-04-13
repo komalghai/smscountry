@@ -199,7 +199,7 @@ $sender_id=$config['sender_id'];
 				}
 			});
 		}
-			function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
+			/* function Search(phonefilter,statusfilter,fdatefilter,edatefilter) {
 			var phoneno=$( "#"+phonefilter).val();	
 			var status=$( "#"+statusfilter+" option:selected" ).val();	
 			var fdatefilter=$( "#"+fdatefilter).val();	
@@ -224,9 +224,11 @@ $sender_id=$config['sender_id'];
 					//jQuery('#'+_key+'Loader').fadeOut();
 				}
 			});
-			}
+			} */
 			function smsadminphoneno(sms_admin_phone){
+				
 				var sms_admin_phone=$( "#"+sms_admin_phone).val();	
+				alert(sms_admin_phone);
 				jQuery('#sms_admin_phoneno').fadeIn();
 				jQuery.ajax({
 					type: 'post',
@@ -385,6 +387,7 @@ $sender_id=$config['sender_id'];
 								</div>
 							</div>
 			</div>
+			<div style="clear:both"></div>
 			<div class="smscountrydetail1">
 			<h4>Admin Phone No</h4>
 			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
