@@ -266,8 +266,8 @@ $sender_id=$config['sender_id'];
 				});
 			});
 			
-    <!-- $( ".page-numbers" ).click(function(e) {
-		e.preventDefault(); -->
+    /* $( ".page-numbers" ).click(function(e) {
+		e.preventDefault(); */
 		function changePagination(page){
 	  alert(1);
        $page = page;
