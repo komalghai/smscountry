@@ -106,10 +106,10 @@ if(!empty($action)){
 			case 'Searchhistory':
 			$phone = $_REQUEST['phone'];
 			$status = $_REQUEST['status'];
-			$fdatefilter = $_REQUEST['fdatefilter'];
-			$edatefilter = $_REQUEST['edatefilter'];
-			echo $fdatefilter=date('Y-m-j g:i:s', strtotime("'".$fdatefilter."'"));
-			echo $edatefilter=date('Y-m-j g:i:s', strtotime("'".$edatefilter."'"));
+			$fdatefilter = $_REQUEST['fdatefilter']+ " 00:00:00";
+			$edatefilter = $_REQUEST['edatefilter']+ " 00:00:00";;
+			//echo $fdatefilter=date('Y-m-j g:i:s', strtotime("'".$fdatefilter."'"));
+			//echo $edatefilter=date('Y-m-j g:i:s', strtotime("'".$edatefilter."'"));
 			
 			if($phone!="" && $status!=""){
 				$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'"); 
@@ -125,19 +125,19 @@ if(!empty($action)){
 			}
 			
 			
-			 /* $query="SELECT * FROM messages where";
+			  $query="SELECT * FROM messages where";
 			if($phone!=""){
-				$query. = "recipient_number='{$phone}' and";
+				$query.="recipient_number='{$phone}' AND";
 			}
 			 if($status!=""){
-					$query. =  "status='{$status}' and";
+					$query.= "status='{$status}' AND";
 			}
 			if($fdatefilter!="" && $edatefilter!="" ){
-					$query. = "created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' and";
+					$query.="created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' AND";
 			}
 			
 			echo $query=substr($query, 0, -3);
-			$config = pg_query($db, $query);   */
+			//$config = pg_query($db, $query);   
 			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
