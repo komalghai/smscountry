@@ -28,7 +28,7 @@ global $db;
 							<tbody class='msgdata'>
 								<?php  $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
 									
-										<td><?php echo $i; ?></td>
+										<td><?php echo $history['id']; ?></td>
 										<td class="col-xs-5"><?php echo $history['message_text']; ?></td>
 										<td><?php echo $history['recipient_name']; ?></td>
 										<td><?php echo $history['recipient_number']; ?></td>
@@ -56,7 +56,7 @@ function pagination($limit,$adjacents,$rows,$page){
 		
 		//previous button
 		if ($page > 1) 
-			$prev_.= "<a class='page-numbers' href=\"?page=$prev\">previous</a>";
+			$prev_.= "<a class='page-numbers' onclick='changePagination({$$prev});' class='page-numbers' href=\"javascript:void(0);\">previous</a>";
 		else{
 			//$pagination.= "<span class=\"disabled\">previous</span>";	
 			}
@@ -70,7 +70,7 @@ function pagination($limit,$adjacents,$rows,$page){
 				if ($counter == $page)
 					$pagination.= "<span class=\"current\">$counter</span>";
 				else
-					$pagination.= "<a onclick='changePagination({$counter});' class='page-numbers1' href=\"javascript:void(0);\">$counter</a>";					
+					$pagination.= "<a onclick='changePagination({$counter});' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 			}
 			$last='';
 		}
@@ -87,13 +87,13 @@ function pagination($limit,$adjacents,$rows,$page){
 					else
 						$pagination.= "<a onclick='changePagination({$counter});' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 				}
-			$last.= "<a class='page-numbers' href=\"?page=$lastpage\">Last</a>";			
+			$last.= "<a class='page-numbers' onclick='changePagination({$lastpage});' href=\"javascript:void(0);\">Last</a>";			
 			}
 			
 			//in middle; hide some front and some back
 			elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
 			{
-		       $first.= "<a class='page-numbers' href=\"?page=1\">First</a>";	
+		       $first.= "<a class='page-numbers' onclick='changePagination(1);' href=\"javascript:void(0);\">First</a>";	
 			for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++)
 				{
 					if ($counter == $page)
@@ -101,7 +101,7 @@ function pagination($limit,$adjacents,$rows,$page){
 					else
 						$pagination.= "<a onclick='changePagination({$counter});' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 				}
-				$last.= "<a class='page-numbers' href=\"?page=$lastpage\">Last</a>";			
+				$last.= "<a class='page-numbers' onclick='changePagination({$lastpage});' href=\"javascript:void(0);\">Last</a>";			
 			}
 			//close to end; only hide early pages
 			else
