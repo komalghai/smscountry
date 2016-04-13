@@ -225,6 +225,28 @@ $sender_id=$config['sender_id'];
 				}
 			});
 			}	
+			function smsadminphoneno(smsadminphone){
+				var sms_admin_phone=$( "#"+smsadminphone).val();	
+				alert(sms_admin_phone);
+				jQuery('#sms_admin_phoneno').fadeIn();
+				jQuery.ajax({
+					type: 'post',
+					url: '<?php echo $ajax_url; ?>',
+					data: {
+						action: 'sms_admin_phone',
+						store: '<?php echo $_REQUEST['shop']; ?>',
+						sms_admin_phone: sms_admin_phone,
+						
+					},
+					success: function(response){
+						//alert('data save');
+						jQuery('#sms_admin_phoneno').fadeOut();
+					},
+					error: function(response){
+						jQuery('#sms_admin_phoneno').fadeOut();
+					}
+				});
+			}
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -371,7 +393,7 @@ $sender_id=$config['sender_id'];
 			<form>
 			<p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
 			<br>
-			<a class="btn btn-success" href="javascript: void(0);" onclick="return smsadminphoneno('sms_admin_phone');">Save</a>
+			<a class="btn btn-success" href="javascript: void(0);" onclick="smsadminphoneno('sms_admin_phone');">Save</a>
 			</form>
 			<div id="sms_admin_phoneno" style="display: none;" class="loader">
 								<div style="margin: 80px 0px 0px 40%;">
