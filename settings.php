@@ -364,6 +364,22 @@ $sender_id=$config['sender_id'];
 								</div>
 							</div>
 			</div>
+			<div style="clear:both"></div>
+			<div class="smscountrydetail1">
+			<h4>Admin Phone No</h4>
+			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
+			<form>
+			<p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
+			<br>
+			<a class="btn btn-success" href="javascript: void(0);" onclick="return smsadminphoneno('sms_admin_phone');">Save</a>
+			</form>
+			<div id="sms_admin_phoneno" style="display: none;" class="loader">
+								<div style="margin: 80px 0px 0px 40%;">
+									<div style="margin-left: 80px;">Saving</div>
+									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+								</div>
+							</div>
+			</div>
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
 					<ul class="tabs nav">
