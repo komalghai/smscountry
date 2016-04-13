@@ -125,7 +125,7 @@ if(!empty($action)){
 			}
 			
 			
-			 $query="SELECT * FROM messages where";
+			 /* $query="SELECT * FROM messages where";
 			if($phone!=""){
 				$query. = "recipient_number='{$phone}' and";
 			}
@@ -137,7 +137,7 @@ if(!empty($action)){
 			}
 			
 			echo $query=substr($query, 0, -3);
-			$config = pg_query($db, $query);  
+			$config = pg_query($db, $query);   */
 			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
