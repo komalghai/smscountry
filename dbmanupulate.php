@@ -3,7 +3,7 @@ require('conf.php');
 global $db;
 
 		$limit=10;$adjacent=3;
-	  $page = $_REQUEST['page'];
+	   $page = $_REQUEST['page'];
 	   if($page==1){
 	   $start = 0;  
 	  }
@@ -12,9 +12,19 @@ global $db;
 	  }
 	  //echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
 	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
-	 $rows = pg_num_rows($historyData);
+	  $rows = pg_num_rows($historyData);
 	 $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC LIMIT 10 OFFSET {$start}"); ?>
-			
+			<table class='table table-bordered'>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Message</th>
+									<th>Recipient Name</th>
+									<th>Recipient #</th>
+									<th>Sent On</th>
+									<th>Status</th>
+								</tr>
+							</thead>
 							<tbody class='msgdata'>
 								<?php  $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
 									
@@ -27,7 +37,7 @@ global $db;
 									</tr>
 								<?php } ?>
 							</tbody>
-   
+			</table>
 
 <?php pagination($limit,2,$rows,$page);  
 	
