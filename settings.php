@@ -32,33 +32,6 @@ $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $confi
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
 $sms_admin_phone = isset($config['sms_admin_phone']) ? $config['sms_admin_phone'] : null;
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
-$per_page = 5;         // number of results to show per page
-echo $total_results = pg_num_rows($historyData);
-$total_pages = ceil($total_results / $per_page);//total pages we going to have
-//-------------if page is setcheck------------------//
-if (isset($_GET['page'])) {
-    $show_page = $_GET['page'];             //it will telles the current page
-    if ($show_page > 0 && $show_page <= $total_pages) {
-        $start = ($show_page - 1) * $per_page;
-        $end = $start + $per_page;
-    } else {
-        // error - show first set of results
-        $start = 0;              
-        $end = $per_page;
-    }
-} else {
-    // if page isn't set, show first set of results
-    $start = 0;
-    $end = $per_page;
-}
-// display pagination
-$page = intval($_GET['page']);
-
-$tpages=$total_pages;
-if ($page <= 0)
-    $page = 1;
-	$historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$per_page");
-	
 $config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
 $sms_username=$config['sms_username'];
@@ -276,6 +249,40 @@ $sender_id=$config['sender_id'];
 					}
 				});
 			}
+			 $(function(){
+ $.ajax({
+	     url:"dbmanupulate.php",
+                  type:"POST",
+                  data:"actionfunction=showData&page=1",
+        cache: false,
+        success: function(response){
+		   
+		  $('#pagination').html(response);
+		 
+		}
+		
+	   });
+    $('#pagination').on('click','.page-numbers',function(){
+       $page = $(this).attr('href');
+	   $pageind = $page.indexOf('page=');
+	   $page = $page.substring(($pageind+5));
+       
+	   $.ajax({
+	     url:"dbmanupulate.php",
+                  type:"POST",
+                  data:"actionfunction=showData&page="+$page,
+        cache: false,
+        success: function(response){
+		   
+		  $('#pagination').html(response);
+		 
+		}
+		
+	   });
+	return false;
+	});
+	
+});
 		</script>
 		<style type="text/css">
 			ul.tabs > li {
@@ -745,7 +752,6 @@ $sender_id=$config['sender_id'];
 								</tr>
 							</thead>
 							<tbody class="msgdata">
-							
 								<?php $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
@@ -758,13 +764,7 @@ $sender_id=$config['sender_id'];
 								<?php } ?>
 							</tbody>
 						</table>
-						<?php  $reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
-								echo '<div class="pagination"><ul>';
-								if ($total_pages > 1) {
-									echo paginate($reload, $show_page, $total_pages);
-								}
-									echo "</ul></div>";
-						?>
+						<div id="pagination" cellspacing="0"></div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
 						<p>&nbsp;</p>
