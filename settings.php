@@ -414,6 +414,31 @@ $sender_id=$config['sender_id'];
 			  padding-right: 8px;
 			  width: 85%;
 			}
+					 .pagination{
+		  width:600px;
+		  margin:0px auto;
+		  }
+		  .pagination .current{
+		  padding: 4px 10px;
+		color: black;
+		margin: 1px 0px 9px 6px;
+		display: block;
+		text-decoration:none;
+		float: left;
+		text-transform: capitalize;
+		background: whitesmoke;
+		  }
+		  .pagination .page-numbers{
+		  padding: 4px 10px;
+		color: white !important;
+		margin: 1px 0px 9px 6px;
+		display: block;
+		text-decoration:none;
+		float: left;
+		text-transform: capitalize;
+		background: #00b4cc;
+		}
+
 		</style>
 	</head>
 	<body>
