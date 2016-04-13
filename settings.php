@@ -748,7 +748,7 @@ $sender_id=$config['sender_id'];
 					From_date<input  type="text" name="fdatefilter" id='fdatefilter'/>
 					end_date<input  type="text" name="edatefilter" id='edatefilter'/>
 					<a class="btn btn-success" href="javascript: void(0);" onclick="return Search('phonefilter','statusfilter','fdatefilter','edatefilter');">Search</a>
-						<table class="table table-bordered">
+						<!--table class="table table-bordered">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -771,7 +771,7 @@ $sender_id=$config['sender_id'];
 									</tr>
 								<?php } ?>
 							</tbody>
-						</table>
+						</table-->
 						<div id="pagination" cellspacing="0"></div>
 					</div>
 					<div class="col-xs-12 text-right" style="padding: 20px;">
