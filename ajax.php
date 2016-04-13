@@ -104,24 +104,25 @@ if(!empty($action)){
 				}
 			break;
 			case 'pagination':
-			 if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
-$actionfunction = $_REQUEST['actionfunction'];
+			 /* if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
+			$actionfunction = $_REQUEST['actionfunction'];
   
-   call_user_func($actionfunction,$_REQUEST,10,2);
-}
-function showData($data,$limit,$adjacent){
-  $page = $data['page'];
-   if($page==1){
-   $start = 0;  
-  }
-  else{
-  $start = ($page-1)*$limit;
-  }
-  echo "testing"; die();
-   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
-  echo $rows = pg_num_rows($historyData);
-  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
-  <table class='table table-bordered'>
+			call_user_func($actionfunction,$_REQUEST,10,2);
+			}
+	function showData($data,$limit,$adjacent){ */
+		$limit=10;$adjacent=3;
+	  $page = $_REQUEST['page'];
+	   if($page==1){
+	   $start = 0;  
+	  }
+	  else{
+	  $start = ($page-1)*$limit;
+	  }
+	  echo "testing"; 
+	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
+	  echo $rows = pg_num_rows($historyData);
+	  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
+			<table class='table table-bordered'>
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -147,7 +148,7 @@ function showData($data,$limit,$adjacent){
    
 
 <?php pagination($limit,$adjacent,$rows,$page);  
-}
+
 function pagination($limit,$adjacents,$rows,$page){	
 	$pagination='';
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
