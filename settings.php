@@ -272,8 +272,8 @@ $sender_id=$config['sender_id'];
 	  alert(1);
        $page = page;
 	   
-	   <!-- $pageind = $page.indexOf('page=');
-	   $page = $page.substring(($pageind+5)); -->
+	   /* $pageind = $page.indexOf('page=');
+	   $page = $page.substring(($pageind+5)); */
        alert($page);
 	   $.ajax({
 	     url: 'dbmanupulate.php',
