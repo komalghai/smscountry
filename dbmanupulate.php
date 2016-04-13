@@ -2,13 +2,13 @@
 require('conf.php');
 global $db;
 
-			 /* if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
-			$actionfunction = $_REQUEST['actionfunction'];
+			  if(isset($_REQUEST['pagination2']) && $_REQUEST['pagination2']!=''){
+			$actionfunction = $_REQUEST['pagination2'];
   
 			call_user_func($actionfunction,$_REQUEST,10,2);
 			}
-	function showData($data,$limit,$adjacent){ */
-		$limit=10;$adjacent=3;
+	function showData($data,$limit,$adjacent){ 
+		//$limit=10;$adjacent=3;
 	  $page = $_REQUEST['page'];
 	   if($page==1){
 	   $start = 0;  
@@ -16,7 +16,7 @@ global $db;
 	  else{
 	  $start = ($page-1)*$limit;
 	  }
-	  echo "testing"; 
+	  echo "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"; 
 	   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 	  echo $rows = pg_num_rows($historyData);
 	 echo  $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit '{$start}','{$limit}'"); ?>
@@ -46,7 +46,7 @@ global $db;
    
 
 <?php pagination($limit,$adjacent,$rows,$page);  
-
+	}
 function pagination($limit,$adjacents,$rows,$page){	
 	$pagination='';
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
