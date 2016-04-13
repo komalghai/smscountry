@@ -20,6 +20,7 @@ $AdminOrderReturnRequestsmsactive = isset($config['smsactive']['AdminOrderReturn
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
 $access_token = $config['access_token'];
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
+$sms_admin_phone =$config['sms_admin_phone'];
 if(!empty($action)){
 	$data = '';
 	$webhook = fopen('php://input' , 'rb'); 
@@ -46,7 +47,7 @@ if(!empty($action)){
 					sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerCustomerSignup');
 				}
 			}
-			if(!empty($storeData->shop->phone) && $AdminCustomerSignupsmsactive=="true"){
+			if(!empty($sms_admin_phone) && $AdminCustomerSignupsmsactive=="true"){
 				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['AdminCustomerSignup']);
 				if(!empty($adminMessage)){
 					$customVariables = array(
@@ -58,7 +59,7 @@ if(!empty($action)){
 					foreach($customVariables as $find => $replace){
 						$adminMessage = str_replace($find, $replace, $adminMessage);
 					}
-					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
+					sendMessage($adminMessage,$sms_admin_phone, $storeData->shop->shop_owner, 'AdminCustomerSignup');
 				}
 			}
 			/* pg_query($db, "UPDATE debug SET value = '{$data}' WHERE key = 'customer_signup'"); */
@@ -96,7 +97,7 @@ if(!empty($action)){
 					sendMessage($customerMessage, $data->default_address->phone, $recipient_name, 'CustomerOrderPlaced');
 				}
 			}
-			if(!empty($storeData->shop->phone) && $AdminOrderPlacedsmsactive=="true"){
+			if(!empty($sms_admin_phone) && $AdminOrderPlacedsmsactive=="true"){
 				$adminMessage = str_replace('<br>', '\n', $config['SMSHTML']['AdminOrderPlaced']);
 				if(!empty($adminMessage)){
 					$customVariables = array(
@@ -118,7 +119,7 @@ if(!empty($action)){
 					foreach($customVariables as $find => $replace){
 						$adminMessage = str_replace($find, $replace, $adminMessage);
 					}
-					sendMessage($adminMessage, $storeData->shop->phone, $storeData->shop->shop_owner, 'AdminOrderPlaced');
+					sendMessage($adminMessage, $sms_admin_phone, $storeData->shop->shop_owner, 'AdminOrderPlaced');
 				}
 			}
 			
