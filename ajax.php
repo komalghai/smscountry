@@ -108,6 +108,9 @@ if(!empty($action)){
 			$status = $_REQUEST['status'];
 			$fdatefilter = $_REQUEST['fdatefilter'];
 			$edatefilter = $_REQUEST['edatefilter'];
+			echo $fdatefilterdate=('Y-m-j g:i a', strtotime($fdatefilter));
+			echo $edatefilterdate=('Y-m-j g:i a', strtotime($edatefilter));
+			
 			if($phone!="" && $status!=""){
 				$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'"); 
 			}
