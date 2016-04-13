@@ -108,21 +108,22 @@ if(!empty($action)){
 			$status = $_REQUEST['status'];
 			$fdatefilter = $_REQUEST['fdatefilter'];
 			$edatefilter = $_REQUEST['edatefilter'];
-			echo $fdatefilterdate=('Y-m-j g:i a', strtotime($fdatefilter));
-			echo $edatefilterdate=('Y-m-j g:i a', strtotime($edatefilter));
+			echo $fdatefilter=date('Y-m-j g:i:s', strtotime($fdatefilter));
+			echo $edatefilter=date('Y-m-j g:i:s', strtotime($edatefilter));
 			
-			if($phone!="" && $status!=""){
-				$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}' and status='{$status}'"); 
+			$query="SELECT * FROM messages where";
+			if($phone!=""){
+				$query. = "recipient_number='{$phone}' and";
 			}
-			else if($phone!="" && $status==""){
-					$config = pg_query($db, "SELECT * FROM messages where recipient_number='{$phone}'"); 
+			 if($status!=""){
+					$query. =  "status='{$status}' and";
 			}
-			else if($phone=="" && $status!=""){
-					$config = pg_query($db, "SELECT * FROM messages where status='{$status}'"); 
+			if($fdatefilter!="" && $edatefilter!="" ){
+					$query. = "created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' and";
 			}
-			else {
-				$config = pg_query($db, "SELECT * FROM messages"); 
-			}
+			
+			echo $query=substr($query, 0, -3);
+			$config = pg_query($db, $query); 
 			 $i=0; while($history = pg_fetch_assoc($config)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
