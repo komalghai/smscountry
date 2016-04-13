@@ -2,12 +2,12 @@
 require('conf.php');
 global $db;
 
-			  if(isset($_REQUEST['pagination2']) && $_REQUEST['pagination2']!=''){
-			/* $actionfunction = $_REQUEST['pagination2'];
+			 /* if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
+			$actionfunction = $_REQUEST['actionfunction'];
   
 			call_user_func($actionfunction,$_REQUEST,10,2);
 			}
-	function showData($data,$limit,$adjacent){ */ 
+	function showData($data,$limit,$adjacent){ */
 		$limit=10;$adjacent=3;
 	  $page = $_REQUEST['page'];
 	   if($page==1){
@@ -46,7 +46,7 @@ global $db;
    
 
 <?php pagination($limit,$adjacent,$rows,$page);  
-	//}
+	}
 function pagination($limit,$adjacents,$rows,$page){	
 	$pagination='';
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
@@ -136,6 +136,5 @@ function pagination($limit,$adjacents,$rows,$page){
 	}
 
 	echo $pagination;  
-}
 }
 ?>
