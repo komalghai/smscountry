@@ -327,7 +327,7 @@ $sender_id=$config['sender_id'];
 			.smscountrydetail1 > form {
 			  margin: 20px auto 0;
 			  text-align: center;
-			  width: 40%;
+			  width: 55%;
 			}
 
 			.smscountrydetail1 form p b {
@@ -370,39 +370,38 @@ $sender_id=$config['sender_id'];
 	<body>
 		<div class="col-xs-12 padding-top sms-config">
 			<h3 class="alert alert-info">Configuration</h3>
-			<div class="smscountrydetail1">
-			<h4>SMSCountry API Configuration Settings</h4>
-			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
-			<form>
-			<p><b>SMSCountry Username</b><input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
-			<p><b>SMSCountry Password</b><input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
-			<p><b>SENDER ID</b><input type="text" name="sender_id" value="<?php echo $sender_id; ?>"></p>
-			<br>
-			<a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
-			</form>
-			<div id="smscountrydetail2" style="display: none;" class="loader">
-								<div style="margin: 80px 0px 0px 40%;">
-									<div style="margin-left: 80px;">Saving</div>
-									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
-								</div>
-							</div>
-			</div>
-			<div style="clear:both"></div>
-			<div class="smscountrydetail1">
-			<h4>Admin Phone No</h4>
-			<hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
-			<form>
-			<p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
-			<br>
-			<a class="btn btn-success" href="javascript: void(0);" onclick="smsadminphoneno('sms_admin_phone');">Save</a>
-			</form>
-			<div id="sms_admin_phoneno" style="display: none;" class="loader">
-								<div style="margin: 80px 0px 0px 40%;">
-									<div style="margin-left: 80px;">Saving</div>
-									<img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
-								</div>
-							</div>
-			</div>
+			<div class="smscountrydetail1 col-xs-6">
+   <h4>SMSCountry API Configuration Settings</h4>
+   <hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
+   <form>
+      <p><b>SMSCountry Username</b><input type="text" name="sms_username" value="<?php echo $sms_username; ?>"></p>
+      <p><b>SMSCountry Password</b><input type="text" name="sms_password" value="<?php echo $sms_password; ?>"></p>
+      <p><b>SENDER ID</b><input type="text" name="sender_id" value="<?php echo $sender_id; ?>"></p>
+      <br>
+      <a class="btn btn-success" href="javascript: void(0);" onclick="return smscontrydetail('sms_username','sms_password','sender_id');">Save</a>
+   </form>
+   <div id="smscountrydetail2" style="display: none;" class="loader">
+      <div style="margin: 80px 0px 0px 40%;">
+         <div style="margin-left: 80px;">Saving</div>
+         <img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+      </div>
+   </div>
+</div>
+<div class="smscountrydetail1 col-xs-6">
+   <h4>Admin Phone No</h4>
+   <hr style="width: 36%; border: 1px solid rgb(49, 176, 213);">
+   <form>
+      <p><b>Phone No</b><input type="text" id="sms_admin_phone" name="sms_admin_phone" value="<?php echo $sms_admin_phone; ?>"></p>
+      <br>
+      <a class="btn btn-success" href="javascript: void(0);" onclick="smsadminphoneno('sms_admin_phone');">Save</a>
+   </form>
+   <div id="sms_admin_phoneno" style="display: none;" class="loader">
+      <div style="margin: 80px 0px 0px 40%;">
+         <div style="margin-left: 80px;">Saving</div>
+         <img src="https://cdn.shopify.com/s/files/1/1141/9304/files/loader.gif?12050156025147783748" alt="Saving" title="Saving">
+      </div>
+   </div>
+</div>
 			<form>
 				<div class="box container well col-xs-12" style="padding: 0">
 					<ul class="tabs nav">
