@@ -5,7 +5,7 @@ global $db;
  if(isset($_REQUEST['actionfunction']) && $_REQUEST['actionfunction']!=''){
 $actionfunction = $_REQUEST['actionfunction'];
   
-   call_user_func($actionfunction,$_REQUEST,10,$adjacent);
+   call_user_func($actionfunction,$_REQUEST,10,2);
 }
 function showData($data,$limit,$adjacent){
   $page = $data['page'];
