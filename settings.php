@@ -214,7 +214,7 @@ $sender_id=$config['sender_id'];
 					phone: phoneno,
 					status: status,
 					fdatefilter:fdatefilter,
-					edatefilter,edatefilter,
+					edatefilter:edatefilter,
 					
 				},
 				success: function(data){
