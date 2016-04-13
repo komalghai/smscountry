@@ -15,9 +15,25 @@ if(!empty($action)){
 				$config = unserialize($config['data']);
 				$config['SMSHTML'][$key] = $value;
 				$config['smsactive'][$key] = $active;
-				echo serialize($config['smsactive'][$key]);
 				$config = serialize($config);
-				echo '<br>ewdwedw'.$config;
+				$updated = pg_query($db, "UPDATE configuration SET data = '{$config}' WHERE store = '{$store}'");
+				if($updated){
+					exit('1');
+				} else {
+					exit('0');
+				}
+			}
+			break;
+		case 'sms_admin_phone':
+			$sms_admin_phone = $_REQUEST['sms_admin_phone']; 
+			
+			$store = $_REQUEST['store'];
+			if(!empty($sms_admin_phone)){
+				$config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
+				$config = pg_fetch_assoc($config);
+				$config = unserialize($config['data']);
+				$config['sms_admin_phone'] = $active;
+				$config = serialize($config);
 				$updated = pg_query($db, "UPDATE configuration SET data = '{$config}' WHERE store = '{$store}'");
 				if($updated){
 					exit('1');
@@ -59,10 +75,11 @@ if(!empty($action)){
 			foreach($customVariables as $find => $replace){
 				$message = str_replace($find, $replace, $message);
 			}
-			$message = urlencode($message);
+			//$message = urlencode($message);
 			sendTestMessage($message, $mobilenumber);
 			break;
-			case 'savesmscontrydetail':
+			
+		case 'savesmscontrydetail':
 			$sms_username = $_REQUEST['sms_username'];
 			$sms_password = $_REQUEST['sms_password'];
 			$sender_id = $_REQUEST['sender_id'];
@@ -77,10 +94,10 @@ if(!empty($action)){
 			if((pg_num_rows($lastRow) > 0)){
 				$updated1 = pg_query($db, "UPDATE smscountrydetail SET sms_username = '{$sms_username}' ,sms_password='{$sms_password}' , sender_id='{$sender_id}',store='{$store}'  WHERE store = '{$store}'");	
 			}
-			else {
-				echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id,store) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}','{$store}')");
-			}
-		if($inserted  or $updated1){
+				else {
+					echo $inserted = pg_query($db, "INSERT INTO smscountrydetail (id, sms_username, sms_password, sender_id,store) VALUES ('{$lastID}','{$sms_username}', '{$sms_password}', '{$sender_id}','{$store}')");
+				}
+				if($inserted  or $updated1){
 					exit('1');
 				} else {
 					exit('0');
