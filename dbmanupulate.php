@@ -70,7 +70,7 @@ function pagination($limit,$adjacents,$rows,$page){
 				if ($counter == $page)
 					$pagination.= "<span class=\"current\">$counter</span>";
 				else
-					$pagination.= "<a class='page-numbers' href=\"?page=$counter\">$counter</a>";					
+					$pagination.= "<a onclick='changePagination(2);' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 			}
 			$last='';
 		}
@@ -85,7 +85,7 @@ function pagination($limit,$adjacents,$rows,$page){
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a class='page-numbers' href=\"?page=$counter\">$counter</a>";					
+						$pagination.= "<a conclick='changePagination(2);' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
 				}
 			$last.= "<a class='page-numbers' href=\"?page=$lastpage\">Last</a>";			
 			}
@@ -112,7 +112,7 @@ function pagination($limit,$adjacents,$rows,$page){
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a class='page-numbers' changePagination(2);' class='page-numbers' href=\"javascript:void(0);\">$counter</a>";					
+						$pagination.= "<a class='page-numbers' onclick='changePagination(2);' href=\"javascript:void(0);\">$counter</a>";					
 				}
 				$last='';
 			}
