@@ -9,7 +9,7 @@ $access_token = shopify\access_token($store, SHOPIFY_APP_API_KEY, SHOPIFY_APP_SH
 $storeData = json_decode(file_get_contents("https://{$store}/admin/shop.json?access_token={$access_token}"));
 $config = pg_query($db, "SELECT data FROM configuration WHERE store = '{$store}'");
 $config = pg_fetch_assoc($config);
-//echo '<pre>';print_r($config); echo'</pre>';
+echo '<pre>';print_r($config); echo'</pre>';
 $config = unserialize($config['data']);
 $CustomerCustomerSignup = isset($config['SMSHTML']['CustomerCustomerSignup']) ? $config['SMSHTML']['CustomerCustomerSignup'] : null;
 $CustomerSignupsmsactive = isset($config['smsactive']['CustomerCustomerSignup']) ? $config['smsactive']['CustomerCustomerSignup'] : null;
@@ -29,6 +29,7 @@ $AdminOrderReturnRequest = isset($config['SMSHTML']['AdminOrderReturnRequest']) 
 $AdminOrderReturnRequestsmsactive = isset($config['smsactive']['AdminOrderReturnRequest']) ? $config['smsactive']['AdminOrderReturnRequest'] : null;
 $AdminContactInquiry = isset($config['SMSHTML']['AdminContactInquiry']) ? $config['SMSHTML']['AdminContactInquiry'] : null;
 $AdminContactInquirysmsactive = isset($config['smsactive']['AdminContactInquiry']) ? $config['smsactive']['AdminContactInquiry'] : null;
+$sms_admin_phone = isset($config['sms_admin_phone']) ? $config['sms_admin_phone'] : null;
 $historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
 $config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
@@ -227,7 +228,7 @@ $sender_id=$config['sender_id'];
 			}	
 			function smsadminphoneno(smsadminphone){
 				var sms_admin_phone=$( "#"+smsadminphone).val();	
-				alert(sms_admin_phone);
+				//alert(sms_admin_phone);
 				jQuery('#sms_admin_phoneno').fadeIn();
 				jQuery.ajax({
 					type: 'post',
