@@ -15,7 +15,7 @@ function showData($data,$limit,$adjacent){
   else{
   $start = ($page-1)*$limit;
   }
-  
+  echo "testing"; die();
    $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC");
   echo $rows = pg_num_rows($historyData);
   $historyData=pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$limit"); ?>
