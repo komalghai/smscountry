@@ -57,6 +57,8 @@ $page = intval($_GET['page']);
 $tpages=$total_pages;
 if ($page <= 0)
     $page = 1;
+	$historyData = pg_query($db, "SELECT * FROM messages ORDER BY id DESC limit $start,$per_page");
+	
 $config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
 $sms_username=$config['sms_username'];
@@ -743,6 +745,7 @@ $sender_id=$config['sender_id'];
 								</tr>
 							</thead>
 							<tbody class="msgdata">
+							
 								<?php $i=0; while($history = pg_fetch_assoc($historyData)){ $i++; ?>
 									<tr>
 										<td><?php echo $i; ?></td>
