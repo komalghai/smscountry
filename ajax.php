@@ -132,8 +132,11 @@ if(!empty($action)){
 			 if($status!=""){
 					$query.= " status='{$status}' AND";
 			}
-			if($fdatefilter!="" && $edatefilter!="" ){
-					$query.=" created_at >= '{$fdatefilter}' AND created_at <= '{$edatefilter}' AND";
+			if($fdatefilter!="" ){
+					$query.=" created_at >= '{$fdatefilter}' AND";
+			}
+			if( $edatefilter!="" ){
+					$query.=" created_at <= '{$edatefilter}' AND";
 			}
 			
 			 $query=substr($query, 0, -3);
