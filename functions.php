@@ -35,6 +35,7 @@ if(!function_exists('sendMessage')){
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
 			}
+			$status = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx?User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}";
 			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
 		}
 		curl_close($ch);
