@@ -47,7 +47,7 @@ if(!function_exists('sendMessage')){
 if(!function_exists('sendTestMessage')){
 	function sendTestMessage($message, $mobilenumber){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = SMS_USERNAME1;
+		echo $user = SMS_USERNAME1;die;
 		$password = SMS_PASSWORD1;
 		$senderid = SENDER_ID1;
 		$messagetype = MESSAGE_TYPE;
