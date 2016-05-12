@@ -17,9 +17,9 @@ if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
 	
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = SMS_USERNAME1;
-		$password = SMS_PASSWORD1;
-		$senderid = SENDER_ID1;
+		$user = SMS_USERNAME;
+		$password = SMS_PASSWORD;
+		$senderid = SENDER_ID;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
@@ -48,9 +48,9 @@ if(!function_exists('sendTestMessage')){
 	function sendTestMessage($message, $mobilenumber ){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 		echo $sms_username1;
-		$user = $sms_username1;
-		$password = SMS_PASSWORD1;
-		$senderid = SENDER_ID1;
+		$user = SMS_USERNAME;
+		$password = SMS_PASSWORD;
+		$senderid = SENDER_ID;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
