@@ -1,11 +1,4 @@
 <?php 
-$store=$_REQUEST['shop'];
-$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
-$config1 = pg_fetch_assoc($config1);
-echo 'helloo1 '.$sms_username=$config1['sms_username'];
-echo $sms_password=$config1['sms_password'];
-echo  $sender_id=$config1['sender_id'];
-
 if(!function_exists('saveMessage')){
 	function saveMessage($message, $recipient_name, $recipient_number, $message_type, $status="delivered"){
 		global $db;
@@ -22,9 +15,9 @@ if(!function_exists('saveMessage')){
 if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = $sms_username;
-		$password = $sms_password;
-		$senderid = $sender_id;
+		$user = SMS_USERNAME;
+		$password = SMS_PASSWORD;
+		$senderid = SENDER_ID;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
