@@ -19,16 +19,16 @@ if(!$db){
 	echo "Error : Unable to open database\n"; 
 }
 $store=$_REQUEST['shop'];
-$config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
-$config = pg_fetch_assoc($config);
-$sms_username=$config['sms_username'];
-$sms_password=$config['sms_password'];
- $sender_id=$config['sender_id'];
+$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
+$config1 = pg_fetch_assoc($config1);
+$sms_username1=$config1['sms_username'];
+$sms_password1=$config1['sms_password'];
+ $sender_id1=$config1['sender_id'];
 /** SMS country setup **/
 
-define('SMS_USERNAME', $sms_username);
-define('SMS_PASSWORD', $sms_password);
-define('SENDER_ID', $sender_id);
+define('SMS_USERNAME', $sms_username1);
+define('SMS_PASSWORD', $sms_password1);
+define('SENDER_ID', $sender_id1);
 define('MESSAGE_TYPE', 'N');
 define('DELIVERY_REPORT', 'Y');
 require('functions.php');
