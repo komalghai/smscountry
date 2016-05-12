@@ -1,5 +1,5 @@
 <?php 
-
+require('conf.php');
 if(!function_exists('saveMessage')){
 	function saveMessage($message, $recipient_name, $recipient_number, $message_type, $status="delivered"){
 		global $db;
@@ -45,7 +45,6 @@ if(!function_exists('sendMessage')){
 }
 
 if(!function_exists('sendTestMessage')){
-	echo $user = SMS_USERNAME1;
 	function sendTestMessage($message, $mobilenumber ){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 		$user = SMS_USERNAME1;
