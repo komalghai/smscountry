@@ -46,13 +46,10 @@ if(!function_exists('sendMessage')){
 
 if(!function_exists('sendTestMessage')){
 	function sendTestMessage($message, $mobilenumber){
-			$store=$_REQUEST['shop'];
-		$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
-			$config1 = pg_fetch_assoc($config1);
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = $config1['sms_username'];
-		$password = $config1['sms_password'];
-		$senderid = $config1['sender_id'];
+		$user = SMS_USERNAME;
+		$password = SMS_PASSWORD;
+		$senderid = SENDER_ID;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
