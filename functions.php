@@ -1,10 +1,10 @@
 <?php 
 $store=$_REQUEST['shop'];
-$config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
-$config = pg_fetch_assoc($config);
-echo 'helloo1 '.$sms_username=$config['sms_username'];
-echo $sms_password=$config['sms_password'];
-echo  $sender_id=$config['sender_id'];
+$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
+$config1 = pg_fetch_assoc($config1);
+echo 'helloo1 '.$sms_username=$config1['sms_username'];
+echo $sms_password=$config1['sms_password'];
+echo  $sender_id=$config1['sender_id'];
 
 if(!function_exists('saveMessage')){
 	function saveMessage($message, $recipient_name, $recipient_number, $message_type, $status="delivered"){
