@@ -21,14 +21,14 @@ if(!$db){
 $store=$_REQUEST['shop'];
 $config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config2 = pg_fetch_assoc($config1);
-echo $sms_username1=$config2['sms_username'];die;
+$sms_username1=$config2['sms_username'];
 $sms_password1=$config2['sms_password'];
 $sender_id1=$config2['sender_id'];
 /** SMS country setup **/
 
-define('SMS_USERNAME1', $sms_username1);
-define('SMS_PASSWORD1', $sms_password1);
-define('SENDER_ID1', $sender_id1);
+define('SMS_USERNAME1', $sms_username1,true);
+define('SMS_PASSWORD1', $sms_password1,true);
+define('SENDER_ID1', $sender_id1,true);
 define('MESSAGE_TYPE', 'N');
 define('DELIVERY_REPORT', 'Y');
 require('functions.php');
