@@ -21,7 +21,7 @@ if(!$db){
 $store=$_REQUEST['shop'];
 $config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config2 = pg_fetch_assoc($config1);
-$sms_username1=$config2['sms_username'];
+echo $sms_username1=$config2['sms_username'];die;
 $sms_password1=$config2['sms_password'];
 $sender_id1=$config2['sender_id'];
 /** SMS country setup **/
