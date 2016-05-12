@@ -82,7 +82,7 @@ $sender_id1=$config2['sender_id'];
 				$message = str_replace($find, $replace, $message);
 			}
 			//$message = urlencode($message);
-		echo $sms_username1;die;
+		echo $sms_username1;
 			sendTestMessage($message, $mobilenumber );
 			break;
 			
