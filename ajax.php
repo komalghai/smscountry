@@ -76,7 +76,10 @@ if(!empty($action)){
 				$message = str_replace($find, $replace, $message);
 			}
 			//$message = urlencode($message);
-			sendTestMessage($message, $mobilenumber);
+			$user = SMS_USERNAME1;
+			$password = SMS_PASSWORD1;
+			$senderid = SENDER_ID1;
+			sendTestMessage($message, $mobilenumber, $user, $password, $senderid );
 			break;
 			
 		case 'savesmscontrydetail':
