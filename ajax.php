@@ -48,13 +48,7 @@ if(!empty($action)){
 			$domain = $_REQUEST['domain'];
 			$message = $_REQUEST['message'];
 			$mobilenumber = $_REQUEST['mobilenumber'];
-			$store=$_REQUEST['shop'];
-$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
-$config2 = pg_fetch_assoc($config1);
-$sms_username1=$config2['sms_username'];
-$sms_password1=$config2['sms_password'];
-$sender_id1=$config2['sender_id'];
-			$customVariables = array(
+				$customVariables = array(
 					'[shop_name]' => $shop,
 					'[shop_domain]' => $domain,
 					'[customer_count]' => '36',
@@ -83,7 +77,7 @@ $sender_id1=$config2['sender_id'];
 			}
 			//$message = urlencode($message);
 		
-			sendTestMessage($message, $mobilenumber,$sms_username1 );
+			sendTestMessage($message, $mobilenumber );
 			break;
 			
 		case 'savesmscontrydetail':
