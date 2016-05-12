@@ -2,7 +2,7 @@
 $store=$_REQUEST['shop'];
 $config= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
 $config = pg_fetch_assoc($config);
-echo 'helloo'.$sms_username=$config['sms_username'];
+echo 'helloo1 '.$sms_username=$config['sms_username'];
 echo $sms_password=$config['sms_password'];
 echo  $sender_id=$config['sender_id'];
 
