@@ -48,6 +48,12 @@ if(!empty($action)){
 			$domain = $_REQUEST['domain'];
 			$message = $_REQUEST['message'];
 			$mobilenumber = $_REQUEST['mobilenumber'];
+			$store=$_REQUEST['shop'];
+$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
+$config2 = pg_fetch_assoc($config1);
+$sms_username1=$config2['sms_username'];
+$sms_password1=$config2['sms_password'];
+$sender_id1=$config2['sender_id'];
 			$customVariables = array(
 					'[shop_name]' => $shop,
 					'[shop_domain]' => $domain,
@@ -76,7 +82,7 @@ if(!empty($action)){
 				$message = str_replace($find, $replace, $message);
 			}
 			//$message = urlencode($message);
-		
+		echo $sms_username1;die;
 			sendTestMessage($message, $mobilenumber );
 			break;
 			
