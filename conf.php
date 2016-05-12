@@ -26,9 +26,9 @@ $sms_password1=$config2['sms_password'];
 $sender_id1=$config2['sender_id'];
 /** SMS country setup **/
 
-define('SMS_USERNAME1', $sms_username1,true);
-define('SMS_PASSWORD1', $sms_password1,true);
-define('SENDER_ID1', $sender_id1,true);
+define('SMS_USERNAME1', $sms_username1);
+define('SMS_PASSWORD1', $sms_password1);
+define('SENDER_ID1', $sender_id1);
 define('MESSAGE_TYPE', 'N');
 define('DELIVERY_REPORT', 'Y');
 require('functions.php');
