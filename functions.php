@@ -16,9 +16,9 @@ if(!function_exists('saveMessage')){
 if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = SMS_USERNAME;
-		$password = SMS_PASSWORD;
-		$senderid = SENDER_ID;
+		$user = SMS_USERNAME1;
+		$password = SMS_PASSWORD1;
+		$senderid = SENDER_ID1;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
@@ -46,9 +46,9 @@ if(!function_exists('sendMessage')){
 if(!function_exists('sendTestMessage')){
 	function sendTestMessage($message, $mobilenumber){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = SMS_USERNAME;
-		$password = SMS_PASSWORD;
-		$senderid = SENDER_ID;
+		$user = SMS_USERNAME1;
+		$password = SMS_PASSWORD1;
+		$senderid = SENDER_ID1;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
@@ -70,7 +70,9 @@ if(!function_exists('sendTestMessage')){
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
 			}
+			
 			$status = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx?User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}";
+			$status="username=".SMS_USERNAME1;
 			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
 			$info = curl_getinfo($ch);
 			curl_close($ch);
