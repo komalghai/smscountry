@@ -1,5 +1,5 @@
 <?php 
-echo "sms user name".SMS_USERNAME;
+echo "sms user name".SMS_USERNAME1;
 if(!function_exists('saveMessage')){
 	function saveMessage($message, $recipient_name, $recipient_number, $message_type, $status="delivered"){
 		global $db;
@@ -15,6 +15,7 @@ if(!function_exists('saveMessage')){
 
 if(!function_exists('sendMessage')){
 	function sendMessage($message, $mobilenumber, $recipient_name, $type){
+	
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
 		$user = SMS_USERNAME1;
 		$password = SMS_PASSWORD1;
@@ -45,10 +46,13 @@ if(!function_exists('sendMessage')){
 
 if(!function_exists('sendTestMessage')){
 	function sendTestMessage($message, $mobilenumber){
+			$store=$_REQUEST['shop'];
+		$config1= pg_query($db, "SELECT * FROM smscountrydetail where store='{$store}'");
+			$config1 = pg_fetch_assoc($config1);
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		$user = SMS_USERNAME1;
-		$password = SMS_PASSWORD1;
-		$senderid = SENDER_ID1;
+		$user = $config1['sms_username'];
+		$password = $config1['sms_password'];
+		$senderid = $config1['sender_id'];
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
@@ -72,8 +76,7 @@ if(!function_exists('sendTestMessage')){
 			}
 			
 			$status = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx?User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}";
-			$status="username=".SMS_USERNAME1;
-			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
+				saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
 			$info = curl_getinfo($ch);
 			curl_close($ch);
 		}
