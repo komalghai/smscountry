@@ -45,12 +45,12 @@ if(!function_exists('sendMessage')){
 }
 
 if(!function_exists('sendTestMessage')){
-	function sendTestMessage($message, $mobilenumber, $user, $password, $senderid ){
+	echo $user = SMS_USERNAME1;
+	function sendTestMessage($message, $mobilenumber ){
 		$url = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx";
-		/*$user = SMS_USERNAME1;
+		$user = SMS_USERNAME1;
 		$password = SMS_PASSWORD1;
-		$senderid = SENDER_ID1;*/
-		echo $user;die;
+		$senderid = SENDER_ID1;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
