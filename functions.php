@@ -43,7 +43,7 @@ if(!function_exists('sendMessage')){
 				$status = 'delivered';
 			}
 			$status = "http://www.smscountry.com/SMSCwebservice_Bulk.aspx?User={$user}&passwd={$password}&mobilenumber={$mobilenumber}&message={$message}&sid={$senderid}&mtype={$messagetype}&DR={$DReports}";
-			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
+			saveMessage($message, $recipient_name, $mobilenumber, $type, $user);
 		}
 		curl_close($ch);
 	}
@@ -76,7 +76,7 @@ if(!function_exists('sendTestMessage')){
 			if(strpos($curlresponse, 'OK') !== false){
 				$status = 'delivered';
 			}
-			saveMessage($message, $recipient_name, $mobilenumber, $type, $status);
+			saveMessage($message, $recipient_name, $mobilenumber, $type, $user);
 			$info = curl_getinfo($ch);
 			curl_close($ch);
 		}
