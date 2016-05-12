@@ -1,5 +1,5 @@
 <?php 
-echo "sms user name".SMS_USERNAME1;
+
 if(!function_exists('saveMessage')){
 	function saveMessage($message, $recipient_name, $recipient_number, $message_type, $status="delivered"){
 		global $db;
