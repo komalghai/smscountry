@@ -50,6 +50,7 @@ if(!function_exists('sendTestMessage')){
 		/*$user = SMS_USERNAME1;
 		$password = SMS_PASSWORD1;
 		$senderid = SENDER_ID1;*/
+		echo $user;die;
 		$messagetype = MESSAGE_TYPE;
 		$DReports = DELIVERY_REPORT;
 		$ch = curl_init();
